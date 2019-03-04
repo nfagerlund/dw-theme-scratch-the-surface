@@ -49,11 +49,12 @@ set color_header_background = "#fc915c";
 
 # set color_page_title = "#____";
 
-set color_page_link = "#1f558b";
-set color_page_link_active = "#111185";
-set color_page_link_hover = "#162ac2";
+set color_page_link = "#265c92";
+# set color_page_link_active = "#111185";
+# set color_page_link_hover = "#162ac2";
 set color_page_link_hover = "#5452FF";
-set color_page_link_visited = "#618dbb";
+# set color_page_link_visited = "#618dbb";
+set color_page_link_visited = "#111185";
 
 ### Control strip
 
@@ -81,11 +82,11 @@ set color_entry_text = "#3f3f3f";
 # orange versions:
 
 set color_entry_border = "#fc7f3f";
-set color_entry_link = "#fc7f3f";
+# set color_entry_link = "#fc7f3f";
 # set color_entry_link_active = "#b3592d";
-set color_entry_link_hover = "#fc5603";
-set color_entry_link_visited = "#fca87e";
-set color_entry_title = "#fc7f3f";
+# set color_entry_link_hover = "#fc5603";
+# set color_entry_link_visited = "#d66424";
+set color_entry_title = "#ec5d25";
 set color_entry_title_background = "#ffdfbf";
 
 ### Modules
@@ -106,9 +107,9 @@ set color_module_text = "#3f3f3f";
 # green version:
 
 set color_module_border = "#3b7819";
-set color_module_link = "#3b7819";
+# set color_module_link = "#3b7819";
 # set color_module_link_active = "#888746";
-set color_module_link_hover = "#365b1e";
+# set color_module_link_hover = "#365b1e";
 # set color_module_link_visited = "#7a9241";
 set color_module_title = "#3b7819";
 set color_module_title_background = "#d7e6cf";
