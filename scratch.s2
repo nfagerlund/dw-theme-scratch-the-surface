@@ -19,47 +19,79 @@ set font_fallback = "sans-serif";
 set font_base_size = "1";
 set font_base_units = "em";
 
-set font_journal_title = """Charter, Cochin, Constantia""";
+# set font_journal_title = """Charter, Cochin, Constantia""";
 set font_journal_title_size = "1.8";
 set font_journal_title_units = "em";
 
-set font_journal_subtitle = """Charter, Cochin, Constantia""";
+# set font_journal_subtitle = """Charter, Cochin, Constantia""";
 set font_journal_subtitle_size = "1.3";
 set font_journal_subtitle_units = "em";
 
-set font_entry_title = """Charter, Cochin, Constantia""";
+# set font_entry_title = """Charter, Cochin, Constantia""";
 set font_entry_title_size = "1.37";
 set font_entry_title_units = "em";
 
 set font_comment_title_size = "1.2";
 set font_comment_title_units = "em";
 
-set font_module_heading = """Charter, Cochin, Constantia""";
+# set font_module_heading = """Charter, Cochin, Constantia""";
 set font_module_heading_size = "1.37";
 set font_module_heading_units = "em";
 
 ## Colors
 
-set color_entry_border = "#a7cc72";
+### Page
+
+set color_page_background = "#ffdbb4";
+set color_page_text = "#3f3f3f";
+set color_footer_background = "#fc915c";
+set color_header_background = "#fc915c";
+
+set color_page_link = "#1f558b";
+set color_page_link_active = "#111185";
+set color_page_link_hover = "#162ac2";
+set color_page_link_hover = "#5452FF";
+# set color_page_link_visited = "#618dbb";
+
+### Entries
+
+set color_entry_background = "#fff";
+set color_entry_text = "#3f3f3f";
+
+# green versions:
+
+set color_entry_border = "#3b7819";
 set color_entry_link = "#3b7819";
 set color_entry_link_active = "#888746";
 set color_entry_link_hover = "#365b1e";
 set color_entry_link_visited = "#7a9241";
-set color_entry_text = "#3f3f3f";
 set color_entry_title = "#3b7819";
 set color_entry_title_background = "#d7e6cf";
-set color_footer_background = "#fc915c";
-set color_header_background = "#fc915c";
-set color_page_background = "#ffdbb4";
-set color_page_text = "#000000";
+
+# orange versions:
+
+# set color_entry_border = "#fc7f3f";
+# set color_entry_link = "#fc7f3f";
+# set color_entry_link_active = "#b3592d";
+# set color_entry_link_hover = "#fc5603";
+# set color_entry_link_visited = "#fca87e";
+# set color_entry_title = "#fc7f3f";
+# set color_entry_title_background = "#ffdfbf";
+
+### Modules
+
+set color_module_background = "#fff";
+set color_module_border = "#fc7f3f";
+# set color_module_link = "#fc7f3f";
+# set color_module_link_active = "#b3592d";
+# set color_module_link_hover = "#fc5603";
+# set color_module_link_visited = "#fca87e";
+set color_module_text = "#3f3f3f";
+set color_module_title = "#fc7f3f";
+set color_module_title_background = "#ffdfbf";
 
 ### Color props from Transmogrified, that won't work here:
 
-# set color_entry_text_alt = "#3f3f3f";
-# set color_entry_title_border = "#a7cc72";
-# set color_header_hover = "#fc915c";
-# set color_header_hover_background = "#666666";
-# set color_main_background = "#ffdbb4";
 # set color_page_title_background = "#626d8b";
 
 
@@ -98,6 +130,7 @@ function Page::print_header()
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
     var string medium_media_query = generate_medium_media_query();
+    var string large_media_query = generate_large_media_query();
 
     var string page_subtitle_font = generate_font_css($*font_journal_subtitle, $*font_base, $*font_fallback, $*font_journal_subtitle_size, $*font_journal_subtitle_units);
     var string entry_title_font = generate_font_css($*font_entry_title, $*font_base, $*font_fallback, $*font_entry_title_size, $*font_entry_title_units);
