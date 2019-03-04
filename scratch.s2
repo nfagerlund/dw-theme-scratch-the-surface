@@ -47,11 +47,21 @@ set color_page_text = "#3f3f3f";
 set color_footer_background = "#fc915c";
 set color_header_background = "#fc915c";
 
+# set color_page_title = "#____";
+
 set color_page_link = "#1f558b";
 set color_page_link_active = "#111185";
 set color_page_link_hover = "#162ac2";
 set color_page_link_hover = "#5452FF";
-# set color_page_link_visited = "#618dbb";
+set color_page_link_visited = "#618dbb";
+
+### Control strip
+
+set custom_control_strip_colors = "on_no_gradient";
+set control_strip_bgcolor = "#626d8b";
+set control_strip_fgcolor = "#fff";
+set control_strip_bordercolor = "#626d8b";
+set control_strip_linkcolor = "#fc7f3f";
 
 ### Entries
 
@@ -60,35 +70,49 @@ set color_entry_text = "#3f3f3f";
 
 # green versions:
 
-set color_entry_border = "#3b7819";
-set color_entry_link = "#3b7819";
-set color_entry_link_active = "#888746";
-set color_entry_link_hover = "#365b1e";
-set color_entry_link_visited = "#7a9241";
-set color_entry_title = "#3b7819";
-set color_entry_title_background = "#d7e6cf";
+# set color_entry_border = "#3b7819";
+# set color_entry_link = "#3b7819";
+# set color_entry_link_active = "#888746";
+# set color_entry_link_hover = "#365b1e";
+# set color_entry_link_visited = "#7a9241";
+# set color_entry_title = "#3b7819";
+# set color_entry_title_background = "#d7e6cf";
 
 # orange versions:
 
-# set color_entry_border = "#fc7f3f";
-# set color_entry_link = "#fc7f3f";
+set color_entry_border = "#fc7f3f";
+set color_entry_link = "#fc7f3f";
 # set color_entry_link_active = "#b3592d";
-# set color_entry_link_hover = "#fc5603";
-# set color_entry_link_visited = "#fca87e";
-# set color_entry_title = "#fc7f3f";
-# set color_entry_title_background = "#ffdfbf";
+set color_entry_link_hover = "#fc5603";
+set color_entry_link_visited = "#fca87e";
+set color_entry_title = "#fc7f3f";
+set color_entry_title_background = "#ffdfbf";
 
 ### Modules
 
 set color_module_background = "#fff";
-set color_module_border = "#fc7f3f";
+set color_module_text = "#3f3f3f";
+
+# orange version
+
+# set color_module_border = "#fc7f3f";
 # set color_module_link = "#fc7f3f";
 # set color_module_link_active = "#b3592d";
 # set color_module_link_hover = "#fc5603";
 # set color_module_link_visited = "#fca87e";
-set color_module_text = "#3f3f3f";
-set color_module_title = "#fc7f3f";
-set color_module_title_background = "#ffdfbf";
+# set color_module_title = "#fc7f3f";
+# set color_module_title_background = "#ffdfbf";
+
+# green version:
+
+set color_module_border = "#3b7819";
+set color_module_link = "#3b7819";
+# set color_module_link_active = "#888746";
+set color_module_link_hover = "#365b1e";
+# set color_module_link_visited = "#7a9241";
+set color_module_title = "#3b7819";
+set color_module_title_background = "#d7e6cf";
+
 
 ### Color props from Transmogrified, that won't work here:
 
@@ -148,7 +172,7 @@ body {
 }
 
 a, a:link, a:visited {
-    text-decoration: none;
+    /* text-decoration: none; */
 }
 
 p {
