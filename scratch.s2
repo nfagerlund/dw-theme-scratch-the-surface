@@ -152,6 +152,8 @@ function Page::print_header()
 
 ### Stylesheet
 
+# todo: border-radius on the boxy dudes, fix spacing, make header links on entries not underlined (?), center the page title thing (maybe shrink it a bit), bring over more inherited css, make the module titles that are links green (but still underlined)
+
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
     var string medium_media_query = generate_medium_media_query();
