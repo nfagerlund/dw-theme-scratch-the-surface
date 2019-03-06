@@ -319,6 +319,7 @@ h2#pagetitle {
     color: $*color_entry_text;
     border: 1px solid $*color_entry_border;
     font-size: 1.2em;
+    text-align: center;
     margin: $rectangle_spacing 0;
     padding: $breathing_room_half 0;
     border-radius: $rectangle_radius;
@@ -392,6 +393,7 @@ h2.module-header a {
 
 ul.module-list {
     list-style: none;
+    margin-left: 0;
 }
 
 ul.module-list li ,
@@ -435,11 +437,6 @@ ul.userlite-interaction-links.text-links {
 .module-navlinks {
     color: $*color_module_title;
     list-style: none;
-    text-align: right;
-}
-
-.module-navlinks a {
-    color: $*color_module_title;
 }
 
 .module-navlinks li a {
