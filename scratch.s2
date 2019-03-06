@@ -406,13 +406,13 @@ ul.module-list-item li {
 }
 
 .module-content .userpic img {
-    background: $*color_header_background;
-    border: none;
-    padding: 10px;
+    background: $*color_entry_title_background;
+    border: 1px solid $*color_entry_border;
+    padding: $breathing_room_half;
 }
 
 .journal-name {
-    margin-top: 5px;
+    margin-top: $breathing_room_half;
     text-align: center;
 }
 
@@ -421,7 +421,7 @@ ul.module-list-item li {
 }
 
 ul.userlite-interaction-links.icon-links {
-    margin: 5px 0 0;
+    margin: $breathing_room_half 0 0;
     text-align: center;
 }
 
@@ -430,7 +430,7 @@ ul.userlite-interaction-links.icon-links li {
 }
 
 ul.userlite-interaction-links.text-links {
-    padding: 0 0 0 5px;
+    padding: 0 0 0 $breathing_room_half;
     list-style: none;
 }
 
@@ -444,6 +444,7 @@ ul.userlite-interaction-links.text-links {
   padding-bottom: 0 !important;
 }
 
+/* TODO idek what .manage-link is */
 .manage-link {
     margin: 10px 0 0;
     text-align: right;
