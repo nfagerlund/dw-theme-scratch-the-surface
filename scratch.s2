@@ -120,7 +120,7 @@ set color_module_title_background = "#d7e6cf";
 # set color_page_title_background = "#626d8b";
 
 
-### Add helpful nav to the header
+## Add helpful nav to the header
 
 function Page::print_header()
 {
