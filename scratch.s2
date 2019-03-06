@@ -475,6 +475,17 @@ ul.userlite-interaction-links.text-links {
 .module-calendar td.entry-day a:hover { color: $*color_page_link_hover; }
 .module-calendar td.entry-day a:active { color: $*color_page_link_active; }
 
+/*--- Entries ---*/
+
+/* Make [huge huge huge] content imgs behave on desktop/tablet: don't blow out layout for wide boyz, and make portrait pix fit in a normal-ppl window. */
+@media $medium_media_query {
+  .entry-content img, .comment-content img {
+    max-width: 100% !important;
+        /* yes, I know, but Tabula Rasa sets a wack value for this in a large_media_query and I don't want to paste its whole damn Page::print_default_stylesheet and end up responsible for updates. */
+    max-height: 700px;
+  }
+}
+
 
 
 
