@@ -304,6 +304,41 @@ h2#pagetitle {
     text-align: center;
 }
 
+/*--- Journal Navigation ---*/
+
+.navigation {
+    $entry_title_font
+    background: $*color_entry_background;
+    color: $*color_entry_text;
+    border: 1px solid $*color_entry_border;
+    font-size: 1.2em;
+    margin: .5em 0;
+    padding: .3em;
+    border-radius: .3em;
+}
+
+.topnav a, .bottomnav a {
+    color: $*color_entry_title;
+}
+
+.navigation.empty {
+    display: none;
+}
+
+.page-read .navigation.empty {
+    display: block;
+    padding: 10px;
+}
+
+.page-read .navigation.empty ul {
+    margin: 0;
+    padding: 0;
+}
+
+.page-read .navigation.empty ul li {
+    margin: 0;
+    padding: 0;
+}
 
 
 
