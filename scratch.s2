@@ -21,16 +21,18 @@ set text_skiplinks_forward = "# newer posts";
 
 set module_calendar_show = false;
 set module_links_show = false;
-set module_syndicate_order = 21;
+set module_syndicate_order = 7;
 set module_tags_show = false;
+set module_tags_order = 16;
 set module_pagesummary_show = false;
+set module_pagesummary_order = 22;
 set module_time_show = false;
 set module_poweredby_show = false;
 set module_customtext_show = true;
 set module_customtext_order = 5;
 set module_credit_section = "two";
 set module_search_order = 4;
-set module_cuttagcontrols_order = 16;
+set module_cuttagcontrols_order = 6;
 
 
 ## Font Stuff
