@@ -398,6 +398,11 @@ ul.userlite-interaction-links.text-links {
     color: $*color_module_title;
 }
 
+.module-navlinks li a {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 .manage-link {
     margin: 10px 0 0;
     text-align: right;
@@ -440,6 +445,23 @@ ul.userlite-interaction-links.text-links {
 .entry-content {
     margin: 10px 0 0;
     min-height: 100px;
+}
+
+.entry-content th {
+  background-color: #ffdfbf;
+}
+
+.entry-content td {
+  background-color: #d7e6cf;
+}
+
+/* Make [huge huge huge] content imgs behave on desktop/tablet: don't blow out layout for wide boyz, and make portrait pix fit in a normal-ppl window. 😤  */
+@media $medium_media_query {
+  .entry-content img, .comment-content img {
+    max-width: 100% !important;
+        /* yes, I know, but Tabula Rasa sets a wack value for this in a large_media_query and I don't want to paste its whole damn Page::print_default_stylesheet() function and end up responsible for updates. */
+    max-height: 700px;
+  }
 }
 
 .entry .header {
@@ -514,6 +536,10 @@ h3.entry-title a:visited {
 .metadata-item-location, .metadata-item-music, .metadata-item-mood, .tag ul {
     color: $*color_entry_link;
     text-align: right;
+}
+
+.metadata-item-music {
+  overflow-wrap: break-word;
 }
 
 .entry .footer {
@@ -841,33 +867,6 @@ textarea.textbox {
     border: 5px solid $*color_header_background;
     margin: .5em;
     padding: 0;
-}
-
-
-/* Stuff from old wizard customizations to moggers: */
-
-.module-section-one .module-navlinks li a {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.metadata-item-music {
-  overflow-wrap: break-word;
-}
-
-@media only screen and (min-width: 920px) {
-  .entry-content img, .comment-content img {
-    max-width: 100% !important;
-    max-height: 900px;
-  }
-}
-
-.entry-content th {
-  background-color: #ffdfbf;
-}
-
-.entry-content td {
-  background-color: #d7e6cf;
 }
 
 """;
