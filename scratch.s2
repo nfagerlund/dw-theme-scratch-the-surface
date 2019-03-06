@@ -283,7 +283,7 @@ h2#pagetitle {
     text-align: center;
 }
 
-/* ...skipping .module-navlinks, since I don't think it exists? */
+/* ...skipping #header .module-navlinks, since I don't think it exists? */
 
 /*--- Journal Navigation ---*/
 
@@ -843,6 +843,32 @@ textarea.textbox {
     padding: 0;
 }
 
+
+/* Stuff from old wizard customizations to moggers: */
+
+.module-section-one .module-navlinks li a {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.metadata-item-music {
+  overflow-wrap: break-word;
+}
+
+@media only screen and (min-width: 920px) {
+  .entry-content img, .comment-content img {
+    max-width: 100% !important;
+    max-height: 900px;
+  }
+}
+
+.entry-content th {
+  background-color: #ffdfbf;
+}
+
+.entry-content td {
+  background-color: #d7e6cf;
+}
 
 """;
 }
