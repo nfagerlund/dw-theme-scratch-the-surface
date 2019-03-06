@@ -293,7 +293,6 @@ h2#pagetitle {
     color: $*color_entry_text;
     border-bottom: 5px solid $*color_entry_border;
     font-size: 1.2em;
-    font-variant: small-caps;
     margin: 0 0 15px 0;
     padding: 5px;
 }
@@ -337,7 +336,6 @@ li.page-separator {
 h2.module-header {
     border-bottom: 1px solid $*color_page_link;
     color: $*color_module_title;
-    font-variant: small-caps;
     font-weight: normal;
     margin: 0 0 10px 0;
 }
@@ -366,13 +364,11 @@ ul.module-list-item li {
 }
 
 .journal-name {
-    font-variant: small-caps;
     margin-top: 5px;
     text-align: center;
 }
 
 .journal-website-name {
-    font-variant: small-caps;
     text-align: center;
 }
 
@@ -392,7 +388,6 @@ ul.userlite-interaction-links.text-links {
 
 .module-navlinks {
     color: $*color_module_title;
-    font-variant: small-caps;
     font-size: 1.45em;
     letter-spacing: -.1em;
     list-style: none;
@@ -455,7 +450,6 @@ ul.userlite-interaction-links.text-links {
 
 h3.entry-title {
     font-weight: normal;
-    font-variant: small-caps;
 }
 
 h3.entry-title a,
@@ -468,7 +462,6 @@ h3.entry-title a:visited {
 .datetime {
     color: $*color_entry_text;
     font-size: .75em;
-    font-variant: small-caps;
 }
 
 .datetime a {
@@ -492,7 +485,6 @@ h3.entry-title a:visited {
     color: $*color_entry_title;
     display: block;
     font-size: .8em;
-    font-variant: small-caps;
     margin-bottom: 10px;
 }
 
@@ -505,7 +497,6 @@ h3.entry-title a:visited {
 
 .metadata {
     font-size: .85em;
-    font-variant: small-caps;
     margin: 1em 0 0;
     text-align: right;
 }
@@ -532,7 +523,6 @@ h3.entry-title a:visited {
 .tag {
     margin: 1em 0 .5em 0;
     font-size: 0.85em;
-    font-variant: small-caps;
 }
 
 .tag ul li {
@@ -562,7 +552,6 @@ ul.entry-interaction-links li,
 ul.entry-management-links li {
     color: $*color_entry_interaction_links;
     font-size: 1.3em;
-    font-variant: small-caps;
     margin: 0 .5em 0 0;
     padding: 0;
 }
@@ -674,7 +663,6 @@ td.day {
     $entry_title_font
     border-bottom: 1px solid $*color_entry_border;
     color: $*color_entry_title;
-    font-variant: small-caps;
     font-weight: normal;
     margin: 0 0 .5em 0;
 }
@@ -702,7 +690,6 @@ td.day {
     $entry_title_font
     border-bottom: 1px solid $*color_entry_border;
     color: $*color_entry_title;
-    font-variant: small-caps;
     font-weight: normal;
     margin: 0 0 .5em 0;
 }
@@ -755,7 +742,6 @@ hr.above-entry-interaction-links, hr.below-reply-container {
 
 .comment-title, .comment-title a {
     color: $*color_entry_title;
-    font-variant: small-caps;
 }
 
 .comment-content {
@@ -768,7 +754,6 @@ hr.above-entry-interaction-links, hr.below-reply-container {
 .comment-poster {
     color: $*color_entry_title;
     margin-bottom: .5em;
-    font-variant: small-caps;
     font-size: .8em;
 }
 
@@ -777,7 +762,6 @@ hr.above-entry-interaction-links, hr.below-reply-container {
 }
 
 .poster-ip {
-    font-variant: small-caps;
     font-size: .7em;
 }
 
@@ -803,13 +787,11 @@ textarea.textbox {
 .comment-management-links ul, .comment-interaction-links ul {
     display: inline;
     font-size: 0.8em;
-    font-variant: small-caps;
     text-align: center;
 }
 
 .comment-management-links li, .comment-interaction-links li {
     font-size: 1.1em;
-    font-variant: small-caps;
     text-align: center;
 }
 
