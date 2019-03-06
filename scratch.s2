@@ -183,6 +183,11 @@ function print_stylesheet () {
     var string page_subtitle_font = generate_font_css($*font_journal_subtitle, $*font_base, $*font_fallback, $*font_journal_subtitle_size, $*font_journal_subtitle_units);
     var string entry_title_font = generate_font_css($*font_entry_title, $*font_base, $*font_fallback, $*font_entry_title_size, $*font_entry_title_units);
 
+    # ~~~~ IDEK:
+    var string rectangle_spacing = ".9rem";
+    var string rectangle_radius = ".3rem";
+    var string breathing_room_full = ".6rem";
+    var string breathing_room_half = ".3rem";
 
     # Return the actual CSS:
 
@@ -246,21 +251,21 @@ ol {
 
 @media $medium_media_query {
     .column-left #primary > .inner:first-child {
-        padding-left: 1em;
+        padding-left: $rectangle_spacing;
     }
 
     .column-right #primary > .inner:first-child {
-        padding-right: 1em;
+        padding-right: $rectangle_spacing;
     }
 
     .three-columns-left #secondary > .inner:first-child,
     .three-columns-right #secondary > .inner:first-child {
-        padding-right: .5em;
+        padding-right: $rectangle_spacing;
     }
 
     .three-columns-left #tertiary > .inner:first-child,
     .three-columns-right #tertiary > .inner:first-child {
-        padding-left: .5em;
+        padding-left: $rectangle_spacing;
     }
 }
 
@@ -288,7 +293,7 @@ ol {
 /*--- Journal Header ---*/
 
 #header {
-    padding: .1em .5em;
+    padding: .1em $rectangle_spacing;
 }
 
 h1#title, h1#title a {
@@ -312,9 +317,13 @@ h2#pagetitle {
     color: $*color_entry_text;
     border: 1px solid $*color_entry_border;
     font-size: 1.2em;
-    margin: .5em 0;
-    padding: .3em;
-    border-radius: .3em;
+    margin: $rectangle_spacing 0;
+    padding: $breathing_room_half 0;
+    border-radius: $rectangle_radius;
+}
+
+.navigation li {
+    padding: 0 $breathing_room_full !important;
 }
 
 .topnav a, .bottomnav a {
@@ -348,17 +357,31 @@ li.page-separator {
 }
 
 .module {
-    border: none;
-    border-bottom: 5px solid $*color_module_border;
-    margin-bottom: 15px;
-    padding: 10px;
+    border: 1px solid $*color_module_border;
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius;
+    /* padding: $breathing_room_full; */
+    background-color: $*color_module_title_background;
+}
+
+.module-content {
+    padding: $breathing_room_full;
+    background-color: $*color_module_background;
+    border-bottom-left-radius: $rectangle_radius;
+    border-bottom-right-radius: $rectangle_radius;
+}
+
+.module-content:first-child {
+    border-top-left-radius: $rectangle_radius;
+    border-top-right-radius: $rectangle_radius;
 }
 
 h2.module-header {
-    border-bottom: 1px solid $*color_page_link;
+    border-bottom: 1px solid $*color_module_border;
     color: $*color_module_title;
-    font-weight: normal;
-    margin: 0 0 10px 0;
+    margin: 0;
+    padding: $breathing_room_half $breathing_room_full;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
 }
 
 h2.module-header a {
@@ -409,8 +432,6 @@ ul.userlite-interaction-links.text-links {
 
 .module-navlinks {
     color: $*color_module_title;
-    font-size: 1.45em;
-    letter-spacing: -.1em;
     list-style: none;
     text-align: right;
 }
