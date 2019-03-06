@@ -477,7 +477,8 @@ h3.entry-title a:visited {
 
 .has-userpic .entry .userpic {
     border: none;
-    margin: -20px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+    float: $*userpics_position;
 }
 
 .entry .userpic img {
@@ -789,7 +790,8 @@ textarea.textbox {
 .has-userpic .comment .userpic {
     border: none;
     display: block;
-    margin: -1em .5em .5em .5em;
+    margin: .5em .5em .5em .5em;
+    float: $*userpics_position;
 }
 
 .comment .userpic img {
@@ -859,13 +861,6 @@ textarea.textbox {
     padding: 0;
 }
 
-
-/* --- Userpic stuff --- */
-
-.has-userpic .entry .userpic,
-.has-userpic .comment .userpic {
-    float: $*userpics_position;
-}
 
 """;
 }
