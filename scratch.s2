@@ -41,7 +41,7 @@ set font_base_size = "1";
 set font_base_units = "em";
 
 # set font_journal_title = """Charter, Cochin, Constantia""";
-set font_journal_title_size = "1.8";
+set font_journal_title_size = "2.2";
 set font_journal_title_units = "em";
 
 # set font_journal_subtitle = """Charter, Cochin, Constantia""";
@@ -68,7 +68,7 @@ set color_page_text = "#3f3f3f";
 set color_footer_background = "#fc915c";
 set color_header_background = "#fc915c";
 
-# set color_page_title = "#____";
+set color_page_title = "#3f3f3f";
 
 set color_page_link = "#265c92";
 # set color_page_link_active = "#111185";
@@ -284,6 +284,29 @@ ol {
         display: none;
     }
 }
+
+/*--- Journal Header ---*/
+
+#header {
+    padding: .1em .5em;
+}
+
+h1#title, h1#title a {
+    color: $*color_page_title;
+    text-align: center;
+}
+
+h2#subtitle,
+h2#pagetitle {
+    border: none;
+    color: $*color_page_title;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
 
 
 
