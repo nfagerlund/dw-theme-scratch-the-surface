@@ -16,26 +16,22 @@ set tags_page_type = "list";
 set text_skiplinks_back = "# older posts";
 set text_skiplinks_forward = "# newer posts";
 
-set module_calendar_order = 2;
+
+### module defaults overrides, in the order that they're listed in core2
+
 set module_calendar_show = false;
-set module_credit_show = false;
-set module_customtext_order = 5;
-set module_customtext_show = true;
-set module_cuttagcontrols_order = 3;
-set module_cuttagcontrols_show = false;
-set module_links_order = 13;
-set module_links_section = "one";
 set module_links_show = false;
-set module_navlinks_order = 1;
-set module_pagesummary_order = 20;
-set module_pagesummary_section = "none";
-set module_pagesummary_show = false;
-set module_poweredby_show = false;
-set module_search_order = 4;
 set module_syndicate_order = 21;
-set module_tags_order = 7;
 set module_tags_show = false;
+set module_pagesummary_show = false;
 set module_time_show = false;
+set module_poweredby_show = false;
+set module_customtext_show = true;
+set module_customtext_order = 5;
+set module_credit_section = "two";
+set module_search_order = 4;
+set module_cuttagcontrols_order = 16;
+
 
 ## Font Stuff
 
