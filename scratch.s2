@@ -552,6 +552,7 @@ ul.userlite-interaction-links.text-links {
 
 .poster-ip {
     overflow-wrap: break-word;
+    font-size: .9em;
 }
 
 ul.comment-management-links {
