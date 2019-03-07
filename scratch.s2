@@ -189,7 +189,11 @@ function Page::print_header()
 
 ### Stylesheet
 
-function print_stylesheet () {
+function Page::print_default_stylesheet() {
+    "";
+}
+
+function Page::print_theme_stylesheet() {
     # ~~~~ Vars taken from Practicality:
     var string medium_media_query = generate_medium_media_query();
     var string large_media_query = generate_large_media_query();
