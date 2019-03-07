@@ -657,6 +657,83 @@ h4.comment-title a {
   }
 }
 
+/*--- Archive Page ---*/
+
+.month {
+    background: $*color_entry_background;
+    color: $*color_entry_text;
+    border-bottom: 5px solid $*color_entry_border;
+    margin: 0 0 1em 0;
+    padding: 2em;
+}
+
+.month a { color: $*color_entry_link; }
+.month a:visited { color: $*color_entry_link_visited; }
+.month a:hover { color: $*color_entry_link_hover; }
+.month a:active { color: $*color_entry_link_active; }
+
+table.month {
+    border-bottom: none;
+}
+
+.month table {
+    margin: auto;
+    width: 100%;
+}
+
+table.month td, table.month th {
+    border: 1px solid $*color_entry_border;
+}
+
+.month caption {
+    display: none;
+}
+
+.month h3 {
+    color: $*color_entry_title;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.month th {
+    background: $*color_page_background;
+    color: $*color_page_text;
+    border: 1px solid $*color_entry_border;
+    text-align: center;
+}
+
+.month td.day {
+    border: 1px solid $*color_entry_border;
+    color: $*color_entry_text;
+    font-weight: normal;
+}
+
+td.day {
+    padding: 1em;
+}
+
+.month td.day-has-entries {
+    background: $*color_page_background;
+    color: $*color_page_text;
+    font-weight: normal;
+    text-align: left;
+}
+
+.month td.day-has-entries p {
+    font-size: 1.14em;
+    font-weight: bold;
+    text-align: right;
+}
+
+.month td.day-has-entries p a { color: $*color_page_link; }
+.month td.day-has-entries p a:visited { color: $*color_page_link_visited; }
+.month td.day-has-entries p a:hover { color: $*color_page_link_hover; }
+.month td.day-has-entries p a:active { color: $*color_page_link_active; }
+
+.month dl, .month dt, .month dd {
+    margin: 0;
+    padding: 0;
+}
 
 
 
