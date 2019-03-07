@@ -632,11 +632,23 @@ h4.comment-title a {
 .entry-content   li,
 .comment-content li {
     list-style-position: outside !important; /* rasa why :c */
+    margin-top: $breathing_room_half;
 }
 
 .entry-content   ul li::marker,
 .comment-content ul li::marker { /* this doesn't work anywhere today, but maybe someday. */
     font-weight: bold;
+}
+
+.entry-content   li p,
+.comment-content li p {
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+.entry-content   li p:first-child,
+.comment-content li p:first-child {
+    margin-top: 0;
 }
 
 .has-userpic .entry   .userpic,
