@@ -238,10 +238,7 @@ ol {
     margin: 0 auto;
 }
 
-#primary > .inner:first-child {
-    padding: 0;
-}
-
+#primary > .inner:first-child,
 #secondary > .inner:first-child,
 #tertiary > .inner:first-child {
     padding: 0;
@@ -450,31 +447,6 @@ ul.userlite-interaction-links.text-links {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-
-.module-calendar table {
-    text-align: center;
-}
-
-.module-calendar th {
-    background: $*color_page_background;
-    color: $*color_page_text;
-    border: 1px solid $*color_entry_border;
-    padding: 0;
-}
-
-.module-calendar td.empty-day {
-    border: 1px solid $*color_entry_border;
-}
-
-.module-calendar td.entry-day {
-    background: $*color_page_background;
-    border: 1px solid $*color_entry_border;
-}
-
-.module-calendar td.entry-day a { color: $*color_page_link; }
-.module-calendar td.entry-day a:visited { color: $*color_page_link_visited; }
-.module-calendar td.entry-day a:hover { color: $*color_page_link_hover; }
-.module-calendar td.entry-day a:active { color: $*color_page_link_active; }
 
 /*--- Entries and comments ---*/
 
@@ -699,6 +671,7 @@ table.month td, table.month th {
     display: none;
 }
 
+/* nb that this affects the "view subjects" page too */
 .month h3 {
     color: $*color_entry_title;
     font-size: 1.2em;
@@ -733,16 +706,6 @@ td.day {
     font-size: 1.14em;
     font-weight: bold;
     text-align: right;
-}
-
-.month td.day-has-entries p a { color: $*color_page_link; }
-.month td.day-has-entries p a:visited { color: $*color_page_link_visited; }
-.month td.day-has-entries p a:hover { color: $*color_page_link_hover; }
-.month td.day-has-entries p a:active { color: $*color_page_link_active; }
-
-.month dl, .month dt, .month dd {
-    margin: 0;
-    padding: 0;
 }
 
 """;
