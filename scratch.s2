@@ -545,6 +545,11 @@ ul.userlite-interaction-links.text-links {
     font-size: .9em;
 }
 
+.poster {
+    display: block;
+    margin-bottom: $breathing_room_half;
+}
+
 .poster-ip {
     overflow-wrap: break-word;
 }
