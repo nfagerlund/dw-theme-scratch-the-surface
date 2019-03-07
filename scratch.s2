@@ -11,7 +11,7 @@ set layout_authors = [{"name" => "roadrunnertwice", "type" => "user"}];
 
 set layout_type = "two-columns-left";
 set userpics_position = "left";
-set tags_page_type = "list";
+set tags_page_type = "cloud";
     # or cloud, or multi; try these later?
 set entry_management_links = "text";
 set comment_management_links = "text";
@@ -188,8 +188,6 @@ function Page::print_header()
 
 
 ### Stylesheet
-
-#  bring over more inherited css, deal with odd pages like archive
 
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
@@ -506,7 +504,8 @@ ul.userlite-interaction-links.text-links {
 /*--- Entries and comments ---*/
 
 .entry,
-.comment {
+.comment,
+.page-tags .tags-container {
     /* don't need border property, rasa's got it */
     margin-top: $rectangle_spacing;
     border-radius: $rectangle_radius;
@@ -514,18 +513,21 @@ ul.userlite-interaction-links.text-links {
     background-color: $*color_entry_title_background;
 }
 
-.comment {
+.comment,
+.page-tags .tags-container {
     border: 1px solid $*color_entry_border;
 }
 
 .entry   .contents,
-.comment .contents {
+.comment .contents,
+.page-tags .tags-container .contents {
     padding: $breathing_room_double;
     background-color: $*color_entry_background;
 }
 
 .entry   .footer,
-.comment .footer {
+.comment .footer,
+.page-tags .tags-container .footer {
     padding: $breathing_room_full;
     background-color: $*color_entry_background;
     border-bottom-left-radius: $rectangle_radius;
@@ -534,7 +536,8 @@ ul.userlite-interaction-links.text-links {
 }
 
 .entry   .header,
-.comment .header {
+.comment .header,
+.page-tags .tags-container .header {
     border-bottom: 1px solid $*color_entry_border;
     margin: 0;
     padding: $breathing_room_half $breathing_room_full;
@@ -566,6 +569,11 @@ h3.entry-title   a,
 h4.comment-title a {
     text-decoration: none;
     color: $*color_entry_title;
+}
+
+.page-tags .tags-container .header h2 {
+    color: $*color_entry_title;
+    margin: 0;
 }
 
 .entry-content,
@@ -607,6 +615,11 @@ h4.comment-title a {
 .entry-content   ul, .entry-content   ol,
 .comment-content ul, .comment-content ol {
     margin: 0;
+}
+
+.page-tags .tags-container .ljtaglist ul {
+    margin: 0;
+    padding: 0;
 }
 
 .entry-content   li,
@@ -730,8 +743,6 @@ td.day {
     margin: 0;
     padding: 0;
 }
-
-
 
 """;
 }
