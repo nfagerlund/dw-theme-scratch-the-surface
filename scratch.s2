@@ -175,7 +175,7 @@ function Page::print_header()
 
 ### Stylesheet
 
-#  bring over more inherited css, deal with comments, deal with odd pages like archive
+#  bring over more inherited css, deal with odd pages like archive, deal with dumb icons for manage-links
 
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
@@ -489,9 +489,10 @@ ul.userlite-interaction-links.text-links {
 .module-calendar td.entry-day a:hover { color: $*color_page_link_hover; }
 .module-calendar td.entry-day a:active { color: $*color_page_link_active; }
 
-/*--- Entries ---*/
+/*--- Entries and comments ---*/
 
-.entry {
+.entry,
+.comment {
     /* don't need border property, rasa's got it */
     margin-top: $rectangle_spacing;
     border-radius: $rectangle_radius;
@@ -499,12 +500,18 @@ ul.userlite-interaction-links.text-links {
     background-color: $*color_entry_title_background;
 }
 
-.entry .contents {
+.comment {
+    border: 1px solid $*color_entry_border;
+}
+
+.entry   .contents,
+.comment .contents {
     padding: $breathing_room_double;
     background-color: $*color_entry_background;
 }
 
-.entry .footer {
+.entry   .footer,
+.comment .footer {
     padding: $breathing_room_full;
     background-color: $*color_entry_background;
     border-bottom-left-radius: $rectangle_radius;
@@ -512,43 +519,56 @@ ul.userlite-interaction-links.text-links {
     border-top: 1px solid $*color_entry_border;
 }
 
-.entry .header {
+.entry   .header,
+.comment .header {
     border-bottom: 1px solid $*color_entry_border;
     margin: 0;
     padding: $breathing_room_half $breathing_room_full;
     border-radius: $rectangle_radius $rectangle_radius 0 0;
 }
 
+.datetime {
+    font-size: .9em;
+}
+
 h3.entry-title {
     margin: 0;
 }
 
-h3.entry-title a {
+h3.entry-title   a,
+h4.comment-title a {
     text-decoration: none;
+    color: $*color_entry_title;
 }
 
-.entry-content {
+.entry-content,
+.comment-content {
     min-height: 100px; /* don't shrink below the userpic height */
 }
 
-.entry-content th {
+.entry-content   th,
+.comment-content th {
     background-color: $*color_entry_title_background;
 }
 
-.entry-content td {
+.entry-content   td,
+.comment-content td {
     background-color: $*color_module_title_background;
 }
 
-.entry-content > p:first-child {
+.entry-content   > p:first-child,
+.comment-content > p:first-child {
     margin-top: 0;
 }
 
-.entry-content hr {
+.entry-content   hr,
+.comment-content hr {
     border: 2px solid $*color_entry_border;
     border-radius: 1px;
 }
 
-.entry-content blockquote {
+.entry-content   blockquote,
+.comment-content blockquote {
     background-color: $*color_entry_background;
     border-left: 4px solid $*color_entry_border;
     border-bottom: 0;
@@ -557,23 +577,28 @@ h3.entry-title a {
     clear: left;
 }
 
-.entry-content ul, .entry-content ol {
+.entry-content   ul, .entry-content   ol,
+.comment-content ul, .comment-content ol {
     margin: 0;
 }
 
-.entry-content li {
+.entry-content   li,
+.comment-content li {
     list-style-position: outside !important; /* rasa why :c */
 }
 
-.entry-content ul li::marker { /* this doesn't work anywhere today, but maybe someday. */
+.entry-content   ul li::marker,
+.comment-content ul li::marker { /* this doesn't work anywhere today, but maybe someday. */
     font-weight: bold;
 }
 
-.has-userpic .entry .userpic {
+.has-userpic .entry   .userpic,
+.has-userpic .comment .userpic {
     margin: 0 $breathing_room_double $breathing_room_full 0;
 }
 
-.entry .userpic img {
+.entry   .userpic img,
+.comment .userpic img {
     background: $*color_module_title_background;
     border: 1px solid $*color_module_border;
     padding: $breathing_room_half;
@@ -596,10 +621,11 @@ h3.entry-title a {
 
 /* Make [huge huge huge] content imgs behave on desktop/tablet: don't blow out layout for wide boyz, and make portrait pix fit in a normal-ppl window. */
 @media $medium_media_query {
-  .entry-content img, .comment-content img {
-    max-width: 100% !important;
-        /* yes, I know, but Tabula Rasa sets a wack value for this in a large_media_query and I don't want to paste its whole damn Page::print_default_stylesheet and end up responsible for updates. */
-    max-height: 700px;
+  .entry-content   img,
+  .comment-content img {
+      max-width: 100% !important;
+          /* yes, I know, but Tabula Rasa sets a wack value for this in a large_media_query and I don't want to paste its whole damn Page::print_default_stylesheet and end up responsible for updates. */
+      max-height: 700px;
   }
 }
 
