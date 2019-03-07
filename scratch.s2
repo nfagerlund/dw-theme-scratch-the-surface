@@ -30,7 +30,7 @@ set module_time_show = false;
 set module_poweredby_show = false;
 set module_customtext_show = true;
 set module_customtext_order = 5;
-set module_credit_section = "two";
+set module_credit_section = "one";
 set module_search_order = 4;
 set module_cuttagcontrols_order = 6;
 
@@ -175,7 +175,7 @@ function Page::print_header()
 
 ### Stylesheet
 
-#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet, make HRs look better, make blockquotes look better (and not overflow on mobile), deal with comments, deal with odd pages like archive, fix spacing on "top of page" thing at bottom of page
+#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet,  make blockquotes look better (and not overflow on mobile), deal with comments, deal with odd pages like archive, cut tag triangle alignment
 
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
@@ -540,6 +540,11 @@ h3.entry-title a {
 
 .entry-content > p:first-child {
     margin: 0;
+}
+
+.entry-content hr {
+    border: 2px solid $*color_entry_border;
+    border-radius: 1px;
 }
 
 .has-userpic .entry .userpic {
