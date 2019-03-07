@@ -175,7 +175,7 @@ function Page::print_header()
 
 ### Stylesheet
 
-#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet, deal with comments, deal with odd pages like archive, cut tag triangle alignment
+#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet, deal with comments, deal with odd pages like archive
 
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
@@ -564,6 +564,10 @@ h3.entry-title a {
     background: $*color_module_title_background;
     border: 1px solid $*color_module_border;
     padding: $breathing_room_half;
+}
+
+.cuttag img {
+    vertical-align: text-bottom;
 }
 
 .metadata {
