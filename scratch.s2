@@ -229,15 +229,6 @@ input, textarea {
     color: $*color_entry_text;
 }
 
-blockquote {
-    background: $*color_page_background;
-    border-bottom: 3px solid $*color_entry_border;
-    color: $*color_page_text;
-    margin: 1em 1em 1.5em 3em;
-    padding: 10px;
-    width: 85%;
-}
-
 ul {
     list-style: disc inside;
     margin: .2em 0 0 2.5em;
