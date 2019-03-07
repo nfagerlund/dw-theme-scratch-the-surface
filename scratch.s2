@@ -385,6 +385,7 @@ li.page-separator {
     background-color: $*color_module_background;
     border-bottom-left-radius: $rectangle_radius;
     border-bottom-right-radius: $rectangle_radius;
+    overflow-x: auto;
 }
 
 .module-content:first-child {
