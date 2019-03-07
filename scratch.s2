@@ -504,6 +504,11 @@ ul.userlite-interaction-links.text-links {
 
 /*--- Entries and comments ---*/
 
+.comment-wrapper { /* rasa why :c */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .entry,
 .comment,
 .page-tags .tags-container {
