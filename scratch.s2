@@ -175,7 +175,7 @@ function Page::print_header()
 
 ### Stylesheet
 
-#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet,  make blockquotes look better (and not overflow on mobile), deal with comments, deal with odd pages like archive, cut tag triangle alignment
+#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet, deal with comments, deal with odd pages like archive, cut tag triangle alignment
 
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
@@ -545,6 +545,15 @@ h3.entry-title a {
 .entry-content hr {
     border: 2px solid $*color_entry_border;
     border-radius: 1px;
+}
+
+.entry-content blockquote {
+    background-color: $*color_entry_background;
+    border-left: 4px solid $*color_entry_border;
+    border-bottom: 0;
+    margin: 1em;
+    padding: 0 $breathing_room_full 0 $breathing_room_full;
+    clear: left;
 }
 
 .has-userpic .entry .userpic {
