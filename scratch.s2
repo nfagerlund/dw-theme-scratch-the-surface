@@ -211,17 +211,9 @@ function print_stylesheet () {
 
 /*--- Main ---*/
 
-body {
-    margin: 0;
-}
+body { margin: 0; }
 
-a, a:link, a:visited {
-    /* text-decoration: none; */
-}
-
-p {
-        margin: 1em 0;
-}
+p { margin: 1em 0; }
 
 input, textarea {
     background: $*color_entry_background;
@@ -230,12 +222,12 @@ input, textarea {
 }
 
 ul {
-    list-style: disc inside;
+    list-style: disc outside;
     margin: .2em 0 0 2.5em;
 }
 
 ol {
-    list-style: decimal inside;
+    list-style: decimal outside;
     margin: .2em 0 0 2.5em;
 }
 
@@ -274,8 +266,6 @@ ol {
         padding-left: $rectangle_spacing;
     }
 }
-
-
 
 /* --- Micro-nav emojis: should only appear on mobile --- */
 
@@ -369,7 +359,6 @@ h2#pagetitle {
     padding: 0;
 }
 
-
 /*--- Sidebar ---*/
 
 li.page-separator {
@@ -460,12 +449,6 @@ ul.userlite-interaction-links.text-links {
 .module-navlinks li a {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
-}
-
-/* TODO idek what .manage-link is */
-.manage-link {
-    margin: 10px 0 0;
-    text-align: right;
 }
 
 .module-calendar table {
@@ -586,6 +569,15 @@ h4.comment-title a {
     min-height: 100px; /* don't shrink below the userpic height */
 }
 
+/* Never blow out layout for wide boyz, and make portrait boyz fit in a normal window. */
+@media $medium_media_query {
+  .entry-content   img,
+  .comment-content img {
+      max-width: 100% !important; /* rasa why :c */
+      max-height: 700px;
+  }
+}
+
 .entry-content   th,
 .comment-content th {
     background-color: $*color_entry_title_background;
@@ -635,8 +627,9 @@ h4.comment-title a {
     margin-top: $breathing_room_half;
 }
 
+/* this doesn't work anywhere, but maybe someday. */
 .entry-content   ul li::marker,
-.comment-content ul li::marker { /* this doesn't work anywhere today, but maybe someday. */
+.comment-content ul li::marker {
     font-weight: bold;
 }
 
@@ -675,18 +668,7 @@ h4.comment-title a {
 }
 
 .metadata-item {
-  overflow-wrap: break-word;
-}
-
-
-/* Make [huge huge huge] content imgs behave on desktop/tablet: don't blow out layout for wide boyz, and make portrait pix fit in a normal-ppl window. */
-@media $medium_media_query {
-  .entry-content   img,
-  .comment-content img {
-      max-width: 100% !important;
-          /* yes, I know, but Tabula Rasa sets a wack value for this in a large_media_query and I don't want to paste its whole damn Page::print_default_stylesheet and end up responsible for updates. */
-      max-height: 700px;
-  }
+    overflow-wrap: break-word;
 }
 
 /*--- Archive Page ---*/
