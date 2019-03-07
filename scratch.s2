@@ -662,15 +662,11 @@ h4.comment-title a {
 .month {
     background: $*color_entry_background;
     color: $*color_entry_text;
-    border-bottom: 5px solid $*color_entry_border;
-    margin: 0 0 1em 0;
-    padding: 2em;
+    border: 1px solid $*color_entry_border;
+    border-radius: $rectangle_radius;
+    margin: 0 0 $rectangle_spacing 0;
+    padding: $breathing_room_double;
 }
-
-.month a { color: $*color_entry_link; }
-.month a:visited { color: $*color_entry_link_visited; }
-.month a:hover { color: $*color_entry_link_hover; }
-.month a:active { color: $*color_entry_link_active; }
 
 table.month {
     border-bottom: none;
