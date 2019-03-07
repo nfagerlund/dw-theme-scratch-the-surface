@@ -175,7 +175,7 @@ function Page::print_header()
 
 ### Stylesheet
 
-#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet, make HRs look better, make blockquotes look better, deal with comments, deal with odd pages like archive
+#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet, make HRs look better, make blockquotes look better (and not overflow on mobile), deal with comments, deal with odd pages like archive, fix spacing on "top of page" thing at bottom of page
 
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
@@ -285,7 +285,7 @@ ol {
 
 #scratch-micro-nav > li {
     display: inline;
-    margin: 0.25em;
+    margin: $breathing_room_half;
 }
 
 #scratch-micro-nav a {
@@ -298,7 +298,7 @@ ol {
     }
 }
 
-/*--- Journal Header ---*/
+/*--- Journal Header and Footer ---*/
 
 #header {
     padding: .1em $rectangle_spacing;
@@ -315,6 +315,12 @@ h2#pagetitle {
     border: none;
     color: $*color_page_title;
     font-weight: bold;
+    text-align: center;
+}
+
+#footer {
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
     text-align: center;
 }
 
