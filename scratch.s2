@@ -175,7 +175,7 @@ function Page::print_header()
 
 ### Stylesheet
 
-#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet, deal with comments, deal with odd pages like archive
+#  bring over more inherited css, deal with comments, deal with odd pages like archive
 
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
@@ -539,7 +539,7 @@ h3.entry-title a {
 }
 
 .entry-content > p:first-child {
-    margin: 0;
+    margin-top: 0;
 }
 
 .entry-content hr {
@@ -554,6 +554,18 @@ h3.entry-title a {
     margin: 1em;
     padding: 0 $breathing_room_full 0 $breathing_room_full;
     clear: left;
+}
+
+.entry-content ul, .entry-content ol {
+    margin: 0;
+}
+
+.entry-content li {
+    list-style-position: outside !important; /* rasa why :c */
+}
+
+.entry-content ul li::marker { /* this doesn't work anywhere today, but maybe someday. */
+    font-weight: bold;
 }
 
 .has-userpic .entry .userpic {
