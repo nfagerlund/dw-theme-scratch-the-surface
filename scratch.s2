@@ -621,6 +621,7 @@ h4.comment-title a {
 
 .has-userpic .entry   .userpic,
 .has-userpic .comment .userpic {
+    float: $*userpics_position;
     margin: 0 $breathing_room_double $breathing_room_full 0;
 }
 
@@ -658,12 +659,6 @@ h4.comment-title a {
 
 
 
-
-
-.has-userpic .entry .userpic,
-.has-userpic .comment .userpic {
-    float: $*userpics_position;
-}
 
 """;
 }
