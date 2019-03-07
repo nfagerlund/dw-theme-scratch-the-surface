@@ -190,6 +190,7 @@ function print_stylesheet () {
     var string rectangle_radius = ".3rem";
     var string breathing_room_full = ".6rem";
     var string breathing_room_half = ".3rem";
+    var string breathing_room_double = "1.2rem";
 
     # Return the actual CSS:
 
@@ -360,10 +361,10 @@ li.page-separator {
 }
 
 .module {
-    border: 1px solid $*color_module_border;
+    /* don't need border property, rasa's got it */
     margin-top: $rectangle_spacing;
     border-radius: $rectangle_radius;
-    /* padding: $breathing_room_full; */
+    padding: 0;
     background-color: $*color_module_title_background;
 }
 
@@ -476,6 +477,62 @@ ul.userlite-interaction-links.text-links {
 .module-calendar td.entry-day a:active { color: $*color_page_link_active; }
 
 /*--- Entries ---*/
+
+.entry {
+    /* don't need border property, rasa's got it */
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius;
+    padding: 0;
+    background-color: $*color_entry_title_background;
+}
+
+.entry .contents {
+    padding: $breathing_room_double;
+    background-color: $*color_entry_background;
+}
+
+.entry .footer {
+    padding: $breathing_room_full;
+    background-color: $*color_entry_background;
+    border-bottom-left-radius: $rectangle_radius;
+    border-bottom-right-radius: $rectangle_radius;
+    border-top: 1px solid $*color_entry_border;
+}
+
+.entry .header {
+    border-bottom: 1px solid $*color_entry_border;
+    margin: 0;
+    padding: $breathing_room_half $breathing_room_full;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
+}
+
+h3.entry-title {
+    margin: 0;
+}
+
+h3.entry-title a {
+    text-decoration: none;
+}
+
+.entry-content th {
+    background-color: $*color_entry_title_background;
+}
+
+.entry-content td {
+    background-color: $*color_module_title_background;
+}
+
+.has-userpic .entry .userpic {
+    margin: 0 $breathing_room_full $breathing_room_full 0;
+}
+
+.entry .userpic img {
+    background: $*color_module_title_background;
+    border: 1px solid $*color_module_border;
+    padding: $breathing_room_half;
+}
+
+
 
 /* Make [huge huge huge] content imgs behave on desktop/tablet: don't blow out layout for wide boyz, and make portrait pix fit in a normal-ppl window. */
 @media $medium_media_query {
