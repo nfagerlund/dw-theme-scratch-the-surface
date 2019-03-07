@@ -520,6 +520,7 @@ ul.userlite-interaction-links.text-links {
 .page-tags .tags-container .contents {
     padding: $breathing_room_double;
     background-color: $*color_entry_background;
+    overflow-x: auto;
 }
 
 .entry   .footer,
@@ -539,6 +540,7 @@ ul.userlite-interaction-links.text-links {
     margin: 0;
     padding: $breathing_room_half $breathing_room_full;
     border-radius: $rectangle_radius $rectangle_radius 0 0;
+    overflow-x: auto;
 }
 
 .datetime {
