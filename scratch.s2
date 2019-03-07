@@ -175,7 +175,7 @@ function Page::print_header()
 
 ### Stylesheet
 
-# todo: border-radius on the boxy dudes, fix spacing, make header links on entries not underlined (?), center the page title thing (maybe shrink it a bit), bring over more inherited css, make the module titles that are links green (but still underlined)
+#  bring over more inherited css, fix fucked-up multi-paragraph list items, fix list item over-indentation, make UL and OL lists look like they came from the same planet, make HRs look better, make blockquotes look better, deal with comments, deal with odd pages like archive
 
 function print_stylesheet () {
     # ~~~~ Vars taken from Practicality:
@@ -514,6 +514,10 @@ h3.entry-title a {
     text-decoration: none;
 }
 
+.entry-content {
+    min-height: 100px; /* don't shrink below the userpic height */
+}
+
 .entry-content th {
     background-color: $*color_entry_title_background;
 }
@@ -522,8 +526,12 @@ h3.entry-title a {
     background-color: $*color_module_title_background;
 }
 
+.entry-content > p:first-child {
+    margin: 0;
+}
+
 .has-userpic .entry .userpic {
-    margin: 0 $breathing_room_full $breathing_room_full 0;
+    margin: 0 $breathing_room_double $breathing_room_full 0;
 }
 
 .entry .userpic img {
@@ -532,6 +540,15 @@ h3.entry-title a {
     padding: $breathing_room_half;
 }
 
+.metadata {
+    font-size: .85em;
+    margin: 1em 0 0;
+    text-align: right;
+}
+
+.metadata-item-music {
+  overflow-wrap: break-word;
+}
 
 
 /* Make [huge huge huge] content imgs behave on desktop/tablet: don't blow out layout for wide boyz, and make portrait pix fit in a normal-ppl window. */
