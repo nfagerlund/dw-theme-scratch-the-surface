@@ -79,7 +79,7 @@ set font_module_heading_units = "em";
 
 ### Page
 
-set color_page_background = "#ffdbb4";
+set color_page_background = "#FFD19F";
 set color_page_text = "#3f3f3f";
 set color_footer_background = "#fc915c";
 set color_header_background = "#fc915c";
