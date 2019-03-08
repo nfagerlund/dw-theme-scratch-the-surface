@@ -84,11 +84,8 @@ set color_header_background = "#fc915c";
 set color_page_title = "#3f3f3f";
 
 set color_page_link = "#265c92";
-# set color_page_link_active = "#111185";
-# set color_page_link_hover = "#162ac2";
 set color_page_link_hover = "#5452FF";
-# set color_page_link_visited = "#618dbb";
-set color_page_link_visited = "#111185";
+set color_page_link_visited = "#7244C8";
 
 ### Control strip
 
