@@ -426,6 +426,15 @@ ul.userlite-interaction-links.text-links {
     padding-bottom: 0;
 }
 
+/* Use lines to show threading, instead of big indents; requires overriding the computed margin-left from core2's comment printing function. */
+.comment-thread {
+    border-left: 3px dotted $*color_entry_border;
+    padding-left: $breathing_room_half;
+}
+.dwexpcomment {
+    margin-left: 0 !important;
+}
+
 .entry,
 .comment,
 .page-tags .tags-container {
