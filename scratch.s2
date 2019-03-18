@@ -76,12 +76,12 @@ set font_module_heading_units = "em";
 
 ### Page
 
-set color_page_background = "#FFD19F";
+set color_page_background = "#f7f7f7";
 set color_page_text = "#3f3f3f";
-set color_footer_background = "#fc915c";
-set color_header_background = "#fc915c";
+set color_footer_background = "#e9e9e9";
+set color_header_background = "#e9e9e9";
 
-set color_page_title = "#3f3f3f";
+set color_page_title = "#a42226";
 
 set color_page_link = "#265c92";
 set color_page_link_hover = "#5452FF";
@@ -102,9 +102,9 @@ set color_entry_text = "#3f3f3f";
 
 #### (oranges)
 
-set color_entry_border = "#fc7f3f";
-set color_entry_title = "#ec5d25";
-set color_entry_title_background = "#ffdfbf";
+set color_entry_border = "#c1272c";
+set color_entry_title = "#c1272d";
+set color_entry_title_background = "#ffd8d8";
 
 # set color_entry_link = "#fc7f3f";
 # set color_entry_link_active = "#b3592d";
