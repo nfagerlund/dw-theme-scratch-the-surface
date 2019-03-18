@@ -1,0 +1,688 @@
+## Info
+
+layerinfo "type" = "theme";
+layerinfo "name" = "Scratch the Surface";
+layerinfo author_name = "roadrunnertwice";
+layerinfo lang = "en";
+
+set layout_authors = [{"name" => "roadrunnertwice", "type" => "user"}];
+
+## Layout Defaults
+
+set layout_type = "two-columns-left";
+set userpics_position = "left";
+set tags_page_type = "cloud";
+set entry_management_links = "text";
+set comment_management_links = "text";
+
+## Text labels
+
+set text_skiplinks_back = "# older posts";
+set text_skiplinks_forward = "# newer posts";
+set text_entry_prev = "⬅︎ Prev";
+set text_entry_next = "Next ➡︎";
+set text_edit_entry = "Edit";
+set text_edit_tags = "Re-tag";
+set text_mem_add = "Stow";
+set text_tell_friend = "Share";
+set text_watch_comments = "Track";
+set text_unwatch_comments = "Untrack";
+set text_multiform_opt_track = "Track";
+set text_multiform_opt_untrack = "Untrack";
+set text_module_active_entries = "Ppl are Talking";
+set text_module_credit = "Wet Paint";
+
+## module defaults overrides, in the order that they're listed in core2
+
+set module_calendar_show = false;
+set module_links_show = false;
+set module_syndicate_order = 7;
+set module_tags_show = false;
+set module_tags_order = 16;
+set module_pagesummary_show = false;
+set module_pagesummary_order = 22;
+set module_time_show = false;
+set module_poweredby_show = false;
+set module_customtext_show = true;
+set module_customtext_order = 5;
+set module_credit_section = "one";
+set module_search_order = 4;
+set module_cuttagcontrols_order = 6;
+
+
+## Font Stuff
+
+set font_base = """"Avenir Next", Candara, Helvetica, Arial""";
+set font_fallback = "sans-serif";
+set font_base_size = "1";
+set font_base_units = "em";
+
+set font_journal_title_size = "2.2";
+set font_journal_title_units = "em";
+
+set font_journal_subtitle_size = "1.3";
+set font_journal_subtitle_units = "em";
+
+set font_entry_title_size = "1.37";
+set font_entry_title_units = "em";
+
+set font_comment_title_size = "1.2";
+set font_comment_title_units = "em";
+
+set font_module_heading_size = "1.37";
+set font_module_heading_units = "em";
+
+## Colors
+
+### Page
+
+set color_page_background = "#FFD19F";
+set color_page_text = "#3f3f3f";
+set color_footer_background = "#fc915c";
+set color_header_background = "#fc915c";
+
+set color_page_title = "#3f3f3f";
+
+set color_page_link = "#265c92";
+set color_page_link_hover = "#5452FF";
+set color_page_link_visited = "#7244C8";
+
+### Control strip
+
+set custom_control_strip_colors = "on_no_gradient";
+set control_strip_bgcolor = "#626d8b";
+set control_strip_fgcolor = "#fff";
+set control_strip_bordercolor = "#626d8b";
+set control_strip_linkcolor = "#fc7f3f";
+
+### Entries
+
+set color_entry_background = "#fff";
+set color_entry_text = "#3f3f3f";
+
+#### (oranges)
+
+set color_entry_border = "#fc7f3f";
+set color_entry_title = "#ec5d25";
+set color_entry_title_background = "#ffdfbf";
+
+# set color_entry_link = "#fc7f3f";
+# set color_entry_link_active = "#b3592d";
+# set color_entry_link_hover = "#fc5603";
+# set color_entry_link_visited = "#d66424";
+
+### Modules
+
+set color_module_background = "#fff";
+set color_module_text = "#3f3f3f";
+
+#### (greens)
+
+set color_module_border = "#3b7819";
+set color_module_title = "#3b7819";
+set color_module_title_background = "#d7e6cf";
+
+# set color_module_link = "#3b7819";
+# set color_module_link_active = "#888746";
+# set color_module_link_hover = "#365b1e";
+# set color_module_link_visited = "#7a9241";
+
+
+## Add helpful nav to the header
+
+function Page::print_header()
+{
+    # The bit from core2:
+    $this->print_global_title();
+    $this->print_global_subtitle();
+    $this->print_title();
+
+    # The bit from me:
+    # Optional list of emoji to jump places goes here, use CSS to hide on non-mobile
+    var string module_jump_id;
+    if ($*layout_type == "one-column-split") {
+        $module_jump_id = "#tertiary";
+    } else {
+        $module_jump_id = "#secondary";
+    }
+"""
+<ul id="scratch-micro-nav">
+<li><a href="$this.view_url{"recent"}" title="recent">📜</a></li>
+<li><a href="$this.view_url{"read"}" title="read">👯‍♀️</a></li>
+<li><a href="$this.view_url{"network"}" title="network">🌎</a></li>
+<li><a href="$this.view_url{"userinfo"}" title="userinfo">🤷🏽‍♀️</a></li>
+<li><a href="$module_jump_id" title="Jump to Links/Navs">🔜</a></li>
+</ul>
+""";
+}
+
+
+
+### Stylesheet
+
+function Page::print_theme_stylesheet() {
+    # ~~~~ Vars taken from Practicality:
+    var string medium_media_query = generate_medium_media_query();
+    var string large_media_query = generate_large_media_query();
+
+    var string page_subtitle_font = generate_font_css($*font_journal_subtitle, $*font_base, $*font_fallback, $*font_journal_subtitle_size, $*font_journal_subtitle_units);
+    var string entry_title_font = generate_font_css($*font_entry_title, $*font_base, $*font_fallback, $*font_entry_title_size, $*font_entry_title_units);
+
+    # ~~~~ IDEK:
+    var string rectangle_spacing = ".9rem";
+    var string rectangle_radius = ".3rem";
+    var string breathing_room_full = ".6rem";
+    var string breathing_room_half = ".3rem";
+    var string breathing_room_double = "1.2rem";
+
+    # Return the actual CSS:
+
+"""
+/* ~~ Scratch the Surface =) ~~ */
+
+/*--- Main ---*/
+
+body { margin: 0; }
+
+p { margin: 1em 0; }
+
+input, textarea {
+    background: $*color_entry_background;
+    border: 1px solid $*color_page_text;
+    color: $*color_entry_text;
+}
+
+ul {
+    list-style: disc outside;
+    margin: .2em 0 0 2.5em;
+}
+
+ol {
+    list-style: decimal outside;
+    margin: .2em 0 0 2.5em;
+}
+
+/*--- Main Containers ---*/
+
+#canvas {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#primary > .inner:first-child,
+#secondary > .inner:first-child,
+#tertiary > .inner:first-child {
+    padding: 0;
+}
+
+@media $medium_media_query {
+    .column-left #primary > .inner:first-child {
+        padding-left: $rectangle_spacing;
+    }
+
+    .column-right #primary > .inner:first-child {
+        padding-right: $rectangle_spacing;
+    }
+
+    .three-columns-left #secondary > .inner:first-child,
+    .three-columns-right #secondary > .inner:first-child {
+        padding-right: $rectangle_spacing;
+    }
+
+    .three-columns-left #tertiary > .inner:first-child,
+    .three-columns-right #tertiary > .inner:first-child {
+        padding-left: $rectangle_spacing;
+    }
+}
+
+/* --- Micro-nav emojis: should only appear on mobile --- */
+
+#scratch-micro-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#scratch-micro-nav > li {
+    display: inline;
+    margin: $breathing_room_half;
+}
+
+#scratch-micro-nav a {
+    text-decoration: none;
+}
+
+@media $medium_media_query {
+    #scratch-micro-nav {
+        display: none;
+    }
+}
+
+/*--- Journal Header and Footer ---*/
+
+#header {
+    padding: .1em $rectangle_spacing;
+    border-radius: 0 0 $rectangle_radius $rectangle_radius;
+}
+
+h1#title, h1#title a {
+    color: $*color_page_title;
+    text-align: center;
+    text-decoration: none;
+}
+
+h2#subtitle,
+h2#pagetitle {
+    border: none;
+    color: $*color_page_title;
+    font-weight: bold;
+    text-align: center;
+}
+
+#footer {
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
+    text-align: center;
+}
+
+/*--- Journal Navigation ---*/
+
+.navigation {
+    $entry_title_font
+    background: $*color_entry_background;
+    color: $*color_entry_text;
+    border: 1px solid $*color_entry_border;
+    font-size: 1.2em;
+    text-align: center;
+    margin: $rectangle_spacing 0;
+    padding: $breathing_room_half 0;
+    border-radius: $rectangle_radius;
+}
+
+.navigation li {
+    padding: 0 $breathing_room_full !important;
+}
+
+.topnav a, .bottomnav a {
+    color: $*color_entry_title;
+}
+
+.navigation.empty {
+    display: none;
+}
+
+.page-read .navigation.empty {
+    display: block;
+    padding: 10px;
+}
+
+.page-read .navigation.empty ul {
+    margin: 0;
+    padding: 0;
+}
+
+.page-read .navigation.empty ul li {
+    margin: 0;
+    padding: 0;
+}
+
+/*--- Sidebar ---*/
+
+li.page-separator {
+    display: none;
+}
+
+.module {
+    /* don't need border property, rasa's got it */
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius;
+    padding: 0;
+    background-color: $*color_module_title_background;
+}
+
+.module-content {
+    padding: $breathing_room_full;
+    background-color: $*color_module_background;
+    border-bottom-left-radius: $rectangle_radius;
+    border-bottom-right-radius: $rectangle_radius;
+    overflow-x: auto;
+}
+
+.module-content:first-child {
+    border-top-left-radius: $rectangle_radius;
+    border-top-right-radius: $rectangle_radius;
+}
+
+h2.module-header {
+    border-bottom: 1px solid $*color_module_border;
+    color: $*color_module_title;
+    margin: 0;
+    padding: $breathing_room_half $breathing_room_full;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
+}
+
+h2.module-header a {
+    color: $*color_module_title;
+}
+
+ul.module-list {
+    list-style: none;
+    margin-left: 0;
+}
+
+ul.module-list li ,
+ul.module-list-item li {
+    padding: 0 0 0 5px;
+}
+
+.module-content .userpic {
+    text-align: center;
+}
+
+.module-content .userpic img {
+    background: $*color_entry_title_background;
+    border: 1px solid $*color_entry_border;
+    padding: $breathing_room_half;
+}
+
+.journal-name {
+    margin-top: $breathing_room_half;
+    text-align: center;
+}
+
+.journal-website-name {
+    text-align: center;
+}
+
+ul.userlite-interaction-links.icon-links {
+    margin: $breathing_room_half 0 0;
+    text-align: center;
+}
+
+ul.userlite-interaction-links.icon-links li {
+    margin: 0 auto;
+}
+
+ul.userlite-interaction-links.text-links {
+    padding: 0 0 0 $breathing_room_half;
+    list-style: none;
+}
+
+.module-navlinks {
+    color: $*color_module_title;
+    list-style: none;
+}
+
+.module-navlinks li a {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/*--- Entries and comments ---*/
+
+.comment-wrapper { /* rasa why :c */
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Use lines to show threading, instead of big indents; requires overriding the computed margin-left from core2's comment printing function. */
+.comment-thread {
+    border-left: 3px dotted $*color_entry_border;
+    padding-left: $breathing_room_half;
+}
+.dwexpcomment {
+    margin-left: 0 !important;
+}
+
+.entry,
+.comment,
+.page-tags .tags-container {
+    /* don't need border property, rasa's got it */
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius;
+    padding: 0;
+    background-color: $*color_entry_title_background;
+}
+
+.comment,
+.page-tags .tags-container {
+    border: 1px solid $*color_entry_border;
+}
+
+.entry   .contents,
+.comment .contents,
+.page-tags .tags-container .contents {
+    padding: $breathing_room_double;
+    background-color: $*color_entry_background;
+    overflow-x: auto;
+}
+
+.entry   .footer,
+.comment .footer,
+.page-tags .tags-container .footer {
+    padding: $breathing_room_full;
+    background-color: $*color_entry_background;
+    border-bottom-left-radius: $rectangle_radius;
+    border-bottom-right-radius: $rectangle_radius;
+    border-top: 1px solid $*color_entry_border;
+}
+
+.entry   .header,
+.comment .header,
+.page-tags .tags-container .header {
+    border-bottom: 1px solid $*color_entry_border;
+    margin: 0;
+    padding: $breathing_room_half $breathing_room_full;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
+    overflow-x: auto;
+}
+
+.datetime {
+    font-size: .9em;
+}
+
+.poster {
+    display: block;
+    margin-bottom: $breathing_room_half;
+}
+
+.poster-ip {
+    overflow-wrap: break-word;
+    font-size: .9em;
+}
+
+ul.comment-management-links {
+    display: inline;
+    margin-left: 2em;
+}
+
+ul.comment-interaction-links {
+    margin-top: $breathing_room_double;
+}
+
+h3.entry-title {
+    margin: 0;
+}
+
+h3.entry-title   a,
+h4.comment-title a {
+    text-decoration: none;
+    color: $*color_entry_title;
+}
+
+.page-tags .tags-container .header h2 {
+    color: $*color_entry_title;
+    margin: 0;
+}
+
+.entry-content,
+.comment-content {
+    min-height: 100px; /* don't shrink below the userpic height */
+}
+
+/* Never blow out layout for wide boyz, and make portrait boyz fit in a normal window. */
+@media $medium_media_query {
+  .entry-content   img,
+  .comment-content img {
+      max-width: 100% !important; /* rasa why :c */
+      max-height: 700px;
+  }
+}
+
+.entry-content   th,
+.comment-content th {
+    background-color: $*color_entry_title_background;
+    padding: $breathing_room_half;
+}
+
+.entry-content   td,
+.comment-content td {
+    background-color: $*color_module_title_background;
+    padding: $breathing_room_half;
+}
+
+.entry-content   > p:first-child,
+.comment-content > p:first-child {
+    margin-top: 0;
+}
+
+.entry-content   hr,
+.comment-content hr {
+    border: 2px solid $*color_entry_border;
+    border-radius: 1px;
+}
+
+.entry-content   blockquote,
+.comment-content blockquote {
+    background-color: $*color_entry_background;
+    border-left: 4px solid $*color_entry_border;
+    border-bottom: 0;
+    border-radius: .15rem;
+    margin: 1em;
+    padding: 0 $breathing_room_full 0 $breathing_room_full;
+    clear: left;
+}
+
+.entry-content   ul, .entry-content   ol,
+.comment-content ul, .comment-content ol {
+    margin: 0;
+}
+
+.page-tags .tags-container .ljtaglist ul {
+    margin: 0;
+    padding: 0;
+}
+
+.entry-content   li,
+.comment-content li {
+    list-style-position: outside !important; /* rasa why :c */
+    margin-top: $breathing_room_half;
+}
+
+.entry-content   li p,
+.comment-content li p {
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+.entry-content   li p:first-child,
+.comment-content li p:first-child {
+    margin-top: 0;
+}
+
+.has-userpic .entry   .userpic,
+.has-userpic .comment .userpic {
+    float: $*userpics_position;
+    margin: 0 $breathing_room_double $breathing_room_full 0;
+}
+
+.entry   .userpic img,
+.comment .userpic img {
+    background: $*color_module_title_background;
+    border: 1px solid $*color_module_border;
+    padding: $breathing_room_half;
+}
+
+.cuttag img {
+    vertical-align: text-bottom;
+}
+
+.metadata {
+    font-size: .85em;
+    margin: 1em 0 0;
+    text-align: right;
+}
+
+.metadata-item {
+    overflow-wrap: break-word;
+}
+
+/*--- Archive Page ---*/
+
+.month {
+    background: $*color_entry_background;
+    color: $*color_entry_text;
+    border: 1px solid $*color_entry_border;
+    border-radius: $rectangle_radius;
+    margin: 0 0 $rectangle_spacing 0;
+    padding: $breathing_room_double;
+}
+
+table.month {
+    border-bottom: none;
+}
+
+.month table {
+    margin: auto;
+    width: 100%;
+}
+
+table.month td, table.month th {
+    border: 1px solid $*color_entry_border;
+}
+
+.month caption {
+    display: none;
+}
+
+/* nb that this affects the "view subjects" page too */
+.month h3 {
+    color: $*color_entry_title;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.month th {
+    background: $*color_page_background;
+    color: $*color_page_text;
+    border: 1px solid $*color_entry_border;
+    text-align: center;
+}
+
+.month td.day {
+    border: 1px solid $*color_entry_border;
+    color: $*color_entry_text;
+    font-weight: normal;
+}
+
+td.day {
+    padding: 1em;
+}
+
+.month td.day-has-entries {
+    background: $*color_page_background;
+    color: $*color_page_text;
+    font-weight: normal;
+    text-align: left;
+}
+
+.month td.day-has-entries p {
+    font-size: 1.14em;
+    font-weight: bold;
+    text-align: right;
+}
+
+""";
+}
+
