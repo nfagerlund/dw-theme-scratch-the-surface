@@ -1,7 +1,6 @@
 
 layerinfo "type" = "layout";
-layerinfo "name" = "Tabula Rasa";
-layerinfo redist_uniq = "core2base/layout";
+layerinfo "name" = "Cutting Corners";
 
 ##===============================
 ## Presentation
