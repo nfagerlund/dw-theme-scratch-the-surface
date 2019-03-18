@@ -409,16 +409,6 @@ ul.userlite-interaction-links.text-links {
     list-style: none;
 }
 
-.module-navlinks {
-    color: $*color_module_title;
-    list-style: none;
-}
-
-.module-navlinks li a {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-}
-
 /*--- Entries and comments ---*/
 
 .comment-wrapper { /* rasa why :c */
