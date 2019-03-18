@@ -380,10 +380,11 @@ q { font-style: italic; }
   max-width: 100%;
 }
 
-#entries .inner {
+#entries > .inner {
   display: flex;
   flex-direction: column;
 }
+
 .module-section-one > .inner {
   display: flex;
   flex-direction: column;
