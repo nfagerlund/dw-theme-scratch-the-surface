@@ -215,6 +215,9 @@ ol {
     padding: 0;
 }
 
+/* TODO This is predicated on the float-based layout. */
+
+/*
 @media $medium_media_query {
     .column-left #primary > .inner:first-child {
         padding-left: $rectangle_spacing;
@@ -234,6 +237,7 @@ ol {
         padding-left: $rectangle_spacing;
     }
 }
+ */
 
 /* --- Micro-nav emojis: should only appear on mobile --- */
 

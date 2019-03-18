@@ -356,7 +356,9 @@ a:active { $page_link_active_colors }
 
 q { font-style: italic; }
 
-/* #content layout */
+/* #content layout TODO: This is one of the parts to replace! */
+
+/*
 #content { float: none; }
 @media $medium_media_query {
     .two-columns-left #content,
@@ -374,19 +376,24 @@ q { font-style: italic; }
         border-right: $*sidebar_width_doubled solid transparent;
     }
     .column-right #content {
-        min-width: $*sidebar_width; /* prevents sidebar overlap of entry, when entry becomes narrower than sidebar */
+        min-width: $*sidebar_width;
     }
 }
+ */
 
 #content-footer {
     height: 0;
     font-size: 0; /*to make IE happy*/
+/*
     clear: both;
+ */
 }
 
 #header, #footer {
     margin: 0;
+/*
     clear: both;
+ */
     padding: .5em;
 }
 
@@ -413,17 +420,23 @@ h2#pagetitle {
 #footer a:hover { $footer_link_hover_colors }
 #footer a:active { $footer_link_active_colors }
 
+/* TODO this also looks like it's assuming float layout */
+/*
 #primary {
     width:100%;
     margin-right:-100%;
     margin-left: 0;
 }
+ */
 
 #primary > .inner:first-child, #secondary > .inner:first-child, #tertiary > .inner:first-child {
     padding: 1em;
 }
 
-/* modules layout */
+
+/* modules layout TODO: This is one of the parts to replace! */
+
+/*
 #primary { float: none; }
 #secondary, #tertiary { width: 100%; }
 
@@ -473,7 +486,7 @@ h2#pagetitle {
         float: right;
         width: $*sidebar_width;
         margin-right: -$*sidebar_width_doubled;
-        margin-left: $*sidebar_width; /* so that #tertiary won't overlay #secondary in IE7 */
+        margin-left: $*sidebar_width;
     }
     .three-columns-sides #tertiary {
         float: right;
@@ -481,6 +494,9 @@ h2#pagetitle {
         margin-right: -$*sidebar_width;
     }
 }
+ */
+
+
 
 .navigation ul {
     margin-left: 0;
