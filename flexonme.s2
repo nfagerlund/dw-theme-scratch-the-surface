@@ -356,6 +356,21 @@ a:active { $page_link_active_colors }
 
 q { font-style: italic; }
 
+/* TODO: temporary impl of flex layout? */
+
+#entries .inner {
+  display: flex;
+  flex-direction: column;
+}
+.module-section-one > .inner {
+  display: flex;
+  flex-direction: column;
+}
+#content > .inner {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 /* #content layout TODO: This is one of the parts to replace! */
 
 /*
