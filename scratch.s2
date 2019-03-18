@@ -235,7 +235,7 @@ ol {
     }
 }
 
-/* --- Micro-nav emojis: should only appear on mobile --- */
+/* --- Micro-nav emojis: should only appear on mobile or one-column --- */
 
 #scratch-micro-nav {
     list-style: none;
@@ -254,7 +254,7 @@ ol {
 }
 
 @media $medium_media_query {
-    #scratch-micro-nav {
+    .multiple-columns #scratch-micro-nav {
         display: none;
     }
 }
