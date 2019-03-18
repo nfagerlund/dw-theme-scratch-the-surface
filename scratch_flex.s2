@@ -285,7 +285,9 @@ h2#pagetitle {
 }
 
 #footer {
+/*
     margin-top: $rectangle_spacing;
+ */
     border-radius: $rectangle_radius $rectangle_radius 0 0;
     text-align: center;
 }
@@ -299,7 +301,9 @@ h2#pagetitle {
     border: 1px solid $*color_entry_border;
     font-size: 1.2em;
     text-align: center;
+/*
     margin: $rectangle_spacing 0;
+ */
     padding: $breathing_room_half 0;
     border-radius: $rectangle_radius;
 }
@@ -339,7 +343,9 @@ li.page-separator {
 
 .module {
     /* don't need border property, rasa's got it */
+/*
     margin-top: $rectangle_spacing;
+ */
     border-radius: $rectangle_radius;
     padding: 0;
     background-color: $*color_module_title_background;
@@ -443,7 +449,9 @@ ul.userlite-interaction-links.text-links {
 .comment,
 .page-tags .tags-container {
     /* don't need border property, rasa's got it */
+/*
     margin-top: $rectangle_spacing;
+ */
     border-radius: $rectangle_radius;
     padding: 0;
     background-color: $*color_entry_title_background;
