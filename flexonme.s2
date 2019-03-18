@@ -1,7 +1,9 @@
+# Info
 
 layerinfo "type" = "layout";
-layerinfo "name" = "Tabula Rasa";
-layerinfo redist_uniq = "core2base/layout";
+layerinfo "name" = "Flex on Me";
+layerinfo author_name = "roadrunnertwice";
+layerinfo lang = "en";
 
 ##===============================
 ## Presentation
