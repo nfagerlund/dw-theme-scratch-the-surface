@@ -49,6 +49,15 @@ set module_credit_section = "one";
 set module_search_order = 4;
 set module_cuttagcontrols_order = 6;
 
+# Note to self: OK, so the classes on the <body> tag we'll need to use to distinguish page ownership on entry pages go something like this.
+# logged-out: treat it as my journal. my-journal: treat it as my journal. Nothing specified: treat it as foreign.
+# Basically the only case where it SHOULD be treated as foreign is if it both has the class logged-in AND doesn't have the class my-journal, but since those classes are peers of each other on the same element, there's no real way I can see to do that.
+# Also, because of what a bastard it's gonna be to have to do this, I don't think it makes any sense to try and hack this together as a theme layer; Like, I'd kind of rather? But it'd be a tremendous mess.
+# although actually, wait a sec... you might be able to use other singleton classes as proxies for logged-in+not-mine. nope, never mind, doesn't work. (It marks the subscribed/access classes for your own journal too.)
+# Though I guess, page-entry is the only class
+# WAIT
+# the :not(.class) pseudo-class, and selector chaining like .class.otherclass
+# ok. i can do this.
 
 ## Font Stuff
 
