@@ -175,6 +175,16 @@ function Page::print_theme_stylesheet() {
     var string breathing_room_half = ".3rem";
     var string breathing_room_double = "1.2rem";
 
+    # ~~~~ Horrible hack:
+    var string foreign_color_page_background = "#f7f7f7";
+    var string foreign_color_footer_background = "#e9e9e9";
+    var string foreign_color_header_background = "#e9e9e9";
+    var string foreign_color_page_title = "#a42226";
+    var string foreign_color_entry_border = "#c1272c";
+    var string foreign_color_entry_title = "#c1272d";
+    var string foreign_color_entry_title_background = "#ffd8d8";
+
+
     # Return the actual CSS:
 
 """
@@ -671,6 +681,48 @@ td.day {
     font-size: 1.14em;
     font-weight: bold;
     text-align: right;
+}
+
+/* Horrible hack to get different colors on foreign entry pages: */
+
+body.page-entry.logged-in:not(.my-journal) {
+    background-color: $foreign_color_page_background !important;
+}
+
+.page-entry.logged-in:not(.my-journal) #header,
+.page-entry.logged-in:not(.my-journal) #footer {
+    background-color: $foreign_color_header_background !important;
+    color: $foreign_color_page_title !important;
+}
+
+.page-entry.logged-in:not(.my-journal) .entry-content .th,
+.page-entry.logged-in:not(.my-journal) .comment-content .th {
+    background-color: $foreign_color_entry_title_background !important;
+}
+
+
+.page-entry.logged-in:not(.my-journal) .comment-thread,
+.page-entry.logged-in:not(.my-journal) .comment,
+.page-entry.logged-in:not(.my-journal) .comment .footer,
+.page-entry.logged-in:not(.my-journal) .comment .header,
+.page-entry.logged-in:not(.my-journal) .entry,
+.page-entry.logged-in:not(.my-journal) .entry .footer,
+.page-entry.logged-in:not(.my-journal) .entry .header {
+    border-color: $foreign_color_entry_border !important;
+}
+
+.page-entry.logged-in:not(.my-journal) .module-content .userpic img,
+.page-entry.logged-in:not(.my-journal) .comment,
+.page-entry.logged-in:not(.my-journal) .entry {
+    background-color: $foreign_color_entry_title_background !important;
+}
+
+.page-entry.logged-in:not(.my-journal) h4.comment-title,
+.page-entry.logged-in:not(.my-journal) h4.comment-title a,
+.page-entry.logged-in:not(.my-journal) .entry .entry-title,
+.page-entry.logged-in:not(.my-journal) .entry .entry-title a {
+    background-color: $foreign_color_entry_title_background !important;
+    color: $foreign_color_entry_title !important;
 }
 
 """;
