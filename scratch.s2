@@ -80,6 +80,8 @@ set color_entry_text = "#3f3f3f";
 set color_entry_border = "#fc7f3f";
 set color_entry_title = "#ec5d25";
 set color_entry_title_background = "#ffdfbf";
+set color_comment_title = "#ec5d25";
+set color_comment_title_background = "#ffdfbf";
 
 # set color_entry_link = "#fc7f3f";
 # set color_entry_link_active = "#b3592d";
@@ -175,127 +177,6 @@ function Page::print_theme_stylesheet() {
     }
 }
 
-
-
-
-
-
-
-
-/*--- Entries and comments ---*/
-
-
-.entry,
-.comment,
-.page-tags .tags-container {
-    background-color: $*color_entry_title_background;
-}
-
-.comment,
-.page-tags .tags-container {
-    border-color: $*color_entry_border;
-}
-
-
-.entry   .footer,
-.comment .footer,
-.page-tags .tags-container .footer {
-    border-color: $*color_entry_border;
-}
-
-.entry   .header,
-.comment .header,
-.page-tags .tags-container .header {
-    border-color: $*color_entry_border;
-}
-
-
-
-h3.entry-title   a,
-h4.comment-title a {
-    color: $*color_entry_title;
-}
-
-.page-tags .tags-container .header h2 {
-    color: $*color_entry_title;
-}
-
-
-.entry-content   hr,
-.comment-content hr {
-    border-color: $*color_entry_border;
-}
-
-.entry-content   blockquote,
-.comment-content blockquote {
-    border-color: $*color_entry_border;
-}
-
-
-/*--- Archive Page ---*/
-
-.month {
-    background: $*color_entry_background;
-    color: $*color_entry_text;
-    border: 1px solid $*color_entry_border;
-    border-radius: $rectangle_radius;
-    margin: 0 0 $rectangle_spacing 0;
-    padding: $breathing_room_double;
-}
-
-table.month {
-    border-bottom: none;
-}
-
-.month table {
-    margin: auto;
-    width: 100%;
-}
-
-table.month td, table.month th {
-    border: 1px solid $*color_entry_border;
-}
-
-.month caption {
-    display: none;
-}
-
-/* nb that this affects the "view subjects" page too */
-.month h3 {
-    color: $*color_entry_title;
-    font-size: 1.2em;
-    font-weight: normal;
-}
-
-.month th {
-    background: $*color_page_background;
-    color: $*color_page_text;
-    border: 1px solid $*color_entry_border;
-    text-align: center;
-}
-
-.month td.day {
-    border: 1px solid $*color_entry_border;
-    color: $*color_entry_text;
-    font-weight: normal;
-}
-
-td.day {
-    padding: 1em;
-}
-
-.month td.day-has-entries {
-    background: $*color_page_background;
-    color: $*color_page_text;
-    font-weight: normal;
-    text-align: left;
-}
-
-.month td.day-has-entries p {
-    font-size: 1.14em;
-    font-weight: bold;
-    text-align: right;
-}
 
 """;
 }

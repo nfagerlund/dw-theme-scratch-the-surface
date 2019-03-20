@@ -261,11 +261,23 @@ propgroup customcss {
     property use custom_css;
 }
 
+function generate_border_color_css (Color border_color) : string
+"Returns nothing, or a css border-color: <COLOR>; thing."
+{
+    var string color_css = "";
+    if ($border_color.as_string != "") {
+        $color_css = $color_css + "border-color: $border_color;\n";
+    }
+    return $color_css;
+}
+
 function Page::print_default_stylesheet() {
     var string medium_media_query = generate_medium_media_query();
     var string large_media_query = generate_large_media_query();
 
+    # Page/header/footer background vars
     var string page_background = generate_background_css ($*image_background_page_url, $*image_background_page_repeat, $*image_background_page_position, $*color_page_background);
+    var string footer_background = generate_background_css( "", "", "", $*color_footer_background );
     var string header_background = generate_background_css ($*image_background_header_url, $*image_background_header_repeat, $*image_background_header_position, $*color_header_background);
     if ($*image_background_header_height > 0) {
         $header_background = """
@@ -273,43 +285,59 @@ function Page::print_default_stylesheet() {
             height: """ + $*image_background_header_height + """px;""";
     }
 
-    var string footer_background = generate_background_css( "", "", "", $*color_footer_background );
-    var string footer_link_colors = generate_color_css( $*color_footer_link, new Color, new Color );
-    var string footer_link_active_colors = generate_color_css( $*color_footer_link_active, new Color, new Color );
-    var string footer_link_hover_colors = generate_color_css( $*color_footer_link_hover, new Color, new Color );
-    var string footer_link_visited_colors = generate_color_css( $*color_footer_link_visited, new Color, new Color );
-
+    # Entry/module backgrounds
     var string entry_background = generate_background_css ($*image_background_entry_url, $*image_background_entry_repeat, $*image_background_entry_position, $*color_entry_background);
     var string module_background = generate_background_css ($*image_background_module_url, $*image_background_module_repeat, $*image_background_module_position, $*color_module_background);
+    var string entry_title_background = generate_color_css(new Color, $*color_entry_title_background, new Color);
+    var string comment_title_background = generate_color_css(new Color, $*color_comment_title_background, new Color);
+    var string module_title_background = generate_color_css(new Color, $*color_module_title_background, new Color);
 
+    # Page/entry/module colors (excluding border)
     var string page_colors = generate_color_css($*color_page_text, $*color_page_background, $*color_page_border);
-    var string entry_colors = generate_color_css($*color_entry_text, $*color_entry_background, $*color_entry_border);
-    var string module_colors = generate_color_css($*color_module_text, $*color_module_title_background, $*color_module_border);
+    var string entry_colors = generate_color_css($*color_entry_text, new Color, new Color);
+    var string module_colors = generate_color_css($*color_module_text, new Color, new Color);
 
+    # Borders
+    var string module_border = generate_color_css(new Color, new Color, $*color_module_border);
+    var string entry_border = generate_color_css(new Color, new Color, $*color_entry_border);
+    var string optional_module_border_color = generate_border_color_css($*color_module_border);
+    var string optional_entry_border_color = generate_border_color_css($*color_entry_border);
+
+    # Titles of different objects vars
     var string page_title_colors = generate_color_css($*color_page_title, new Color, new Color);
-    var string entry_title_colors = generate_color_css($*color_entry_title, $*color_entry_title_background, new Color);
-    var string comment_title_colors = generate_color_css($*color_comment_title, $*color_comment_title_background, new Color);
-    var string module_title_colors = generate_color_css($*color_module_title, $*color_module_title_background, new Color);
+    var string entry_title_colors = generate_color_css($*color_entry_title, new Color, new Color);
+    var string comment_title_colors = generate_color_css($*color_comment_title, new Color, new Color);
+    var string module_title_colors = generate_color_css($*color_module_title, new Color, new Color);
 
+    # All link colors vars
+    # Page links
     var string page_link_colors = generate_color_css($*color_page_link, new Color, new Color);
     var string page_link_active_colors = generate_color_css($*color_page_link_active, new Color, new Color);
     var string page_link_hover_colors = generate_color_css($*color_page_link_hover, new Color, new Color);
     var string page_link_visited_colors = generate_color_css($*color_page_link_visited, new Color, new Color);
-
+    # Footer links
+    var string footer_link_colors = generate_color_css( $*color_footer_link, new Color, new Color );
+    var string footer_link_active_colors = generate_color_css( $*color_footer_link_active, new Color, new Color );
+    var string footer_link_hover_colors = generate_color_css( $*color_footer_link_hover, new Color, new Color );
+    var string footer_link_visited_colors = generate_color_css( $*color_footer_link_visited, new Color, new Color );
+    # Entry links
     var string entry_link_colors = generate_color_css($*color_entry_link, new Color, new Color);
     var string entry_link_active_colors = generate_color_css($*color_entry_link_active, new Color, new Color);
     var string entry_link_hover_colors = generate_color_css($*color_entry_link_hover, new Color, new Color);
     var string entry_link_visited_colors = generate_color_css($*color_entry_link_visited, new Color, new Color);
+    # Entry interaction links
     var string entry_interaction_link_colors = generate_color_css($*color_entry_interaction_links, new Color, new Color);
     var string entry_interaction_link_active_colors = generate_color_css($*color_entry_interaction_links_active, new Color, new Color);
     var string entry_interaction_link_hover_colors = generate_color_css($*color_entry_interaction_links_hover, new Color, new Color);
     var string entry_interaction_link_visited_colors = generate_color_css($*color_entry_interaction_links_visited, new Color, new Color);
-
+    # Module links
     var string module_link_colors = generate_color_css($*color_module_link, new Color, new Color);
     var string module_link_active_colors = generate_color_css($*color_module_link_active, new Color, new Color);
     var string module_link_hover_colors = generate_color_css($*color_module_link_hover, new Color, new Color);
     var string module_link_visited_colors = generate_color_css($*color_module_link_visited, new Color, new Color);
 
+
+    # All fonts vars
     var string page_font = generate_font_css("", $*font_base, $*font_fallback, $*font_base_size, $*font_base_units);
     var string page_title_font = generate_font_css($*font_journal_title, $*font_base, $*font_fallback, $*font_journal_title_size, $*font_journal_title_units);
     var string page_subtitle_font = generate_font_css($*font_journal_subtitle, $*font_base, $*font_fallback, $*font_journal_subtitle_size, $*font_journal_subtitle_units);
@@ -337,6 +365,8 @@ function Page::print_default_stylesheet() {
     print_custom_control_strip_css();
 
     """
+/* resets & stuff */
+
 H1, H2, H3 {
     margin: .25em 0;
     padding: .25em 0;
@@ -348,11 +378,6 @@ img {
 
 hr {
     display: none;
-}
-.entry-content hr,
-.comment-content hr {
-    display: block;
-    margin: 1em 10%;
 }
 
 body {
@@ -378,12 +403,6 @@ a:hover { $page_link_hover_colors }
 a:active { $page_link_active_colors }
 
 q { font-style: italic; }
-
-input, textarea {
-    background: $*color_entry_background;
-    border: 1px solid $*color_page_text;
-    color: $*color_entry_text;
-}
 
 ul {
     list-style: disc outside;
@@ -542,7 +561,7 @@ h1#title {
 }
 
 h1#title, h1#title a {
-    color: $*color_page_title;
+    $page_title_colors
     text-decoration: none;
 }
 
@@ -550,7 +569,7 @@ h2#subtitle,
 h2#pagetitle {
     $page_subtitle_font
     border: none;
-    color: $*color_page_title;
+    $page_title_colors
     font-weight: bold;
 }
 
@@ -570,9 +589,9 @@ h2#pagetitle {
 
 .navigation {
     $entry_title_font
-    background: $*color_entry_background;
-    color: $*color_entry_text;
-    border: 1px solid $*color_entry_border;
+    $entry_colors
+    $entry_background
+    $entry_border
     font-size: 1.2em;
     text-align: center;
     margin: $rectangle_spacing 0;
@@ -593,7 +612,7 @@ h2#pagetitle {
 }
 
 .topnav a, .bottomnav a {
-    color: $*color_entry_title;
+    $entry_title_colors
 }
 
 .navigation.empty {
@@ -622,18 +641,28 @@ h2#pagetitle {
 .entry,
 .comment,
 .page-tags .tags-container {
-    border: 1px solid;
+    $entry_colors
+    $entry_border
     margin-top: $rectangle_spacing;
     border-radius: $rectangle_radius;
     padding: 0;
-    /* still need background color, border color */
+}
+
+.entry,
+.page-tags .tags-container {
+    $entry_title_background
+}
+
+.comment {
+    $comment_title_background
 }
 
 .entry   .contents,
 .comment .contents,
 .page-tags .tags-container .contents {
     padding: $breathing_room_double;
-    background-color: $*color_entry_background; /* no different content bgs */
+    /* no different background props for comments: */
+    $entry_background
     overflow-x: auto;
 }
 
@@ -641,36 +670,93 @@ h2#pagetitle {
 .comment .header,
 .page-tags .tags-container .header {
     border-bottom: 1px solid;
+    $optional_entry_border_color
     margin: 0;
     padding: $breathing_room_half $breathing_room_full;
     border-radius: $rectangle_radius $rectangle_radius 0 0;
     overflow-x: auto;
-    /* still need border color */
 }
 
 .entry   .footer,
 .comment .footer,
 .page-tags .tags-container .footer {
     padding: $breathing_room_full;
-    background-color: $*color_entry_background;
+    $entry_background
     border-bottom-left-radius: $rectangle_radius;
     border-bottom-right-radius: $rectangle_radius;
     border-top: 1px solid;
-    /* still need border color */
+    $optional_entry_border_color
+}
+
+/* Use lines to show threading, instead of big indents. Requires overriding the
+   computed margin-left on div.dwexpcomment elements from core2's comment printing
+   function, which gets hardcoded as an inline style (hence the !important). */
+.comment-thread {
+    border-left: 3px dotted;
+    $optional_entry_border_color
+    padding-left: $breathing_room_half;
+}
+.dwexpcomment {
+    margin-left: 0 !important;
+}
+
+    /* Misc alignment fixes and stuff: */
+
+.comment-wrapper {
+    padding: 0;
+    min-width: 15em;
+}
+
+textarea#commenttext {
+    width: 100%; /* fix for FF form width glitch */
 }
 
     /* titles and stuff: */
 
+.no-subject .entry .entry-title {
+    background: none;
+    border: none;
+}
+
 h3.entry-title,
 .page-tags .tags-container .header h2 {
     margin: 0;
+    $entry_title_colors
+    $entry_title_font
 }
 
-h3.entry-title   a,
+.comment .comment-title {
+    margin: 0;
+    $comment_title_colors
+    $comment_title_font
+}
+
+h3.entry-title   a {
+    text-decoration: none;
+    $entry_title_colors
+}
+
 h4.comment-title a {
     text-decoration: none;
-    /* still need text color */
+    $comment_title_colors
 }
+
+.no-subject .comment .comment-title {
+    background: none;
+    border: none;
+}
+
+    /* Links: */
+
+.entry a { $entry_link_colors }
+.entry a:visited { $entry_link_visited_colors }
+.entry a:hover { $entry_link_hover_colors }
+.entry a:active { $entry_link_active_colors }
+
+.entry-interaction-links a, .entry-management-links a { $entry_interaction_link_colors }
+.entry-interaction-links a:visited, .entry-management-links a:visited { $entry_interaction_link_visited_colors }
+.entry-interaction-links a:hover, .entry-management-links a:hover { $entry_interaction_link_hover_colors }
+.entry-interaction-links a:active, .entry-management-links a:active { $entry_interaction_link_active_colors }
 
     /* Content: */
 
@@ -678,6 +764,15 @@ h4.comment-title a {
 .comment-content {
     min-height: 100px; /* don't shrink below the userpic height */
 }
+
+/* ensure comment content stretches out horizontally so it's readable */
+.comment-content:before {
+    content: "";
+    display: block;
+    overflow: hidden;
+    width: 10em;
+}
+.comment-content { border-top: 1px transparent solid; } /* for firefox */
 
 /* Never blow out layout for wide boyz, */
 .entry-content img, .comment-content img {
@@ -695,13 +790,13 @@ h4.comment-title a {
 
 .entry-content   th,
 .comment-content th {
-    background-color: $*color_entry_title_background;
+    $entry_title_background
     padding: $breathing_room_half;
 }
 
 .entry-content   td,
 .comment-content td {
-    background-color: $*color_module_title_background;
+    $module_title_background
     padding: $breathing_room_half;
 }
 
@@ -712,21 +807,23 @@ h4.comment-title a {
 
 .entry-content   hr,
 .comment-content hr {
+    display: block;
+    margin: 1em 10%;
     border: 2px solid;
     border-radius: 1px;
-    /* need border color */
+    $optional_entry_border_color
 }
 
 .entry-content   blockquote,
 .comment-content blockquote {
-    background-color: $*color_entry_background;
+    $entry_colors
     border-left: 4px solid;
+    $optional_entry_border_color
     border-bottom: 0;
     border-radius: .15rem;
     margin: 1em;
     padding: 0 $breathing_room_full 0 $breathing_room_full;
-    clear: left;
-    /* need border color */
+    clear: left; /* avoid userpic w/ side border */
 }
 
 .entry-content   ul, .entry-content   ol,
@@ -763,8 +860,8 @@ h4.comment-title a {
 
 .entry   .userpic img,
 .comment .userpic img {
-    background: $*color_module_title_background;
-    border: 1px solid $*color_module_border;
+    $module_title_background
+    $module_border
     padding: $breathing_room_half;
 }
 
@@ -774,6 +871,8 @@ h4.comment-title a {
 
 
     /* Little stuff: */
+
+.comment-posted {font-weight:bold;}
 
 .datetime {
     font-size: .9em;
@@ -798,42 +897,6 @@ h4.comment-title a {
 .metadata-item {
     overflow-wrap: break-word;
 }
-
-
-
-/* entries */
-
-.entry {
-    $entry_background
-    $entry_colors
-}
-
-.entry .entry-title {
-    $entry_title_font
-}
-
-.entry .entry-title, .entry .entry-title a {
-    $entry_title_colors
-}
-
-.no-subject .entry .entry-title {
-    background: none;
-    border: none;
-}
-
-.entry a { $entry_link_colors }
-.entry a:visited { $entry_link_visited_colors }
-.entry a:hover { $entry_link_hover_colors }
-.entry a:active { $entry_link_active_colors }
-
-/* ensure comment content stretches out horizontally so it's readable */
-.comment-content:before {
-    content: "";
-    display: block;
-    overflow: hidden;
-    width: 10em;
-}
-.comment-content { border-top: 1px transparent solid; } /* for firefox */
 
 .metadata ul {
     display: inline;
@@ -861,13 +924,15 @@ h4.comment-title a {
     display: inline;
 } /* same for month view */
 
+    /* Manage/interact links */
+
 ul.entry-management-links {
     margin-left: 0;
     padding-left: 0;
 }
 ul.entry-management-links li {
     display: inline;
-    padding: 0 .25em;
+    padding: 0 $breathing_room_half;
 }
 
 ul.entry-interaction-links {
@@ -876,48 +941,9 @@ ul.entry-interaction-links {
     text-align: right;
 }
 
-.entry-interaction-links a, .entry-management-links a { $entry_interaction_link_colors }
-.entry-interaction-links a:visited, .entry-management-links a:visited { $entry_interaction_link_visited_colors }
-.entry-interaction-links a:hover, .entry-management-links a:hover { $entry_interaction_link_hover_colors }
-.entry-interaction-links a:active, .entry-management-links a:active { $entry_interaction_link_active_colors }
-
 ul.entry-interaction-links li {
     display: inline;
-    padding: 0 .25em;
-}
-
-/* comments */
-
-.comment-posted {font-weight:bold;}
-
-.comment-wrapper {
-    padding: 0;
-    min-width: 15em;
-}
-
-/* Use lines to show threading, instead of big indents. Requires overriding the
-   computed margin-left on div.dwexpcomment elements from core2's comment printing
-   function, which gets hardcoded as an inline style (hence the !important). */
-.comment-thread {
-    border-left: 3px dotted $*color_entry_border;
-    padding-left: $breathing_room_half;
-}
-.dwexpcomment {
-    margin-left: 0 !important;
-}
-
-.comment .comment-title {
-    $comment_title_font
-    margin: 0;
-}
-
-.comment .comment-title, .comment .comment-title a {
-    $comment_title_colors
-}
-
-.no-subject .comment .comment-title {
-    background: none;
-    border: none;
+    padding: 0 $breathing_room_half;
 }
 
 ul.comment-management-links {
@@ -942,27 +968,66 @@ ul.comment-interaction-links li {
     padding: 0 $breathing_room_half;
 }
 
-textarea#commenttext {
-    width: 100%; /* fix for FF form width glitch */
-}
+
+
 
 /* archive */
+
+.month {
+    $entry_colors
+    $entry_background
+    $entry_border
+    border-radius: $rectangle_radius;
+    margin: 0 0 $rectangle_spacing 0;
+    padding: $breathing_room_double;
+}
+
+/* nb that this affects the "view subjects" page too */
+.month h3 {
+    $entry_title_colors
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+.month caption {
+    display: none;
+}
 
 table.month {
     margin: 0 auto;
     border-collapse: collapse;
+    border-bottom: none;
+    width: 100%;
 }
-table.month td {
-    height: 3.25em;
-}
+
 table.month td,
 table.month th {
-    border: 1px solid; /* ? */
-    padding: 3px;
+    $entry_colors
+    $entry_border
+    padding: $breathing_room_half;
 }
+
+table.month td {
+    text-align: left;
+    vertical-align: top;
+    font-weight: normal;
+    height: 3.25em;
+    $entry_background
+}
+table.month th {
+    text-align: center;
+    $entry_title_background
+}
+
+table.month td.day-has-entries{
+    $entry_title_background
+}
+
 table.month td p {
     margin: 0;
-    padding: 3px;
+    font-size: 1.14em;
+    font-weight: bold;
+    text-align: right;
 }
 
 .month dl dt {
@@ -973,7 +1038,9 @@ table.month td p {
 }
 .month dl h3 {
     display: inline;
-    font-size: medium;
+}
+.month dl h3.entry-title a {
+    text-decoration: underline;
 }
 .page-month .month .entry-poster {
     margin-right: .5em;
@@ -1009,8 +1076,9 @@ li.page-separator {
 }
 
 .module {
-    $module_background
+    $module_title_background
     $module_colors
+    $module_border
     margin-top: $rectangle_spacing;
     border-radius: $rectangle_radius;
     padding: 0;
@@ -1028,8 +1096,8 @@ li.page-separator {
 
 .module-content {
     $module_font
+    $module_background
     padding: $breathing_room_full;
-    background-color: $*color_module_background;
     border-bottom-left-radius: $rectangle_radius;
     border-bottom-right-radius: $rectangle_radius;
     overflow-x: auto;
@@ -1041,15 +1109,16 @@ li.page-separator {
 }
 
 h2.module-header {
-    border-bottom: 1px solid $*color_module_border;
-    color: $*color_module_title;
+    border-bottom: 1px solid;
+    $optional_module_border_color
+    $module_title_colors
     margin: 0;
     padding: $breathing_room_half $breathing_room_full;
     border-radius: $rectangle_radius $rectangle_radius 0 0;
 }
 
 h2.module-header a {
-    color: $*color_module_title;
+    $module_title_colors
 }
 
 .module-content ul {
@@ -1067,8 +1136,8 @@ h2.module-header a {
 }
 
 .module-content .userpic img {
-    background: $*color_entry_title_background;
-    border: 1px solid $*color_entry_border;
+    $entry_title_background
+    $entry_border
     padding: $breathing_room_half;
 }
 
