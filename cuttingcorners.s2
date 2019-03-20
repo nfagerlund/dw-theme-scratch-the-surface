@@ -615,6 +615,192 @@ h2#pagetitle {
     padding: 0;
 }
 
+/*--- Common styling for entries, comments, and the tags page ---*/
+
+    /* boxes and stuff: */
+
+.entry,
+.comment,
+.page-tags .tags-container {
+    border: 1px solid;
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius;
+    padding: 0;
+    /* still need background color, border color */
+}
+
+.entry   .contents,
+.comment .contents,
+.page-tags .tags-container .contents {
+    padding: $breathing_room_double;
+    background-color: $*color_entry_background; /* no different content bgs */
+    overflow-x: auto;
+}
+
+.entry   .header,
+.comment .header,
+.page-tags .tags-container .header {
+    border-bottom: 1px solid;
+    margin: 0;
+    padding: $breathing_room_half $breathing_room_full;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
+    overflow-x: auto;
+    /* still need border color */
+}
+
+.entry   .footer,
+.comment .footer,
+.page-tags .tags-container .footer {
+    padding: $breathing_room_full;
+    background-color: $*color_entry_background;
+    border-bottom-left-radius: $rectangle_radius;
+    border-bottom-right-radius: $rectangle_radius;
+    border-top: 1px solid;
+    /* still need border color */
+}
+
+    /* titles and stuff: */
+
+h3.entry-title,
+.page-tags .tags-container .header h2 {
+    margin: 0;
+}
+
+h3.entry-title   a,
+h4.comment-title a {
+    text-decoration: none;
+    /* still need text color */
+}
+
+    /* Content: */
+
+.entry-content,
+.comment-content {
+    min-height: 100px; /* don't shrink below the userpic height */
+}
+
+/* Never blow out layout for wide boyz, */
+.entry-content img, .comment-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* and make portrait boyz fit in a normal window. */
+@media $medium_media_query {
+  .entry-content   img,
+  .comment-content img {
+      max-height: 700px;
+  }
+}
+
+.entry-content   th,
+.comment-content th {
+    background-color: $*color_entry_title_background;
+    padding: $breathing_room_half;
+}
+
+.entry-content   td,
+.comment-content td {
+    background-color: $*color_module_title_background;
+    padding: $breathing_room_half;
+}
+
+.entry-content   > p:first-child,
+.comment-content > p:first-child {
+    margin-top: 0;
+}
+
+.entry-content   hr,
+.comment-content hr {
+    border: 2px solid;
+    border-radius: 1px;
+    /* need border color */
+}
+
+.entry-content   blockquote,
+.comment-content blockquote {
+    background-color: $*color_entry_background;
+    border-left: 4px solid;
+    border-bottom: 0;
+    border-radius: .15rem;
+    margin: 1em;
+    padding: 0 $breathing_room_full 0 $breathing_room_full;
+    clear: left;
+    /* need border color */
+}
+
+.entry-content   ul, .entry-content   ol,
+.comment-content ul, .comment-content ol {
+    margin: 0;
+}
+
+.page-tags .tags-container .ljtaglist ul {
+    margin: 0;
+    padding: 0;
+}
+
+.entry-content   li,
+.comment-content li {
+    margin-top: $breathing_room_half;
+}
+
+.entry-content   li p,
+.comment-content li p {
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
+.entry-content   li p:first-child,
+.comment-content li p:first-child {
+    margin-top: 0;
+}
+
+.has-userpic .entry   .userpic,
+.has-userpic .comment .userpic {
+    float: $*userpics_position;
+    margin: 0 $breathing_room_double $breathing_room_full 0;
+}
+
+.entry   .userpic img,
+.comment .userpic img {
+    background: $*color_module_title_background;
+    border: 1px solid $*color_module_border;
+    padding: $breathing_room_half;
+}
+
+.cuttag img {
+    vertical-align: text-bottom;
+}
+
+
+    /* Little stuff: */
+
+.datetime {
+    font-size: .9em;
+}
+
+.poster {
+    display: block;
+    margin-bottom: $breathing_room_half;
+}
+
+.poster-ip {
+    overflow-wrap: break-word;
+    font-size: .9em;
+}
+
+.metadata {
+    font-size: .85em;
+    margin: 1em 0 0;
+    text-align: right;
+}
+
+.metadata-item {
+    overflow-wrap: break-word;
+}
+
+
+
 /* entries */
 
 .entry {
@@ -648,23 +834,6 @@ h2#pagetitle {
     width: 10em;
 }
 .comment-content { border-top: 1px transparent solid; } /* for firefox */
-
-/* To prevent overlapping when icon's on the left */
-/* and list is the first thing in content */
-.entry-content li,
-.comment-content li {
-    list-style-position: inside;
-    }
-
-/* To constrain the width and prevent layout breaking */
-.entry-content img, .comment-content img {
-    max-width: 100%;
-    height: auto;
-}
-
-@media $large_media_query {
-    .entry-content img, .comment-content img { max-width: none; }
-}
 
 .metadata ul {
     display: inline;
@@ -722,8 +891,19 @@ ul.entry-interaction-links li {
 .comment-posted {font-weight:bold;}
 
 .comment-wrapper {
-    padding: .5em 0;
+    padding: 0;
     min-width: 15em;
+}
+
+/* Use lines to show threading, instead of big indents. Requires overriding the
+   computed margin-left on div.dwexpcomment elements from core2's comment printing
+   function, which gets hardcoded as an inline style (hence the !important). */
+.comment-thread {
+    border-left: 3px dotted $*color_entry_border;
+    padding-left: $breathing_room_half;
+}
+.dwexpcomment {
+    margin-left: 0 !important;
 }
 
 .comment .comment-title {
@@ -741,22 +921,25 @@ ul.entry-interaction-links li {
 }
 
 ul.comment-management-links {
-    margin-left: 0;
+    display: inline;
+    margin-left: $breathing_room_double;
     padding-left: 0;
     text-align: right;
 }
 ul.comment-management-links li {
     display: inline;
-    padding: 0 .25em;
+    padding: 0 $breathing_room_half;
 }
 
 ul.comment-interaction-links {
     margin-left: 0;
     padding-left: 0;
+    margin-top: $breathing_room_double;
 }
+
 ul.comment-interaction-links li {
     display: inline;
-    padding: 0 .25em;
+    padding: 0 $breathing_room_half;
 }
 
 textarea#commenttext {

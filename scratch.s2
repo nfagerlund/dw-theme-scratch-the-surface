@@ -184,202 +184,53 @@ function Page::print_theme_stylesheet() {
 
 /*--- Entries and comments ---*/
 
-.comment-wrapper { /* rasa why :c */
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-/* Use lines to show threading, instead of big indents; requires overriding the computed margin-left from core2's comment printing function. */
-.comment-thread {
-    border-left: 3px dotted $*color_entry_border;
-    padding-left: $breathing_room_half;
-}
-.dwexpcomment {
-    margin-left: 0 !important;
-}
 
 .entry,
 .comment,
 .page-tags .tags-container {
-    /* don't need border property, rasa's got it */
-    margin-top: $rectangle_spacing;
-    border-radius: $rectangle_radius;
-    padding: 0;
     background-color: $*color_entry_title_background;
 }
 
 .comment,
 .page-tags .tags-container {
-    border: 1px solid $*color_entry_border;
+    border-color: $*color_entry_border;
 }
 
-.entry   .contents,
-.comment .contents,
-.page-tags .tags-container .contents {
-    padding: $breathing_room_double;
-    background-color: $*color_entry_background;
-    overflow-x: auto;
-}
 
 .entry   .footer,
 .comment .footer,
 .page-tags .tags-container .footer {
-    padding: $breathing_room_full;
-    background-color: $*color_entry_background;
-    border-bottom-left-radius: $rectangle_radius;
-    border-bottom-right-radius: $rectangle_radius;
-    border-top: 1px solid $*color_entry_border;
+    border-color: $*color_entry_border;
 }
 
 .entry   .header,
 .comment .header,
 .page-tags .tags-container .header {
-    border-bottom: 1px solid $*color_entry_border;
-    margin: 0;
-    padding: $breathing_room_half $breathing_room_full;
-    border-radius: $rectangle_radius $rectangle_radius 0 0;
-    overflow-x: auto;
+    border-color: $*color_entry_border;
 }
 
-.datetime {
-    font-size: .9em;
-}
 
-.poster {
-    display: block;
-    margin-bottom: $breathing_room_half;
-}
-
-.poster-ip {
-    overflow-wrap: break-word;
-    font-size: .9em;
-}
-
-ul.comment-management-links {
-    display: inline;
-    margin-left: 2em;
-}
-
-ul.comment-interaction-links {
-    margin-top: $breathing_room_double;
-}
-
-h3.entry-title {
-    margin: 0;
-}
 
 h3.entry-title   a,
 h4.comment-title a {
-    text-decoration: none;
     color: $*color_entry_title;
 }
 
 .page-tags .tags-container .header h2 {
     color: $*color_entry_title;
-    margin: 0;
 }
 
-.entry-content,
-.comment-content {
-    min-height: 100px; /* don't shrink below the userpic height */
-}
-
-/* Never blow out layout for wide boyz, and make portrait boyz fit in a normal window. */
-@media $medium_media_query {
-  .entry-content   img,
-  .comment-content img {
-      max-width: 100% !important; /* rasa why :c */
-      max-height: 700px;
-  }
-}
-
-.entry-content   th,
-.comment-content th {
-    background-color: $*color_entry_title_background;
-    padding: $breathing_room_half;
-}
-
-.entry-content   td,
-.comment-content td {
-    background-color: $*color_module_title_background;
-    padding: $breathing_room_half;
-}
-
-.entry-content   > p:first-child,
-.comment-content > p:first-child {
-    margin-top: 0;
-}
 
 .entry-content   hr,
 .comment-content hr {
-    border: 2px solid $*color_entry_border;
-    border-radius: 1px;
+    border-color: $*color_entry_border;
 }
 
 .entry-content   blockquote,
 .comment-content blockquote {
-    background-color: $*color_entry_background;
-    border-left: 4px solid $*color_entry_border;
-    border-bottom: 0;
-    border-radius: .15rem;
-    margin: 1em;
-    padding: 0 $breathing_room_full 0 $breathing_room_full;
-    clear: left;
+    border-color: $*color_entry_border;
 }
 
-.entry-content   ul, .entry-content   ol,
-.comment-content ul, .comment-content ol {
-    margin: 0;
-}
-
-.page-tags .tags-container .ljtaglist ul {
-    margin: 0;
-    padding: 0;
-}
-
-.entry-content   li,
-.comment-content li {
-    list-style-position: outside !important; /* rasa why :c */
-    margin-top: $breathing_room_half;
-}
-
-.entry-content   li p,
-.comment-content li p {
-    margin-top: 1em;
-    margin-bottom: 0;
-}
-
-.entry-content   li p:first-child,
-.comment-content li p:first-child {
-    margin-top: 0;
-}
-
-.has-userpic .entry   .userpic,
-.has-userpic .comment .userpic {
-    float: $*userpics_position;
-    margin: 0 $breathing_room_double $breathing_room_full 0;
-}
-
-.entry   .userpic img,
-.comment .userpic img {
-    background: $*color_module_title_background;
-    border: 1px solid $*color_module_border;
-    padding: $breathing_room_half;
-}
-
-.cuttag img {
-    vertical-align: text-bottom;
-}
-
-.metadata {
-    font-size: .85em;
-    margin: 1em 0 0;
-    text-align: right;
-}
-
-.metadata-item {
-    overflow-wrap: break-word;
-}
 
 /*--- Archive Page ---*/
 
