@@ -40,7 +40,7 @@ propgroup presentation {
 
 }
 
-set layout_type = "one-column";
+set layout_type = "two-columns-left";
 set sidebar_width = "15em";
 set sidebar_width_doubled = "30em";
 set userpics_position = "left";
@@ -133,10 +133,25 @@ propgroup fonts {
     property use font_sources;
 }
 
-set font_base = "";
-set font_fallback = "";
-set font_base_size = "100";
-set font_base_units = "%";
+set font_base = """"Avenir Next", Candara, Helvetica, Arial""";
+set font_fallback = "sans-serif";
+set font_base_size = "1";
+set font_base_units = "em";
+
+set font_journal_title_size = "2.2";
+set font_journal_title_units = "em";
+
+set font_journal_subtitle_size = "1.3";
+set font_journal_subtitle_units = "em";
+
+set font_entry_title_size = "1.37";
+set font_entry_title_units = "em";
+
+set font_comment_title_size = "1.2";
+set font_comment_title_units = "em";
+
+set font_module_heading_size = "1.37";
+set font_module_heading_units = "em";
 
 ##===============================
 ## Images
