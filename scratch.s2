@@ -1,7 +1,7 @@
 ## Info
 
 layerinfo "type" = "theme";
-layerinfo "name" = "Scratch the Surface (reduced)";
+layerinfo "name" = "Scratch the Surface";
 layerinfo author_name = "roadrunnertwice";
 layerinfo lang = "en";
 
@@ -103,81 +103,4 @@ set color_module_title_background = "#d7e6cf";
 # set color_module_link_active = "#888746";
 # set color_module_link_hover = "#365b1e";
 # set color_module_link_visited = "#7a9241";
-
-
-## Add helpful nav to the header
-
-function Page::print_header()
-{
-    # The bit from core2:
-    $this->print_global_title();
-    $this->print_global_subtitle();
-    $this->print_title();
-
-    # The bit from me:
-    # Optional list of emoji to jump places goes here, use CSS to hide on non-mobile
-    var string module_jump_id;
-    if ($*layout_type == "one-column-split") {
-        $module_jump_id = "#tertiary";
-    } else {
-        $module_jump_id = "#secondary";
-    }
-"""
-<ul id="scratch-micro-nav">
-<li><a href="$this.view_url{"recent"}" title="recent">📜</a></li>
-<li><a href="$this.view_url{"read"}" title="read">👯‍♀️</a></li>
-<li><a href="$this.view_url{"network"}" title="network">🌎</a></li>
-<li><a href="$this.view_url{"userinfo"}" title="userinfo">🤷🏽‍♀️</a></li>
-<li><a href="$module_jump_id" title="Jump to Links/Navs">🔜</a></li>
-</ul>
-""";
-}
-
-
-
-### Stylesheet
-
-function Page::print_theme_stylesheet() {
-
-    # ~~~~ IDEK:
-    var string rectangle_spacing = ".9rem";
-    var string rectangle_radius = ".3rem";
-    var string breathing_room_full = ".6rem";
-    var string breathing_room_half = ".3rem";
-    var string breathing_room_double = "1.2rem";
-    var string medium_media_query = generate_medium_media_query();
-
-
-    # Return the actual CSS:
-
-"""
-/* ~~ Scratch the Surface =) ~~ */
-
-/* --- Micro-nav emojis: should only appear on mobile or one-column --- */
-
-#scratch-micro-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
-
-#scratch-micro-nav > li {
-    display: inline;
-    margin: $breathing_room_half;
-}
-
-#scratch-micro-nav a {
-    text-decoration: none;
-}
-
-@media $medium_media_query {
-    .multiple-columns #scratch-micro-nav {
-        display: none;
-    }
-}
-
-
-""";
-}
 

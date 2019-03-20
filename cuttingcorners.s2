@@ -38,6 +38,12 @@ propgroup presentation {
     property use entry_management_links;
     property use comment_management_links;
 
+    property string rectangle_spacing {des = "Space between major box elements (including unit)";}
+    property string rectangle_radius {des = "Corner radius for major box elements (including unit)";}
+    property string breathing_room_full {des = "Space between minor elements (including unit)";}
+    property string breathing_room_half {des = "Smaller space between minor elements (including unit)";}
+    property string breathing_room_double {des = "Wider space between minor elements (including unit)";}
+
 }
 
 set layout_type = "two-columns-left";
@@ -47,6 +53,12 @@ set userpics_position = "left";
 set use_custom_friend_colors = false;
 set custom_foreground_element = "userpic_border";
 set custom_background_element = "userpic_background";
+set rectangle_spacing = ".9rem";
+set rectangle_radius = ".3rem";
+set breathing_room_full = ".6rem";
+set breathing_room_half = ".3rem";
+set breathing_room_double = "1.2rem";
+
 
 ##===============================
 ## Colors
@@ -261,6 +273,35 @@ propgroup customcss {
     property use custom_css;
 }
 
+## Add helpful nav to the header
+
+function Page::print_header()
+{
+    # The bit from core2:
+    $this->print_global_title();
+    $this->print_global_subtitle();
+    $this->print_title();
+
+    # The bit from here:
+    # Optional list of emoji to jump places goes here, use CSS to hide on non-mobile
+    var string module_jump_id;
+    if ($*layout_type == "one-column-split") {
+        $module_jump_id = "#tertiary";
+    } else {
+        $module_jump_id = "#secondary";
+    }
+"""
+<ul id="corners-micro-nav">
+<li><a href="$this.view_url{"recent"}" title="recent">📜</a></li>
+<li><a href="$this.view_url{"read"}" title="read">👯‍♀️</a></li>
+<li><a href="$this.view_url{"network"}" title="network">🌎</a></li>
+<li><a href="$this.view_url{"userinfo"}" title="userinfo">🤷🏽‍♀️</a></li>
+<li><a href="$module_jump_id" title="Jump to Links/Navs">🔜</a></li>
+</ul>
+""";
+}
+
+
 function generate_border_color_css (Color border_color) : string
 "Returns nothing, or a css border-color: <COLOR>; thing."
 {
@@ -346,22 +387,15 @@ function Page::print_default_stylesheet() {
     var string module_font = generate_font_css($*font_module_text, $*font_base, $*font_fallback, $*font_module_text_size, $*font_module_text_units);
     var string module_title_font = generate_font_css($*font_module_heading, $*font_base, $*font_fallback, $*font_module_heading_size, $*font_module_heading_units);
 
-    # ~~~~ IDEK:
-    var string rectangle_spacing = ".9rem";
-    var string rectangle_radius = ".3rem";
-    var string breathing_room_full = ".6rem";
-    var string breathing_room_half = ".3rem";
-    var string breathing_room_double = "1.2rem";
-
-     var string userpic_css = "";
-         if ($*userpics_position == "right") {
-             $userpic_css = """
-             .entry .userpic,
-             .comment .userpic {
-                 text-align: right;
-                 }
-             """;
-         }
+    var string userpic_css = "";
+        if ($*userpics_position == "right") {
+            $userpic_css = """
+            .entry .userpic,
+            .comment .userpic {
+                text-align: right;
+                }
+            """;
+        }
     print_custom_control_strip_css();
 
     """
@@ -457,21 +491,21 @@ ol {
     }
 
     .column-left #primary > .inner:first-child {
-        padding-left: $rectangle_spacing;
+        padding-left: $*rectangle_spacing;
     }
 
     .column-right #primary > .inner:first-child {
-        padding-right: $rectangle_spacing;
+        padding-right: $*rectangle_spacing;
     }
 
     .three-columns-left #secondary > .inner:first-child,
     .three-columns-right #secondary > .inner:first-child {
-        padding-right: $rectangle_spacing;
+        padding-right: $*rectangle_spacing;
     }
 
     .three-columns-left #tertiary > .inner:first-child,
     .three-columns-right #tertiary > .inner:first-child {
-        padding-left: $rectangle_spacing;
+        padding-left: $*rectangle_spacing;
     }
 }
 
@@ -535,6 +569,30 @@ ol {
     }
 }
 
+/* --- Micro-nav emoji: should only appear on mobile or one-column --- */
+
+#corners-micro-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#corners-micro-nav > li {
+    display: inline;
+    margin: $*breathing_room_half;
+}
+
+#corners-micro-nav a {
+    text-decoration: none;
+}
+
+@media $medium_media_query {
+    .multiple-columns #corners-micro-nav {
+        display: none;
+    }
+}
+
 /*--- Journal Header and Footer ---*/
 
 #content-footer {
@@ -546,14 +604,14 @@ ol {
 #header, #footer {
     margin: 0;
     clear: both;
-    padding: $breathing_room_full;
+    padding: $*breathing_room_full;
     text-align: center;
 }
 
 #header {
     $header_background
     $page_title_colors
-    border-radius: 0 0 $rectangle_radius $rectangle_radius;
+    border-radius: 0 0 $*rectangle_radius $*rectangle_radius;
 }
 
 h1#title {
@@ -575,8 +633,8 @@ h2#pagetitle {
 
 #footer {
     $footer_background
-    margin-top: $rectangle_spacing;
-    border-radius: $rectangle_radius $rectangle_radius 0 0;
+    margin-top: $*rectangle_spacing;
+    border-radius: $*rectangle_radius $*rectangle_radius 0 0;
 }
 
 #footer a { $footer_link_colors }
@@ -594,9 +652,9 @@ h2#pagetitle {
     $entry_border
     font-size: 1.2em;
     text-align: center;
-    margin: $rectangle_spacing 0;
-    padding: $breathing_room_half 0;
-    border-radius: $rectangle_radius;
+    margin: $*rectangle_spacing 0;
+    padding: $*breathing_room_half 0;
+    border-radius: $*rectangle_radius;
 }
 
 .navigation ul {
@@ -605,7 +663,7 @@ h2#pagetitle {
 }
 .navigation li {
     display: inline;
-    padding: 0 $breathing_room_full;
+    padding: 0 $*breathing_room_full;
 }
 .noentries {
     padding: 0 .5em;
@@ -643,8 +701,8 @@ h2#pagetitle {
 .page-tags .tags-container {
     $entry_colors
     $entry_border
-    margin-top: $rectangle_spacing;
-    border-radius: $rectangle_radius;
+    margin-top: $*rectangle_spacing;
+    border-radius: $*rectangle_radius;
     padding: 0;
 }
 
@@ -660,7 +718,7 @@ h2#pagetitle {
 .entry   .contents,
 .comment .contents,
 .page-tags .tags-container .contents {
-    padding: $breathing_room_double;
+    padding: $*breathing_room_double;
     /* no different background props for comments: */
     $entry_background
     overflow-x: auto;
@@ -672,18 +730,18 @@ h2#pagetitle {
     border-bottom: 1px solid;
     $optional_entry_border_color
     margin: 0;
-    padding: $breathing_room_half $breathing_room_full;
-    border-radius: $rectangle_radius $rectangle_radius 0 0;
+    padding: $*breathing_room_half $*breathing_room_full;
+    border-radius: $*rectangle_radius $*rectangle_radius 0 0;
     overflow-x: auto;
 }
 
 .entry   .footer,
 .comment .footer,
 .page-tags .tags-container .footer {
-    padding: $breathing_room_full;
+    padding: $*breathing_room_full;
     $entry_background
-    border-bottom-left-radius: $rectangle_radius;
-    border-bottom-right-radius: $rectangle_radius;
+    border-bottom-left-radius: $*rectangle_radius;
+    border-bottom-right-radius: $*rectangle_radius;
     border-top: 1px solid;
     $optional_entry_border_color
 }
@@ -694,7 +752,7 @@ h2#pagetitle {
 .comment-thread {
     border-left: 3px dotted;
     $optional_entry_border_color
-    padding-left: $breathing_room_half;
+    padding-left: $*breathing_room_half;
 }
 .dwexpcomment {
     margin-left: 0 !important;
@@ -791,13 +849,13 @@ h4.comment-title a {
 .entry-content   th,
 .comment-content th {
     $entry_title_background
-    padding: $breathing_room_half;
+    padding: $*breathing_room_half;
 }
 
 .entry-content   td,
 .comment-content td {
     $module_title_background
-    padding: $breathing_room_half;
+    padding: $*breathing_room_half;
 }
 
 .entry-content   > p:first-child,
@@ -822,7 +880,7 @@ h4.comment-title a {
     border-bottom: 0;
     border-radius: .15rem;
     margin: 1em;
-    padding: 0 $breathing_room_full 0 $breathing_room_full;
+    padding: 0 $*breathing_room_full 0 $*breathing_room_full;
     clear: left; /* avoid userpic w/ side border */
 }
 
@@ -838,7 +896,7 @@ h4.comment-title a {
 
 .entry-content   li,
 .comment-content li {
-    margin-top: $breathing_room_half;
+    margin-top: $*breathing_room_half;
 }
 
 .entry-content   li p,
@@ -855,14 +913,14 @@ h4.comment-title a {
 .has-userpic .entry   .userpic,
 .has-userpic .comment .userpic {
     float: $*userpics_position;
-    margin: 0 $breathing_room_double $breathing_room_full 0;
+    margin: 0 $*breathing_room_double $*breathing_room_full 0;
 }
 
 .entry   .userpic img,
 .comment .userpic img {
     $module_title_background
     $module_border
-    padding: $breathing_room_half;
+    padding: $*breathing_room_half;
 }
 
 .cuttag img {
@@ -880,7 +938,7 @@ h4.comment-title a {
 
 .poster {
     display: block;
-    margin-bottom: $breathing_room_half;
+    margin-bottom: $*breathing_room_half;
 }
 
 .poster-ip {
@@ -932,7 +990,7 @@ ul.entry-management-links {
 }
 ul.entry-management-links li {
     display: inline;
-    padding: 0 $breathing_room_half;
+    padding: 0 $*breathing_room_half;
 }
 
 ul.entry-interaction-links {
@@ -943,29 +1001,29 @@ ul.entry-interaction-links {
 
 ul.entry-interaction-links li {
     display: inline;
-    padding: 0 $breathing_room_half;
+    padding: 0 $*breathing_room_half;
 }
 
 ul.comment-management-links {
     display: inline;
-    margin-left: $breathing_room_double;
+    margin-left: $*breathing_room_double;
     padding-left: 0;
     text-align: right;
 }
 ul.comment-management-links li {
     display: inline;
-    padding: 0 $breathing_room_half;
+    padding: 0 $*breathing_room_half;
 }
 
 ul.comment-interaction-links {
     margin-left: 0;
     padding-left: 0;
-    margin-top: $breathing_room_double;
+    margin-top: $*breathing_room_double;
 }
 
 ul.comment-interaction-links li {
     display: inline;
-    padding: 0 $breathing_room_half;
+    padding: 0 $*breathing_room_half;
 }
 
 
@@ -977,9 +1035,9 @@ ul.comment-interaction-links li {
     $entry_colors
     $entry_background
     $entry_border
-    border-radius: $rectangle_radius;
-    margin: 0 0 $rectangle_spacing 0;
-    padding: $breathing_room_double;
+    border-radius: $*rectangle_radius;
+    margin: 0 0 $*rectangle_spacing 0;
+    padding: $*breathing_room_double;
 }
 
 /* nb that this affects the "view subjects" page too */
@@ -1004,7 +1062,7 @@ table.month td,
 table.month th {
     $entry_colors
     $entry_border
-    padding: $breathing_room_half;
+    padding: $*breathing_room_half;
 }
 
 table.month td {
@@ -1079,8 +1137,8 @@ li.page-separator {
     $module_title_background
     $module_colors
     $module_border
-    margin-top: $rectangle_spacing;
-    border-radius: $rectangle_radius;
+    margin-top: $*rectangle_spacing;
+    border-radius: $*rectangle_radius;
     padding: 0;
 }
 
@@ -1097,15 +1155,15 @@ li.page-separator {
 .module-content {
     $module_font
     $module_background
-    padding: $breathing_room_full;
-    border-bottom-left-radius: $rectangle_radius;
-    border-bottom-right-radius: $rectangle_radius;
+    padding: $*breathing_room_full;
+    border-bottom-left-radius: $*rectangle_radius;
+    border-bottom-right-radius: $*rectangle_radius;
     overflow-x: auto;
 }
 
 .module-content:first-child {
-    border-top-left-radius: $rectangle_radius;
-    border-top-right-radius: $rectangle_radius;
+    border-top-left-radius: $*rectangle_radius;
+    border-top-right-radius: $*rectangle_radius;
 }
 
 h2.module-header {
@@ -1113,8 +1171,8 @@ h2.module-header {
     $optional_module_border_color
     $module_title_colors
     margin: 0;
-    padding: $breathing_room_half $breathing_room_full;
-    border-radius: $rectangle_radius $rectangle_radius 0 0;
+    padding: $*breathing_room_half $*breathing_room_full;
+    border-radius: $*rectangle_radius $*rectangle_radius 0 0;
 }
 
 h2.module-header a {
@@ -1138,11 +1196,11 @@ h2.module-header a {
 .module-content .userpic img {
     $entry_title_background
     $entry_border
-    padding: $breathing_room_half;
+    padding: $*breathing_room_half;
 }
 
 .journal-name {
-    margin-top: $breathing_room_half;
+    margin-top: $*breathing_room_half;
     text-align: center;
 }
 
@@ -1151,7 +1209,7 @@ h2.module-header a {
 }
 
 ul.userlite-interaction-links.icon-links {
-    margin: $breathing_room_half 0 0;
+    margin: $*breathing_room_half 0 0;
     padding-left: 0;
     text-align: center;
 }
@@ -1164,7 +1222,7 @@ ul.userlite-interaction-links.icon-links li {
 
 ul.userlite-interaction-links.text-links {
     text-align: left;
-    padding: 0 0 0 $breathing_room_half;
+    padding: 0 0 0 $*breathing_room_half;
     list-style: none;
 }
 
