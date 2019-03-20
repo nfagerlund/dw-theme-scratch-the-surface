@@ -1,7 +1,7 @@
 ## Info
 
 layerinfo "type" = "theme";
-layerinfo "name" = "Scratch the Surface";
+layerinfo "name" = "Scratch the Surface (reduced)";
 layerinfo author_name = "roadrunnertwice";
 layerinfo lang = "en";
 
@@ -136,11 +136,6 @@ function Page::print_header()
 ### Stylesheet
 
 function Page::print_theme_stylesheet() {
-    # ~~~~ Vars taken from Practicality:
-    var string medium_media_query = generate_medium_media_query();
-    var string large_media_query = generate_large_media_query();
-
-    var string entry_title_font = generate_font_css($*font_entry_title, $*font_base, $*font_fallback, $*font_entry_title_size, $*font_entry_title_units);
 
     # ~~~~ IDEK:
     var string rectangle_spacing = ".9rem";
@@ -148,66 +143,13 @@ function Page::print_theme_stylesheet() {
     var string breathing_room_full = ".6rem";
     var string breathing_room_half = ".3rem";
     var string breathing_room_double = "1.2rem";
+    var string medium_media_query = generate_medium_media_query();
+
 
     # Return the actual CSS:
 
 """
 /* ~~ Scratch the Surface =) ~~ */
-
-/*--- Main ---*/
-
-body { margin: 0; }
-
-p { margin: 1em 0; }
-
-input, textarea {
-    background: $*color_entry_background;
-    border: 1px solid $*color_page_text;
-    color: $*color_entry_text;
-}
-
-ul {
-    list-style: disc outside;
-    margin: .2em 0 0 2.5em;
-}
-
-ol {
-    list-style: decimal outside;
-    margin: .2em 0 0 2.5em;
-}
-
-/*--- Main Containers ---*/
-
-#canvas {
-    width: 90%;
-    margin: 0 auto;
-}
-
-#primary > .inner:first-child,
-#secondary > .inner:first-child,
-#tertiary > .inner:first-child {
-    padding: 0;
-}
-
-@media $medium_media_query {
-    .column-left #primary > .inner:first-child {
-        padding-left: $rectangle_spacing;
-    }
-
-    .column-right #primary > .inner:first-child {
-        padding-right: $rectangle_spacing;
-    }
-
-    .three-columns-left #secondary > .inner:first-child,
-    .three-columns-right #secondary > .inner:first-child {
-        padding-right: $rectangle_spacing;
-    }
-
-    .three-columns-left #tertiary > .inner:first-child,
-    .three-columns-right #tertiary > .inner:first-child {
-        padding-left: $rectangle_spacing;
-    }
-}
 
 /* --- Micro-nav emojis: should only appear on mobile or one-column --- */
 
@@ -233,155 +175,12 @@ ol {
     }
 }
 
-/*--- Journal Header and Footer ---*/
 
-#header {
-    padding: .1em $rectangle_spacing;
-    border-radius: 0 0 $rectangle_radius $rectangle_radius;
-}
 
-h1#title, h1#title a {
-    color: $*color_page_title;
-    text-align: center;
-    text-decoration: none;
-}
 
-h2#subtitle,
-h2#pagetitle {
-    border: none;
-    color: $*color_page_title;
-    font-weight: bold;
-    text-align: center;
-}
 
-#footer {
-    margin-top: $rectangle_spacing;
-    border-radius: $rectangle_radius $rectangle_radius 0 0;
-    text-align: center;
-}
 
-/*--- Journal Navigation ---*/
 
-.navigation {
-    $entry_title_font
-    background: $*color_entry_background;
-    color: $*color_entry_text;
-    border: 1px solid $*color_entry_border;
-    font-size: 1.2em;
-    text-align: center;
-    margin: $rectangle_spacing 0;
-    padding: $breathing_room_half 0;
-    border-radius: $rectangle_radius;
-}
-
-.navigation li {
-    padding: 0 $breathing_room_full !important;
-}
-
-.topnav a, .bottomnav a {
-    color: $*color_entry_title;
-}
-
-.navigation.empty {
-    display: none;
-}
-
-.page-read .navigation.empty {
-    display: block;
-    padding: 10px;
-}
-
-.page-read .navigation.empty ul {
-    margin: 0;
-    padding: 0;
-}
-
-.page-read .navigation.empty ul li {
-    margin: 0;
-    padding: 0;
-}
-
-/*--- Sidebar ---*/
-
-li.page-separator {
-    display: none;
-}
-
-.module {
-    /* don't need border property, rasa's got it */
-    margin-top: $rectangle_spacing;
-    border-radius: $rectangle_radius;
-    padding: 0;
-    background-color: $*color_module_title_background;
-}
-
-.module-content {
-    padding: $breathing_room_full;
-    background-color: $*color_module_background;
-    border-bottom-left-radius: $rectangle_radius;
-    border-bottom-right-radius: $rectangle_radius;
-    overflow-x: auto;
-}
-
-.module-content:first-child {
-    border-top-left-radius: $rectangle_radius;
-    border-top-right-radius: $rectangle_radius;
-}
-
-h2.module-header {
-    border-bottom: 1px solid $*color_module_border;
-    color: $*color_module_title;
-    margin: 0;
-    padding: $breathing_room_half $breathing_room_full;
-    border-radius: $rectangle_radius $rectangle_radius 0 0;
-}
-
-h2.module-header a {
-    color: $*color_module_title;
-}
-
-ul.module-list {
-    list-style: none;
-    margin-left: 0;
-}
-
-ul.module-list li ,
-ul.module-list-item li {
-    padding: 0 0 0 5px;
-}
-
-.module-content .userpic {
-    text-align: center;
-}
-
-.module-content .userpic img {
-    background: $*color_entry_title_background;
-    border: 1px solid $*color_entry_border;
-    padding: $breathing_room_half;
-}
-
-.journal-name {
-    margin-top: $breathing_room_half;
-    text-align: center;
-}
-
-.journal-website-name {
-    text-align: center;
-}
-
-ul.userlite-interaction-links.icon-links {
-    margin: $breathing_room_half 0 0;
-    text-align: center;
-}
-
-ul.userlite-interaction-links.icon-links li {
-    margin: 0 auto;
-}
-
-ul.userlite-interaction-links.text-links {
-    padding: 0 0 0 $breathing_room_half;
-    list-style: none;
-}
 
 /*--- Entries and comments ---*/
 

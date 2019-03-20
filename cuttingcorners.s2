@@ -284,7 +284,7 @@ function Page::print_default_stylesheet() {
 
     var string page_colors = generate_color_css($*color_page_text, $*color_page_background, $*color_page_border);
     var string entry_colors = generate_color_css($*color_entry_text, $*color_entry_background, $*color_entry_border);
-    var string module_colors = generate_color_css($*color_module_text, $*color_module_background, $*color_module_border);
+    var string module_colors = generate_color_css($*color_module_text, $*color_module_title_background, $*color_module_border);
 
     var string page_title_colors = generate_color_css($*color_page_title, new Color, new Color);
     var string entry_title_colors = generate_color_css($*color_entry_title, $*color_entry_title_background, new Color);
@@ -318,6 +318,12 @@ function Page::print_default_stylesheet() {
     var string module_font = generate_font_css($*font_module_text, $*font_base, $*font_fallback, $*font_module_text_size, $*font_module_text_units);
     var string module_title_font = generate_font_css($*font_module_heading, $*font_base, $*font_fallback, $*font_module_heading_size, $*font_module_heading_units);
 
+    # ~~~~ IDEK:
+    var string rectangle_spacing = ".9rem";
+    var string rectangle_radius = ".3rem";
+    var string breathing_room_full = ".6rem";
+    var string breathing_room_half = ".3rem";
+    var string breathing_room_double = "1.2rem";
 
      var string userpic_css = "";
          if ($*userpics_position == "right") {
@@ -352,6 +358,7 @@ hr {
 body {
     $page_font
     padding: 0;
+    margin: 0;
     $page_background
     $page_colors
 }
@@ -361,6 +368,10 @@ html body {
     margin-right: $*margins_size$*margins_unit;
 }
 
+/* Basic elements */
+
+p { margin: 1em 0; }
+
 a { $page_link_colors }
 a:visited { $page_link_visited_colors }
 a:hover { $page_link_hover_colors }
@@ -368,8 +379,45 @@ a:active { $page_link_active_colors }
 
 q { font-style: italic; }
 
+input, textarea {
+    background: $*color_entry_background;
+    border: 1px solid $*color_page_text;
+    color: $*color_entry_text;
+}
+
+ul {
+    list-style: disc outside;
+    margin: .2em 0 0 2.5em;
+}
+
+ol {
+    list-style: decimal outside;
+    margin: .2em 0 0 2.5em;
+}
+
+
 /* #content layout */
+
+
 #content { float: none; }
+
+#canvas {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#primary > .inner:first-child,
+#secondary > .inner:first-child,
+#tertiary > .inner:first-child {
+    padding: 0;
+}
+
+#primary {
+    width:100%;
+    margin-right:-100%;
+    margin-left: 0;
+}
+
 @media $medium_media_query {
     .two-columns-left #content,
     .three-columns-sides #content {
@@ -388,54 +436,28 @@ q { font-style: italic; }
     .column-right #content {
         min-width: $*sidebar_width; /* prevents sidebar overlap of entry, when entry becomes narrower than sidebar */
     }
-}
 
-#content-footer {
-    height: 0;
-    font-size: 0; /*to make IE happy*/
-    clear: both;
-}
+    .column-left #primary > .inner:first-child {
+        padding-left: $rectangle_spacing;
+    }
 
-#header, #footer {
-    margin: 0;
-    clear: both;
-    padding: .5em;
-}
+    .column-right #primary > .inner:first-child {
+        padding-right: $rectangle_spacing;
+    }
 
-#header {
-    $header_background
-    $page_title_colors
-}
+    .three-columns-left #secondary > .inner:first-child,
+    .three-columns-right #secondary > .inner:first-child {
+        padding-right: $rectangle_spacing;
+    }
 
-h1#title {
-    $page_title_font
-}
-
-h2#subtitle,
-h2#pagetitle {
-    $page_subtitle_font
-}
-
-#footer {
-    $footer_background
-}
-
-#footer a { $footer_link_colors }
-#footer a:visited { $footer_link_visited_colors }
-#footer a:hover { $footer_link_hover_colors }
-#footer a:active { $footer_link_active_colors }
-
-#primary {
-    width:100%;
-    margin-right:-100%;
-    margin-left: 0;
-}
-
-#primary > .inner:first-child, #secondary > .inner:first-child, #tertiary > .inner:first-child {
-    padding: 1em;
+    .three-columns-left #tertiary > .inner:first-child,
+    .three-columns-right #tertiary > .inner:first-child {
+        padding-left: $rectangle_spacing;
+    }
 }
 
 /* modules layout */
+
 #primary { float: none; }
 #secondary, #tertiary { width: 100%; }
 
@@ -494,16 +516,103 @@ h2#pagetitle {
     }
 }
 
+/*--- Journal Header and Footer ---*/
+
+#content-footer {
+    height: 0;
+    font-size: 0; /*to make IE happy*/
+    clear: both;
+}
+
+#header, #footer {
+    margin: 0;
+    clear: both;
+    padding: $breathing_room_full;
+    text-align: center;
+}
+
+#header {
+    $header_background
+    $page_title_colors
+    border-radius: 0 0 $rectangle_radius $rectangle_radius;
+}
+
+h1#title {
+    $page_title_font
+}
+
+h1#title, h1#title a {
+    color: $*color_page_title;
+    text-decoration: none;
+}
+
+h2#subtitle,
+h2#pagetitle {
+    $page_subtitle_font
+    border: none;
+    color: $*color_page_title;
+    font-weight: bold;
+}
+
+#footer {
+    $footer_background
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
+}
+
+#footer a { $footer_link_colors }
+#footer a:visited { $footer_link_visited_colors }
+#footer a:hover { $footer_link_hover_colors }
+#footer a:active { $footer_link_active_colors }
+
+
+/*--- Journal Navigation ---*/
+
+.navigation {
+    $entry_title_font
+    background: $*color_entry_background;
+    color: $*color_entry_text;
+    border: 1px solid $*color_entry_border;
+    font-size: 1.2em;
+    text-align: center;
+    margin: $rectangle_spacing 0;
+    padding: $breathing_room_half 0;
+    border-radius: $rectangle_radius;
+}
+
 .navigation ul {
     margin-left: 0;
     padding-left: 0;
 }
 .navigation li {
     display: inline;
-    padding: 0 .5em;
+    padding: 0 $breathing_room_full;
 }
 .noentries {
     padding: 0 .5em;
+}
+
+.topnav a, .bottomnav a {
+    color: $*color_entry_title;
+}
+
+.navigation.empty {
+    display: none;
+}
+
+.page-read .navigation.empty {
+    display: block;
+    padding: 10px;
+}
+
+.page-read .navigation.empty ul {
+    margin: 0;
+    padding: 0;
+}
+
+.page-read .navigation.empty ul li {
+    margin: 0;
+    padding: 0;
 }
 
 /* entries */
@@ -712,9 +821,16 @@ table.month td p {
 
 /* modules */
 
+li.page-separator {
+    display: none;
+}
+
 .module {
     $module_background
     $module_colors
+    margin-top: $rectangle_spacing;
+    border-radius: $rectangle_radius;
+    padding: 0;
 }
 
 .module a { $module_link_colors }
@@ -729,29 +845,75 @@ table.month td p {
 
 .module-content {
     $module_font
+    padding: $breathing_room_full;
+    background-color: $*color_module_background;
+    border-bottom-left-radius: $rectangle_radius;
+    border-bottom-right-radius: $rectangle_radius;
+    overflow-x: auto;
+}
+
+.module-content:first-child {
+    border-top-left-radius: $rectangle_radius;
+    border-top-right-radius: $rectangle_radius;
+}
+
+h2.module-header {
+    border-bottom: 1px solid $*color_module_border;
+    color: $*color_module_title;
+    margin: 0;
+    padding: $breathing_room_half $breathing_room_full;
+    border-radius: $rectangle_radius $rectangle_radius 0 0;
+}
+
+h2.module-header a {
+    color: $*color_module_title;
 }
 
 .module-content ul {
-    list-style: outside;
-    margin-left: 1em;
+    list-style: none;
+    margin-left: 0;
     padding-left: 0;
 }
 .module-content li {
     margin: .5em 0;
+    padding: 0 0 0 5px;
+}
+
+.module-content .userpic {
+    text-align: center;
+}
+
+.module-content .userpic img {
+    background: $*color_entry_title_background;
+    border: 1px solid $*color_entry_border;
+    padding: $breathing_room_half;
+}
+
+.journal-name {
+    margin-top: $breathing_room_half;
+    text-align: center;
+}
+
+.journal-website-name {
+    text-align: center;
 }
 
 ul.userlite-interaction-links.icon-links {
-    margin-left: 0;
+    margin: $breathing_room_half 0 0;
     padding-left: 0;
+    text-align: center;
 }
 
 ul.userlite-interaction-links.icon-links li {
     display: inline;
     padding: 0 .20em;
+    margin: 0 auto;
 }
 
 ul.userlite-interaction-links.text-links {
     text-align: left;
+    padding: 0 0 0 $breathing_room_half;
+    list-style: none;
 }
 
 .any-column .module-calendar table { margin: 0; }
