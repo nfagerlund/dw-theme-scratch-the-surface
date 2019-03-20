@@ -165,7 +165,6 @@ function Page::print_theme_stylesheet() {
     var string medium_media_query = generate_medium_media_query();
     var string large_media_query = generate_large_media_query();
 
-    var string page_subtitle_font = generate_font_css($*font_journal_subtitle, $*font_base, $*font_fallback, $*font_journal_subtitle_size, $*font_journal_subtitle_units);
     var string entry_title_font = generate_font_css($*font_entry_title, $*font_base, $*font_fallback, $*font_entry_title_size, $*font_entry_title_units);
 
     # ~~~~ IDEK:
