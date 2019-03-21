@@ -1,6 +1,6 @@
 
 layerinfo "type" = "layout";
-layerinfo "name" = "Cutting Corners";
+layerinfo "name" = "Cutting Corners (flex)";
 layerinfo author_name = "Nick F";
 layerinfo author_email = "nick.fagerlund@gmail.com";
 layerinfo des = "A Tabula-Rasa-alike that uses round-cornered cards for everything.";
@@ -446,122 +446,6 @@ ol {
 /* #content layout */
 
 
-#content { float: none; }
-
-#canvas {
-    width: 90%;
-    margin: 0 auto;
-}
-
-#primary > .inner:first-child,
-#secondary > .inner:first-child,
-#tertiary > .inner:first-child {
-    padding: 0;
-}
-
-#primary {
-    width:100%;
-    margin-right:-100%;
-    margin-left: 0;
-}
-
-@media $medium_media_query {
-    .two-columns-left #content,
-    .three-columns-sides #content {
-        border-left: $*sidebar_width solid transparent;
-    }
-    .two-columns-right #content,
-    .three-columns-sides #content {
-        border-right: $*sidebar_width solid transparent;
-    }
-    .three-columns-left #content {
-        border-left: $*sidebar_width_doubled solid transparent;
-    }
-    .three-columns-right #content {
-        border-right: $*sidebar_width_doubled solid transparent;
-    }
-    .column-right #content {
-        min-width: $*sidebar_width; /* prevents sidebar overlap of entry, when entry becomes narrower than sidebar */
-    }
-
-    .column-left #primary > .inner:first-child {
-        padding-left: $*rectangle_spacing;
-    }
-
-    .column-right #primary > .inner:first-child {
-        padding-right: $*rectangle_spacing;
-    }
-
-    .three-columns-left #secondary > .inner:first-child,
-    .three-columns-right #secondary > .inner:first-child {
-        padding-right: $*rectangle_spacing;
-    }
-
-    .three-columns-left #tertiary > .inner:first-child,
-    .three-columns-right #tertiary > .inner:first-child {
-        padding-left: $*rectangle_spacing;
-    }
-}
-
-/* modules layout */
-
-#primary { float: none; }
-#secondary, #tertiary { width: 100%; }
-
-@media $medium_media_query {
-    .multiple-columns #primary {
-        float: left;
-    }
-
-    .two-columns-left #secondary,
-    .three-columns-sides #secondary {
-        float: left;
-        width: $*sidebar_width;
-        margin-left: -$*sidebar_width;
-    }
-    .two-columns-right #secondary {
-        float: right;
-        width: $*sidebar_width;
-        margin-right: -$*sidebar_width;
-    }
-    .three-columns-left #secondary {
-        float: left;
-        width: $*sidebar_width;
-        margin-left: -$*sidebar_width_doubled;
-    }
-    .three-columns-right #secondary {
-        float: right;
-        width: $*sidebar_width;
-        margin-right: -$*sidebar_width;
-    }
-
-    .two-columns #tertiary {
-        clear: both;
-        width: auto;
-    }
-    .two-columns-left #tertiary { margin-left: -$*sidebar_width; }
-    .two-columns-right #tertiary { margin-right: -$*sidebar_width; }
-    .two-columns #tertiary .module {
-        float: left;
-        width: $*sidebar_width;
-    }
-    .three-columns-left #tertiary {
-        float: left;
-        width: $*sidebar_width;
-        margin-left: -$*sidebar_width;
-    }
-    .three-columns-right #tertiary {
-        float: right;
-        width: $*sidebar_width;
-        margin-right: -$*sidebar_width_doubled;
-        margin-left: $*sidebar_width; /* so that #tertiary won't overlay #secondary in IE7 */
-    }
-    .three-columns-sides #tertiary {
-        float: right;
-        width: $*sidebar_width;
-        margin-right: -$*sidebar_width;
-    }
-}
 
 /* --- Micro-nav emoji: should only appear on mobile or one-column --- */
 
@@ -627,7 +511,9 @@ h2#pagetitle {
 
 #footer {
     $footer_background
+/*
     margin-top: $*rectangle_spacing;
+ */
     border-radius: $*rectangle_radius $*rectangle_radius 0 0;
 }
 
@@ -646,7 +532,9 @@ h2#pagetitle {
     $entry_border
     font-size: 1.2em;
     text-align: center;
+/*
     margin: $*rectangle_spacing 0;
+ */
     padding: $*breathing_room_half 0;
     border-radius: $*rectangle_radius;
 }
@@ -695,7 +583,9 @@ h2#pagetitle {
 .page-tags .tags-container {
     $entry_colors
     $entry_border
+/*
     margin-top: $*rectangle_spacing;
+ */
     border-radius: $*rectangle_radius;
     padding: 0;
 }
@@ -1133,7 +1023,9 @@ li.page-separator {
     $module_title_background
     $module_colors
     $module_border
+/*
     margin-top: $*rectangle_spacing;
+ */
     border-radius: $*rectangle_radius;
     padding: 0;
 }
