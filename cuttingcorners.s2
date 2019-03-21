@@ -447,58 +447,63 @@ ol {
 
 /* TODO: temporary impl of flex layout? */
 
+#canvas {
+    width: 90%;
+    margin: 0 auto;
+}
+
 #content > .inner {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  column-gap: $*rectangle_spacing;
-  row-gap: $*rectangle_spacing;
-  margin-top: $*rectangle_spacing;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: $*rectangle_spacing;
+    row-gap: $*rectangle_spacing;
+    margin-top: $*rectangle_spacing;
 }
 
 #content #primary {
-  flex-basis: 70%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  max-width: 100%;
+    flex-basis: 70%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 100%;
 }
 
 #content #secondary {
-  flex-basis: 20%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  max-width: 100%;
+    flex-basis: 20%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 100%;
 }
 
 #content #tertiary {
-  flex-basis: 100%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  max-width: 100%
+    flex-basis: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 100%
 }
 
 #invisible-separator, #content-footer { /* empty divs */
-  display: none;
+    display: none;
 }
 
 #entries > .inner {
-  display: flex;
-  flex-direction: column;
-  row-gap: $*rectangle_spacing;
+    display: flex;
+    flex-direction: column;
+    row-gap: $*rectangle_spacing;
 }
 
 .module-section-one > .inner {
-  display: flex;
-  flex-direction: column;
-  row-gap: $*rectangle_spacing;
+    display: flex;
+    flex-direction: column;
+    row-gap: $*rectangle_spacing;
 }
 
 .module-section-two > .inner {
-  display: flex;
-  flex-direction: column;
-  row-gap: $*rectangle_spacing;
+    display: flex;
+    flex-direction: column;
+    row-gap: $*rectangle_spacing;
 }
 
 
