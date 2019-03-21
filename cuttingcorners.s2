@@ -471,14 +471,14 @@ ol {
 }
 
 #content #secondary {
-    flex-basis: 20%;
+    flex-basis: $*sidebar_width;
     flex-grow: 1;
     flex-shrink: 1;
     max-width: 100%;
 }
 
 #content #tertiary {
-    flex-basis: 100%;
+    flex-basis: $*sidebar_width;
     flex-grow: 1;
     flex-shrink: 1;
     max-width: 100%
