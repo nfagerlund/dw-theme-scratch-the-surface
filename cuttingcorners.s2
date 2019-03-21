@@ -464,8 +464,8 @@ ol {
 }
 
 #content #primary {
-    flex-basis: 70%;
-    flex-grow: 1;
+    flex-basis: min-content;
+    flex-grow: 10;
     flex-shrink: 1;
     max-width: 100%;
 }
@@ -478,7 +478,7 @@ ol {
 }
 
 #content #tertiary {
-    flex-basis: $*sidebar_width;
+    flex-basis: 100%; /* do something different for 3-column layouts? */
     flex-grow: 1;
     flex-shrink: 1;
     max-width: 100%
