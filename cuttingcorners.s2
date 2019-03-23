@@ -1276,6 +1276,40 @@ ul.userlite-interaction-links.text-links {
 
 .tags_cloud li, .module-tags_cloud li { display: inline; }
 
+/* Horrible no-good hack to make the quick-reply form stop blowing out the page!
+
+There's two quick reply forms: "quick" (on entry pages) and "quicker" (on reading/recent pages). Quicker is fine; it has fewer options, but it works good on mobile, so yay. "Quick" sucks a lot!!! It's a damn table (why), and it blows out the x-width every time. I assume it's just old and crappy and they'll have to fix it sometime, but maybe it's the way it is because it has to display on the "site scheme" as well, and there might be some kind of dependency hell on making any changes to the site scheme? (bml stuff? idk.) Anyway, I can at least make it less fucky on entry pages in my style, I think. */
+
+#qrform > table,
+#qrform > table > tbody {
+    /* "the de-table-izing ray! I can dodge this!" */
+    display: block;
+    /* NARRATOR: but he couldn't. */
+}
+
+#qrform > table tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#qrform > table td {
+    display: contents;
+}
+
+#qrform > table #subject {
+    max-width: 90%;
+}
+
+#qrform > table tr > td > * {
+    margin-top: $*breathing_room_half;
+}
+
+#qrform > table textarea#body {
+    margin-bottom: $*breathing_room_half;
+}
+
     """;
 }
 
