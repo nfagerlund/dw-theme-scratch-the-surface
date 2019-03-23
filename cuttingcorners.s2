@@ -3,7 +3,9 @@ layerinfo "type" = "layout";
 layerinfo "name" = "Cutting Corners";
 layerinfo author_name = "Nick F";
 layerinfo author_email = "nick.fagerlund@gmail.com";
-layerinfo des = "A Tabula-Rasa-alike that uses round-cornered cards for everything.";
+layerinfo des = "A Tabula-Rasa-alike that uses round-cornered cards for everything and avoids overflowing on mobile at all costs.";
+layerinfo is_public = 1;
+layerinfo source_viewable = 1;
 
 ##===============================
 ## Presentation
