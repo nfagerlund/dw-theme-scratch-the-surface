@@ -507,12 +507,12 @@ ol {
 
     .three-columns-left #secondary > .inner:first-child,
     .three-columns-right #secondary > .inner:first-child {
-        padding-right: $*rectangle_spacing;
+        padding-right: calc($*rectangle_spacing / 2);
     }
 
     .three-columns-left #tertiary > .inner:first-child,
     .three-columns-right #tertiary > .inner:first-child {
-        padding-left: $*rectangle_spacing;
+        padding-left: calc($*rectangle_spacing / 2);
     }
 }
 
