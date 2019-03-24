@@ -156,6 +156,10 @@ propgroup fonts {
     property use font_comment_title_size;
     property use font_comment_title_units;
     property use font_sources;
+    property string font_default_link_decoration {
+        des = "Default text-decoration for links";
+        note = "Usually 'underline' or 'none', but can be any valid value for the CSS 'text-decoration' property. Used for most links; sometimes overridden for obviously clickable UI elements.";
+    }
 }
 
 set font_base = """"Avenir Next", Avenir, Lato, Candara, Helvetica, Arial""";
@@ -177,6 +181,8 @@ set font_comment_title_units = "em";
 
 set font_module_heading_size = "1.37";
 set font_module_heading_units = "em";
+
+set font_default_link_decoration = "underline";
 
 ##===============================
 ## Images
@@ -438,7 +444,10 @@ html body {
 
 p { margin: 1em 0; }
 
-a { $page_link_colors }
+a {
+    $page_link_colors
+    text-decoration: $*font_default_link_decoration;
+}
 a:visited { $page_link_visited_colors }
 a:hover { $page_link_hover_colors }
 a:active { $page_link_active_colors }
