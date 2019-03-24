@@ -566,6 +566,10 @@ ol {
     .two-columns #tertiary .module {
         float: left;
         width: $*sidebar_width;
+        margin-left: $*rectangle_spacing;
+    }
+    .two-columns #tertiary .module:first-child {
+        margin-left: 0;
     }
     .three-columns-left #tertiary {
         float: left;
