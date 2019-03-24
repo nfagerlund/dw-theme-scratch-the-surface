@@ -90,12 +90,14 @@ propgroup colors {
 
     property use color_header_background;
     property use color_page_title;
+    property Color color_header_border {des = "Page header border color";}
 
     property use color_footer_background;
     property use color_footer_link;
     property use color_footer_link_active;
     property use color_footer_link_hover;
     property use color_footer_link_visited;
+    property Color color_footer_border {des = "Page footer border color";}
 
     property use color_entry_background;
     property use color_entry_text;
@@ -119,6 +121,13 @@ propgroup colors {
     property use control_strip_bordercolor;
     property use control_strip_linkcolor;
 }
+
+# Default to black borders so the cards still show up in minimalist themes.
+# Themes can remove specific borders by setting their colors to "".
+set color_entry_border = "#000";
+set color_module_border = "#000";
+set color_header_border = "#000";
+set color_footer_border = "#000";
 
 ##===============================
 ## Fonts
@@ -346,6 +355,9 @@ function Page::print_default_stylesheet() {
     # Borders
     var string module_border = generate_color_css(new Color, new Color, $*color_module_border);
     var string entry_border = generate_color_css(new Color, new Color, $*color_entry_border);
+    var string header_border = generate_color_css(new Color, new Color, $*color_header_border);
+    var string footer_border = generate_color_css(new Color, new Color, $*color_footer_border);
+
     var string optional_module_border_color = generate_border_color_css($*color_module_border);
     var string optional_entry_border_color = generate_border_color_css($*color_entry_border);
 
@@ -607,6 +619,8 @@ ol {
 #header {
     $header_background
     $page_title_colors
+    $header_border
+    border-top: none;
     border-radius: 0 0 $*rectangle_radius $*rectangle_radius;
 }
 
@@ -629,8 +643,10 @@ h2#pagetitle {
 
 #footer {
     $footer_background
-    margin-top: $*rectangle_spacing;
+    $footer_border
+    border-bottom: none;
     border-radius: $*rectangle_radius $*rectangle_radius 0 0;
+    margin-top: $*rectangle_spacing;
 }
 
 #footer a { $footer_link_colors }

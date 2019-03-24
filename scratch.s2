@@ -53,10 +53,16 @@ set module_cuttagcontrols_order = 6;
 
 set color_page_background = "#FFD19F";
 set color_page_text = "#3f3f3f";
-set color_footer_background = "#fc915c";
-set color_header_background = "#fc915c";
 
+### Header/footer
+
+set color_footer_background = "#fc915c";
+set color_footer_border = "";
+set color_header_background = "#fc915c";
+set color_header_border = "";
 set color_page_title = "#3f3f3f";
+
+### Links
 
 set color_page_link = "#265c92";
 set color_page_link_hover = "#5452FF";
