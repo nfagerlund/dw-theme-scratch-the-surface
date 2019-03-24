@@ -1335,6 +1335,7 @@ ul.userlite-interaction-links.text-links {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 #qrform > table td {
