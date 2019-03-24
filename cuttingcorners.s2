@@ -731,6 +731,11 @@ h2#pagetitle {
     overflow-x: auto;
 }
 
+/* Collapsed comments - kinda like a header, so use header padding. */
+.comment-warpper.partial .comment .inner {
+    padding: $*breathing_room_half $*breathing_room_full;
+}
+
 .entry   .footer,
 .comment .footer,
 .page-tags .tags-container .footer {
@@ -756,9 +761,15 @@ h2#pagetitle {
 
     /* Misc alignment fixes and stuff: */
 
+/* minimum comfortable width for reading a comment: */
 .comment-wrapper {
     padding: 0;
     min-width: 15em;
+}
+
+/* ...but collapsed comments can shrink down a bit more. */
+.comment-wrapper.partial {
+    min-width: 9em;
 }
 
 textarea#commenttext {
