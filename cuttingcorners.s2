@@ -747,7 +747,7 @@ h2#pagetitle {
 }
 
 /* Collapsed comments - kinda like a header, so use header padding. */
-.comment-warpper.partial .comment .inner {
+.comment-wrapper.partial .comment .inner {
     padding: $*breathing_room_half $*breathing_room_full;
 }
 
