@@ -1310,6 +1310,27 @@ There's two quick reply forms: "quick" (on entry pages) and "quicker" (on readin
     margin-bottom: $*breathing_room_half;
 }
 
+/* Horrible, no-good hack to make the icon browser not be useless on mobile!
+
+The box sizes get generated in px by jquery-ui when the element is created and inserted as inline styles.
+
+This is kind of janky? Somehow the min-heights are interfering with the generated heights and making jquery come up with a different answer than it normally would. But, it's still better than the defaults, where it's just completely unusable. */
+
+.iconselector .ui-dialog-content {
+    min-height: 360px !important;
+}
+
+#iconselector_icons {
+    min-height: 160px;
+    max-height: 100%;
+}
+
+#iconselector_icons_list {
+   margin: 0;
+   padding: 0;
+}
+
+
     """;
 }
 
