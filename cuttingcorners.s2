@@ -1379,18 +1379,55 @@ ul.userlite-interaction-links.text-links {
   completely unusable.
 */
 
-.iconselector .ui-dialog-content {
-    min-height: 360px !important;
-}
-
-#iconselector_icons {
-    min-height: 160px;
-    max-height: 100%;
-}
-
 #iconselector_icons_list {
    margin: 0;
    padding: 0;
+}
+
+@media only screen and (max-width: 45em) {
+    .iconselector {
+        font-size: .8em;
+    }
+    .iconselector .ui-dialog-titlebar {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .iconselector .ui-dialog-content {
+        min-height: 360px !important;
+        padding-bottom: 0;
+    }
+    .iconselector_top {
+        margin-bottom: 0;
+    }
+    .iconselector_top .keywords {
+        display: block;
+    }
+    .iconselector .kwmenu label:first-child {
+        /* yes on screenreaders, no on display */
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+    .iconselector .kwmenu .keyword {
+        display: block;
+        white-space: nowrap;
+        overflow-x: hidden;
+    }
+    #iconselector_select {
+        float: none;
+        margin-top: .2em;
+        display: block;
+    }
+    #iconselector_icons {
+        min-height: 160px;
+        max-height: 100%;
+    }
 }
 
 
