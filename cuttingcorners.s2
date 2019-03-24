@@ -158,7 +158,7 @@ propgroup fonts {
     property use font_sources;
 }
 
-set font_base = """"Avenir Next", Lato, Candara, Helvetica, Arial""";
+set font_base = """"Avenir Next", Avenir, Lato, Candara, Helvetica, Arial""";
 set font_fallback = "sans-serif";
 set font_base_size = "1";
 set font_base_units = "em";
