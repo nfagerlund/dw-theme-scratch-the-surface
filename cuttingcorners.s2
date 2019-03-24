@@ -798,7 +798,9 @@ h2#pagetitle {
     min-width: 15em;
 }
 
-/* ...but collapsed comments can shrink down a bit more. */
+/* ...but collapsed comments can shrink down a bit more. At around 8em,
+   ordinary-length usernames start overflowing the boxes anyway,
+   so there's not much point going below 9em. */
 .comment-wrapper.partial {
     min-width: 9em;
 }
