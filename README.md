@@ -28,6 +28,17 @@ Here's what _is_ different:
 
     Basically, my attitude is that it's fine for extreme situations to result in extreme layouts, but the existing styles treat way too many perfectly normal situations as extreme.
 
+## Compatibility
+
+- Heavily tested on this year's Firefox and mobile Safari (iPhone SE width).
+- Lightly tested on Chrome and desktop Safari.
+- Never tested on IE or Edge. Should be fine?? 🤷🏽‍♀️ Especially since I mostly just inherited the core styles' float layout.
+
+Here's the stuff I know about that might theoretically break in browsers that REALLY suck:
+
+- `rem` units (for space between elements) might be wack on IE < 9.
+- `calc()` (only used for three-column modes) might be wack on IE < 9.
+- flexbox layout (only used for the quick-reply hack) might be wack on IE < 11.
 
 ## Stuff
 
