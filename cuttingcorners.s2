@@ -1365,6 +1365,14 @@ ul.userlite-interaction-links.text-links {
     margin-top: $*breathing_room_half;
 }
 
+/* tweak for misaligned quote button */
+#qrform > table span#quotebuttonspan {
+    display: contents;
+}
+#qrform > table span#quotebuttonspan > input {
+    margin-top: $*breathing_room_half;
+}
+
 #qrform > table textarea#body {
     margin-bottom: $*breathing_room_half; /* extra room before "post comment" */
 }
