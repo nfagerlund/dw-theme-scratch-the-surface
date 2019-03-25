@@ -8,7 +8,7 @@ Here's what _is_ different:
 
 - It uses round-cornered cards with solid headers for everything, which IMO gives it a friendly and modern look! 🌻 (You can set `rectangle_radius` to 0 if you want square corners instead.)
 - It adds a tiny shortcut menu to the header on mobile. Jump down to your modules (or between your reading/recent pages) without having to scroll forever.
-    - Needed improvements: Right now they're emoji, which is kind of janky and non-standard.
+    - (Right now they're emoji, which is kind of janky and non-standard.)
 - **It avoids busting the layout on mobile at all costs.**
 
     The thing about Dreamwidth's reading page is, it is basically inevitable that some content you don't control is going to overflow a box somewhere. And in every other layout I've ever seen, that turns into full-page sideways slop, especially on mobile! It's annoying and embarrassing, especially because it should be almost completely avoidable.
