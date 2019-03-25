@@ -1389,6 +1389,8 @@ ul.userlite-interaction-links.text-links {
 @media only screen and (max-width: 45em) {
     .iconselector {
         font-size: .8em;
+        left: 4vw !important;
+        width: 90vw !important;
     }
     .iconselector .ui-dialog-titlebar {
         padding-top: 0;
