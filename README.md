@@ -31,8 +31,9 @@ Here's what _is_ different:
 ## Compatibility
 
 - Heavily tested on this year's Firefox and mobile Safari (iPhone SE width).
-- Lightly tested on Chrome and desktop Safari.
+- Lightly tested on desktop Chrome and Safari.
 - Never tested on IE or Edge. Should be fine?? 🤷🏽‍♀️ Especially since I mostly just inherited the core styles' float layout.
+- Never tested on Android browsers, but if it works in other recent WebKits/Blinks/Geckos it's probably fine?
 
 Here's the stuff I know about that might theoretically break in browsers that REALLY suck:
 
