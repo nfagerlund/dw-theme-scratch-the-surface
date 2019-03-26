@@ -4,6 +4,8 @@ layerinfo "type" = "theme";
 layerinfo "name" = "Scratch the Surface";
 layerinfo author_name = "roadrunnertwice";
 layerinfo lang = "en";
+layerinfo is_public = 1;
+layerinfo source_viewable = 1;
 
 set layout_authors = [{"name" => "roadrunnertwice", "type" => "user"}];
 
