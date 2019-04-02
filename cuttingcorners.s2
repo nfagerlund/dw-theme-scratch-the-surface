@@ -746,6 +746,7 @@ h2#pagetitle {
     /* no different background props for comments: */
     $entry_background
     overflow-x: auto;
+    overflow-wrap: break-word;
 }
 
 .entry   .header,
@@ -922,6 +923,12 @@ h4.comment-title a {
     margin: 1em;
     padding: 0 $*breathing_room_full 0 $*breathing_room_full;
     clear: left; /* avoid userpic w/ side border */
+}
+
+.entry-content   pre,
+.comment-content pre {
+    overflow-wrap: normal;
+    white-space: pre;
 }
 
 .entry-content   ul, .entry-content   ol,
