@@ -758,6 +758,7 @@ h2#pagetitle {
     padding: $*breathing_room_half $*breathing_room_full;
     border-radius: $*rectangle_radius $*rectangle_radius 0 0;
     overflow-x: auto;
+    overflow-wrap: break-word;
 }
 
 /* Collapsed comments - kinda like a header, so use header padding. */
@@ -1196,11 +1197,6 @@ li.page-separator {
 .module a:hover { $module_link_hover_colors }
 .module a:active { $module_link_active_colors }
 
-.module h2 {
-    $module_title_colors
-    $module_title_font
-}
-
 .module-content {
     $module_font
     $module_background
@@ -1208,20 +1204,26 @@ li.page-separator {
     border-bottom-left-radius: $*rectangle_radius;
     border-bottom-right-radius: $*rectangle_radius;
     overflow-x: auto;
+    overflow-wrap: break-word;
 }
 
+/* some modules are header-less */
 .module-content:first-child {
     border-top-left-radius: $*rectangle_radius;
     border-top-right-radius: $*rectangle_radius;
 }
 
 h2.module-header {
+    $module_title_colors
+    $module_title_font
     border-bottom: 1px solid;
     $optional_module_border_color
     $module_title_colors
     margin: 0;
     padding: $*breathing_room_half $*breathing_room_full;
     border-radius: $*rectangle_radius $*rectangle_radius 0 0;
+    overflow-x: auto;
+    overflow-wrap: break-word;
 }
 
 h2.module-header a {
