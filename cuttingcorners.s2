@@ -973,7 +973,7 @@ h4.comment-title a {
     padding: $*breathing_room_half;
 }
 
-.cuttag img {
+.cuttag-action img {
     vertical-align: text-bottom;
 }
 
