@@ -1451,6 +1451,13 @@ ul.userlite-interaction-links.text-links {
     }
 }
 
+/* Perfectly fine but hopefully temporary hack to stop *dramatic woodchuck* zoom on mobile */
+
+@media (pointer: coarse) {
+    #qrform input[type="text"], #qrform select, #qrform textarea {
+        font-size: 16px;
+    }
+}
 
     """;
 }
