@@ -39,7 +39,7 @@ Here's the stuff I know about that might theoretically break in browsers that RE
 
 - `rem` units (for space between elements) might be wack on IE < 9.
 - `calc()` (only used for three-column modes) might be wack on IE < 9.
-- flexbox layout (only used for the quick-reply hack) might be wack on IE < 11.
+- flexbox layout (used sparingly) might be wack on IE < 11.
 
 ## Stuff
 
