@@ -1467,6 +1467,15 @@ ul.userlite-interaction-links.text-links {
     select#prop_picture_keyword { max-width: 100%; }
 }
 
+/* Fixes for gross controlstrip layout when logged out */
+td#lj_controlstrip_login {
+    width: auto !important;
+}
+.logged-out #lj_controlstrip_userpic {
+    display: none;
+}
+
+
     """;
 }
 
