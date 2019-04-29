@@ -279,6 +279,9 @@ propgroup text {
     property use text_max_comments;
     property use text_skiplinks_back;
     property use text_skiplinks_forward;
+
+    property use text_day_prev;
+    property use text_day_next;
 }
 
 ##===============================

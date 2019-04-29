@@ -17,10 +17,12 @@ set comment_management_links = "text";
 
 ## Text labels
 
-set text_skiplinks_back = "# older posts";
-set text_skiplinks_forward = "# newer posts";
+set text_skiplinks_back = "⬅︎ # older posts";
+set text_skiplinks_forward = "# newer posts ➡︎";
 set text_entry_prev = "⬅︎ Prev";
 set text_entry_next = "Next ➡︎";
+set text_day_prev = "⬅︎ Previous Day";
+set text_day_next = "Next Day ➡︎";
 set text_edit_entry = "Edit";
 set text_edit_tags = "Re-tag";
 set text_mem_add = "Stow";
