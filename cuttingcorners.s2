@@ -686,6 +686,7 @@ h2#pagetitle {
 
 .navigation ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-left: 0;
     padding-left: 0;
