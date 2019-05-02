@@ -52,6 +52,8 @@ propgroup presentation {
 }
 
 set layout_type = "two-columns-left";
+set margins_size = "5";
+set margins_unit = "%";
 set sidebar_width = "15em";
 set sidebar_width_doubled = "30em";
 set userpics_position = "left";
@@ -438,11 +440,6 @@ body {
     $page_colors
 }
 
-html body {
-    margin-left: $*margins_size$*margins_unit;
-    margin-right: $*margins_size$*margins_unit;
-}
-
 /* Basic elements */
 
 p { margin: 1em 0; }
@@ -474,8 +471,14 @@ ol {
 #content { float: none; }
 
 #canvas {
-    width: 90%;
-    margin: 0 auto;
+    margin: 0 8px;
+}
+
+@media $medium_media_query {
+    #canvas {
+        margin-left: $*margins_size$*margins_unit;
+        margin-right: $*margins_size$*margins_unit;
+    }
 }
 
 #primary > .inner:first-child,
