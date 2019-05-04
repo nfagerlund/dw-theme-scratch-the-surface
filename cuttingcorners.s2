@@ -1,4 +1,3 @@
-
 layerinfo "type" = "layout";
 layerinfo "name" = "Cutting Corners";
 layerinfo author_name = "Nick F";
@@ -42,6 +41,9 @@ propgroup presentation {
     property use userlite_interaction_links;
     property use entry_management_links;
     property use comment_management_links;
+    property use comment_indent_style;
+    property use comment_indent_limit_mobile;
+    property use comment_indent_limit_desktop;
 
     property string rectangle_spacing {des = "Space between major box elements (in rem or px)";}
     property string rectangle_radius {des = "Corner radius for major box elements (in rem or px)";}
@@ -432,7 +434,7 @@ hr {
     display: none;
 }
 
-body {
+html body {
     $page_font
     padding: 0;
     margin: 0;
@@ -787,19 +789,58 @@ h2#pagetitle {
 }
 
 /*
-  Use lines to show threading, instead of big indents. Requires overriding the
-  computed margin-left on div.dwexpcomment elements from core2's comment
-  printing function, which gets hardcoded as an inline style (hence the
-  !important).
+  Use lines to show threading, instead of big indents. Stop indenting at a certain point and use numbers.
 */
-.comment-thread {
-    border-left: 3px dotted;
+
+.comment-thread.comment-indent-mobile {
+    border-left: 3px solid;
     $optional_entry_border_color
     padding-left: $*breathing_room_half;
 }
-.dwexpcomment {
-    margin-left: 0 !important;
+
+.comment-thread.comment-depth-1 {
+    border-left: none;
+    padding-left: 0;
 }
+
+.thread-depth::before {
+    content: 'Depth: ';
+}
+
+.thread-depth.indent-mobile {
+    /* yes on screenreaders, no on display */
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+@media $medium_media_query {
+    .comment-thread.comment-indent-desktop {
+        border-left: 3px solid;
+        $optional_entry_border_color
+        padding-left: $*breathing_room_half;
+    }
+
+    .thread-depth.indent-desktop {
+        /* yes on screenreaders, no on display */
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+    }
+}
+
 
     /* Misc alignment fixes and stuff: */
 
