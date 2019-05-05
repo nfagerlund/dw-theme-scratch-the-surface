@@ -68,7 +68,8 @@ set rectangle_radius = ".3rem";
 set breathing_room_full = ".6rem";
 set breathing_room_half = ".3rem";
 set breathing_room_double = "1.2rem";
-
+set comment_indent_limit_mobile = 6;
+set comment_indent_limit_caption = "↳";
 
 ##===============================
 ## Colors
@@ -801,13 +802,15 @@ h2#pagetitle {
 .comment-thread.comment-indent-mobile {
     border-left: 3px solid;
     $optional_entry_border_color
-    border-image: linear-gradient(transparent, $*color_entry_border 2.5rem, $*color_entry_border 95%, transparent 99%) 1;
+        border-image: linear-gradient(${*color_entry_border}00, ${*color_entry_border}ff 2.5rem, ${*color_entry_border}ff 95%, ${*color_entry_border}00 99%) 1; /* Safari needs "transparent color" or it assumes "transparent black" */
+    border-right-width: 0; /* safari. */
     padding-left: $*breathing_room_full;
 }
 
 .comment-thread.comment-depth-1 {
     border-left: none;
     padding-left: 0;
+    border-left-width: 0; /* safari. */
 }
 
 .thread-depth.indent-mobile {
@@ -827,7 +830,8 @@ h2#pagetitle {
     .comment-thread.comment-indent-desktop {
         border-left: 3px solid;
         $optional_entry_border_color
-        border-image: linear-gradient(transparent, $*color_entry_border 2.5rem, $*color_entry_border 95%, transparent 99%) 1;
+        border-image: linear-gradient(${*color_entry_border}00, ${*color_entry_border}ff 2.5rem, ${*color_entry_border}ff 95%, ${*color_entry_border}00 99%) 1;
+        border-right-width: 0; /* safari. */
         padding-left: $*breathing_room_full;
     }
 
@@ -844,6 +848,40 @@ h2#pagetitle {
         width: 1px;
     }
 }
+
+/* The experimental part... connectors! */
+
+.dwexpcomment {
+    position: relative; /* just as an anchor for interior absolutes. */
+}
+
+.comment-wrapper::before {
+    content: " ";
+    position: absolute;
+    width: 1rem;
+    height: 0;
+    border-bottom: 3px solid $*color_entry_border;
+    z-index: -20;
+    left: -.6rem;
+    top: 3.5rem;
+}
+
+.comment-indent-none .comment-wrapper::before,
+.comment-indent-desktop .comment-wrapper::before{
+    border-bottom: 2px dotted $*color_entry_border;
+}
+
+@media $medium_media_query {
+    .comment-indent-desktop .comment-wrapper::before {
+        border-bottom: 3px solid $*color_entry_border;
+    }
+}
+
+/* no connectors on first level */
+.comment-depth-1 > .dwexpcomment > .comment-wrapper::before {
+    border-bottom: none;
+}
+
 
 
     /* Misc alignment fixes and stuff: */
