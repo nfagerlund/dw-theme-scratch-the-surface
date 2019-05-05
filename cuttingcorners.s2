@@ -800,7 +800,7 @@ h2#pagetitle {
 */
 
 .comment-thread.comment-indent-mobile {
-    border-left: 3px solid;
+    border-left: 1px solid;
     $optional_entry_border_color
         border-image: linear-gradient(${*color_entry_border}00, ${*color_entry_border}ff 2.5rem, ${*color_entry_border}ff 95%, ${*color_entry_border}00 99%) 1; /* Safari needs "transparent color" or it assumes "transparent black" */
     border-right-width: 0; /* safari. */
@@ -828,7 +828,7 @@ h2#pagetitle {
 
 @media $medium_media_query {
     .comment-thread.comment-indent-desktop {
-        border-left: 3px solid;
+        border-left: 1px solid;
         $optional_entry_border_color
         border-image: linear-gradient(${*color_entry_border}00, ${*color_entry_border}ff 2.5rem, ${*color_entry_border}ff 95%, ${*color_entry_border}00 99%) 1;
         border-right-width: 0; /* safari. */
@@ -860,7 +860,7 @@ h2#pagetitle {
     position: absolute;
     width: 1rem;
     height: 0;
-    border-bottom: 3px solid $*color_entry_border;
+    border-bottom: 1px solid $*color_entry_border;
     z-index: -20;
     left: -.6rem;
     top: 3.5rem;
@@ -873,7 +873,7 @@ h2#pagetitle {
 
 @media $medium_media_query {
     .comment-indent-desktop .comment-wrapper::before {
-        border-bottom: 3px solid $*color_entry_border;
+        border-bottom: 1px solid $*color_entry_border;
     }
 }
 
