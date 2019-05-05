@@ -44,6 +44,7 @@ propgroup presentation {
     property use comment_indent_style;
     property use comment_indent_limit_mobile;
     property use comment_indent_limit_desktop;
+    property use comment_indent_limit_caption;
 
     property string rectangle_spacing {des = "Space between major box elements (in rem or px)";}
     property string rectangle_radius {des = "Corner radius for major box elements (in rem or px)";}
@@ -731,18 +732,23 @@ h2#pagetitle {
 
     /* boxes and stuff: */
 
+.entry-wrapper,
+.comment-wrapper,
+.page-tags .tags-container {
+    padding: $*rectangle_spacing 0 0 0;
+}
+
 .entry,
 .comment,
-.page-tags .tags-container {
+.page-tags .tags-container > .inner {
     $entry_colors
     $entry_border
-    margin-top: $*rectangle_spacing;
     border-radius: $*rectangle_radius;
     padding: 0;
 }
 
 .entry,
-.page-tags .tags-container {
+.page-tags .tags-container > .inner {
     $entry_title_background
 }
 
@@ -795,16 +801,13 @@ h2#pagetitle {
 .comment-thread.comment-indent-mobile {
     border-left: 3px solid;
     $optional_entry_border_color
-    padding-left: $*breathing_room_half;
+    border-image: linear-gradient(transparent, $*color_entry_border 2.5rem, $*color_entry_border 95%, transparent 99%) 1;
+    padding-left: $*breathing_room_full;
 }
 
 .comment-thread.comment-depth-1 {
     border-left: none;
     padding-left: 0;
-}
-
-.thread-depth::before {
-    content: 'Depth: ';
 }
 
 .thread-depth.indent-mobile {
@@ -824,7 +827,8 @@ h2#pagetitle {
     .comment-thread.comment-indent-desktop {
         border-left: 3px solid;
         $optional_entry_border_color
-        padding-left: $*breathing_room_half;
+        border-image: linear-gradient(transparent, $*color_entry_border 2.5rem, $*color_entry_border 95%, transparent 99%) 1;
+        padding-left: $*breathing_room_full;
     }
 
     .thread-depth.indent-desktop {
@@ -846,7 +850,6 @@ h2#pagetitle {
 
 /* minimum comfortable width for reading a comment: */
 .comment-wrapper {
-    padding: 0;
     min-width: 15em;
 }
 
