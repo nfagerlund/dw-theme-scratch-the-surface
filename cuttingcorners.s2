@@ -344,6 +344,18 @@ function Page::print_default_stylesheet() {
     var string medium_media_query = generate_medium_media_query();
     var string large_media_query = generate_large_media_query();
 
+    var string make_invisible = "/* yes on screenreaders, no on display */
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+";
+
     # Page/header/footer background vars
     var string page_background = generate_background_css ($*image_background_page_url, $*image_background_page_repeat, $*image_background_page_position, $*color_page_background);
     var string footer_background = generate_background_css( "", "", "", $*color_footer_background );
@@ -814,16 +826,7 @@ h2#pagetitle {
 }
 
 .thread-depth.indent-mobile {
-    /* yes on screenreaders, no on display */
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
+    $make_invisible
 }
 
 @media $medium_media_query {
@@ -836,16 +839,7 @@ h2#pagetitle {
     }
 
     .thread-depth.indent-desktop {
-        /* yes on screenreaders, no on display */
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
+        $make_invisible
     }
 }
 
@@ -1515,16 +1509,7 @@ ul.userlite-interaction-links.text-links {
         display: block;
     }
     .iconselector .kwmenu label:first-child {
-        /* yes on screenreaders, no on display */
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
+        $make_invisible
     }
     .iconselector .kwmenu .keyword {
         display: block;
