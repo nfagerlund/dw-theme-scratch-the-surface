@@ -821,9 +821,16 @@ h2#pagetitle {
   !important).
 */
 .comment-thread {
-    border-left: 3px dotted;
+    border-left: 1px solid;
     $optional_entry_border_color
+    border-image: linear-gradient(${*color_entry_border}00, ${*color_entry_border}ff 2.5rem, ${*color_entry_border}ff 95%, ${*color_entry_border}00 99%) 1; /* Safari needs "transparent color" or it assumes "transparent black" */
+    border-right-width: 0; /* safari. */
     padding-left: $*breathing_room_half;
+}
+.comment-thread.comment-depth-1 {
+    border-left: none;
+    padding-left: 0;
+    border-left-width: 0; /* safari. */
 }
 .dwexpcomment {
     margin-left: 0 !important;
