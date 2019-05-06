@@ -339,6 +339,19 @@ function generate_border_color_css (Color border_color) : string
 function Page::print_default_stylesheet() {
     var string medium_media_query = generate_medium_media_query();
     var string large_media_query = generate_large_media_query();
+    # Duplicating logic from core2 generate_media_query, because it only does max-width
+        # use the user-provided breakpoint width
+        var string small_max_width = $*medium_breakpoint_width;
+        # no user-provided breakpoint width, base our min-width as a multiplier on the sidebar width
+        if ($small_max_width == "" and $*sidebar_width != "") {
+            # set the min width in ems
+            $small_max_width = $*sidebar_width->css_multiply_length(3);
+        }
+        # $*sidebar_width wasn't in a format we expected, fall back to a default
+        if ($small_max_width == "") {
+            $small_max_width = "40em";
+        }
+        var string small_media_query = "only screen and (max-width: $small_max_width)";
 
     # Page/header/footer background vars
     var string page_background = generate_background_css ($*image_background_page_url, $*image_background_page_repeat, $*image_background_page_position, $*color_page_background);
