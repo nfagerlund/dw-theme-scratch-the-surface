@@ -664,6 +664,13 @@ h1#title, h1#title a {
     text-decoration: none;
 }
 
+@media $small_media_query {
+    h1#title, h2#pagetitle, h2#subtitle {
+        padding: 0;
+        margin-top: 0;
+    }
+}
+
 h2#subtitle,
 h2#pagetitle {
     $page_subtitle_font
@@ -769,6 +776,14 @@ h2#pagetitle {
     $entry_background
     overflow-x: auto;
     overflow-wrap: break-word;
+}
+
+@media $small_media_query {
+    .entry   .contents,
+    .comment .contents,
+    .page-tags .tags-container .contents {
+        padding: $*breathing_room_full;
+    }
 }
 
 .entry   .header,
@@ -984,8 +999,19 @@ h4.comment-title a {
 .has-userpic .comment .userpic {
     float: $*userpics_position;
     margin: 0 $*breathing_room_double 0 $*breathing_room_double;
-    margin-${*userpics_position}: 0;
     text-align: $*userpics_position;
+}
+
+@media $small_media_query {
+    .has-userpic .entry   .userpic,
+    .has-userpic .comment .userpic {
+        margin: 0 $*breathing_room_full 0 $*breathing_room_full;
+    }
+}
+
+.has-userpic .entry   .userpic,
+.has-userpic .comment .userpic {
+    margin-${*userpics_position}: 0;
 }
 
 .entry   .userpic img,
