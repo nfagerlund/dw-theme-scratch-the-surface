@@ -1006,14 +1006,16 @@ h4.comment-title a {
 .has-userpic .entry   .userpic,
 .has-userpic .comment .userpic {
     float: $*userpics_position;
-    margin: 0 $*breathing_room_double 0 $*breathing_room_double;
     text-align: $*userpics_position;
+    margin: $*breathing_room_double;
+    margin-top: 0;
 }
 
 @media $small_media_query {
     .has-userpic .entry   .userpic,
     .has-userpic .comment .userpic {
-        margin: 0 $*breathing_room_full 0 $*breathing_room_full;
+        margin: $*breathing_room_full;
+        margin-top: 0;
     }
 }
 
