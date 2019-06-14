@@ -918,18 +918,13 @@ h4.comment-title a {
 }
 .comment-content { border-top: 1px transparent solid; } /* for firefox */
 
-/* Never blow out layout for wide boyz, */
+/* Never blow out layout for wide boyz, and make portrait boyz fit in the window. */
 .entry-content img, .comment-content img {
-    max-width: 100%;
     height: auto;
-}
-
-/* and make portrait boyz fit in a normal window. */
-@media $medium_media_query {
-  .entry-content   img,
-  .comment-content img {
-      max-height: 700px;
-  }
+    max-width: 100%;
+    max-height: 95vh;
+    object-fit: contain;
+    object-position: left;
 }
 
 .entry-content   th,
@@ -1000,6 +995,12 @@ h4.comment-title a {
 .entry-content   li p:first-child,
 .comment-content li p:first-child {
     margin-top: 0;
+}
+
+/* Don't add extra height at bottom of userpic box */
+.userpic a {
+   display: block;
+   line-height: 0;
 }
 
 .has-userpic .entry   .userpic,
