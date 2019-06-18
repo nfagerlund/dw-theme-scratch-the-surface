@@ -961,16 +961,16 @@ h4.comment-title a {
     border-top: 1px solid;
     border-right: 0;
     $optional_entry_border_color
-    border-image: linear-gradient(to right, ${*color_entry_border}, ${*color_entry_border}00 50%) 1; /* Safari needs "transparent color" or it assumes "transparent black" */
+    border-image: linear-gradient(to right, ${*color_entry_border}, ${*color_entry_border}00 70%) 1; /* Safari needs "transparent color" or it assumes "transparent black" */
     border-radius: .15rem;
     margin: 1em;
     padding: $*breathing_room_half $*breathing_room_full $*breathing_room_half $*breathing_room_full;
 }
 .entry-content   blockquote {
-    background-image: linear-gradient(to right, $*color_entry_title_background, ${*color_entry_title_background}00 50%);
+    background-image: linear-gradient(to right, $*color_entry_title_background, ${*color_entry_title_background}00 40%);
 }
 .comment-content blockquote {
-    background-image: linear-gradient(to right, $*color_entry_title_background, ${*color_comment_title_background}00 50%);
+    background-image: linear-gradient(to right, $*color_comment_title_background, ${*color_comment_title_background}00 40%);
 }
 
 
