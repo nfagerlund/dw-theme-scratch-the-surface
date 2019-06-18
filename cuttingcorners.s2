@@ -957,13 +957,22 @@ h4.comment-title a {
 .comment-content blockquote {
     $entry_colors
     border-left: 4px solid;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    border-right: 0;
     $optional_entry_border_color
-    border-bottom: 0;
+    border-image: linear-gradient(to right, ${*color_entry_border}, ${*color_entry_border}00 50%) 1; /* Safari needs "transparent color" or it assumes "transparent black" */
     border-radius: .15rem;
     margin: 1em;
-    padding: 0 $*breathing_room_full 0 $*breathing_room_full;
-    clear: left; /* avoid userpic w/ side border */
+    padding: $*breathing_room_half $*breathing_room_full $*breathing_room_half $*breathing_room_full;
 }
+.entry-content   blockquote {
+    background-image: linear-gradient(to right, $*color_entry_title_background, ${*color_entry_title_background}00 50%);
+}
+.comment-content blockquote {
+    background-image: linear-gradient(to right, $*color_entry_title_background, ${*color_comment_title_background}00 50%);
+}
+
 
 .entry-content   pre,
 .comment-content pre {
