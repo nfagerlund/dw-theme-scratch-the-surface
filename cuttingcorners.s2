@@ -922,11 +922,6 @@ h4.comment-title a {
 
     /* Content: */
 
-.entry-content,
-.comment-content {
-    min-height: 100px; /* don't shrink below the userpic height */
-}
-
 /* ensure comment content stretches out horizontally so it's readable */
 .comment-content:before {
     content: "";
@@ -980,7 +975,6 @@ h4.comment-title a {
     border-radius: .15rem;
     margin: 1em;
     padding: 0 $*breathing_room_full 0 $*breathing_room_full;
-    clear: left; /* avoid userpic w/ side border */
 }
 
 .entry-content   pre,
@@ -1021,32 +1015,32 @@ h4.comment-title a {
    line-height: 0;
 }
 
+/* Anchor any absolute descendents */
+.entry   > .inner,
+.comment > .inner {
+  position: relative;
+}
+
+.has-userpic .entry   .header > .inner::before,
+.has-userpic .comment .header > .inner::before {
+  content: "";
+  display: block;
+  width: calc(110px + $*breathing_room_half);
+  height: 110px;
+  float: $*userpics_position;
+}
+
 .has-userpic .entry   .userpic,
 .has-userpic .comment .userpic {
-    float: $*userpics_position;
-    text-align: $*userpics_position;
-    margin: $*breathing_room_double;
-    margin-top: 0;
-}
-
-@media $small_media_query {
-    .has-userpic .entry   .userpic,
-    .has-userpic .comment .userpic {
-        margin: $*breathing_room_full;
-        margin-top: 0;
-    }
-}
-
-.has-userpic .entry   .userpic,
-.has-userpic .comment .userpic {
-    margin-${*userpics_position}: 0;
-}
-
-.entry   .userpic img,
-.comment .userpic img {
-    $module_title_background
-    $module_border
-    padding: $*breathing_room_half;
+    position: absolute;
+    top: $*breathing_room_half;
+    ${*userpics_position}: $*breathing_room_full;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 110px;
+    width: 110px;
 }
 
 .cuttag-action img {
