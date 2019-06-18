@@ -427,6 +427,8 @@ function Page::print_default_stylesheet() {
     var string module_font = generate_font_css($*font_module_text, $*font_base, $*font_fallback, $*font_module_text_size, $*font_module_text_units);
     var string module_title_font = generate_font_css($*font_module_heading, $*font_base, $*font_fallback, $*font_module_heading_size, $*font_module_heading_units);
 
+    var string userpic_flex_direction = $*userpics_position == "left" ? "row" : "row-reverse";
+
     print_custom_control_strip_css();
 
     """
@@ -1037,6 +1039,7 @@ h4.comment-title a {
     ${*userpics_position}: $*breathing_room_full;
     box-sizing: border-box;
     display: flex;
+    flex-direction: $userpic_flex_direction;
     justify-content: flex-start;
     align-items: center;
     height: 110px;
