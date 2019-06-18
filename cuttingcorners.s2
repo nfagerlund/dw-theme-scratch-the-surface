@@ -664,19 +664,25 @@ h1#title, h1#title a {
     text-decoration: none;
 }
 
-@media $small_media_query {
-    h1#title, h2#pagetitle, h2#subtitle {
-        padding: 0;
-        margin-top: 0;
-    }
-}
-
 h2#subtitle,
 h2#pagetitle {
     $page_subtitle_font
     border: none;
     $page_title_colors
     font-weight: bold;
+}
+
+@media $small_media_query {
+    h1#title, h2#pagetitle, h2#subtitle {
+        padding: 0;
+        margin-top: 0;
+    }
+    h1#title {
+        font-size: 1.9em;
+    }
+    h2#pagetitle, h2#subtitle {
+        font-size: 1.2em;
+    }
 }
 
 #footer {
@@ -865,14 +871,26 @@ textarea#commenttext {
 h3.entry-title,
 .page-tags .tags-container .header h2 {
     margin: 0;
+    padding-top: 0;
     $entry_title_colors
     $entry_title_font
 }
 
 .comment .comment-title {
     margin: 0;
+    padding-top: 0;
     $comment_title_colors
     $comment_title_font
+}
+
+@media $small_media_query {
+    h3.entry-title,
+    .page-tags .tags-container .header h2 {
+        font-size: 1.15em;
+    }
+    .comment .comment-title {
+        font-size: 1.05em;
+    }
 }
 
 h3.entry-title   a {
