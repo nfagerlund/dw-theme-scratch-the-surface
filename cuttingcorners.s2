@@ -931,7 +931,25 @@ h4.comment-title a {
     overflow: hidden;
     width: 10em;
 }
-.comment-content { border-top: 1px transparent solid; } /* for firefox */
+
+/* Separate metadata from real content */
+.entry-content,
+.comment-content {
+    padding-top: $*breathing_room_half;
+    margin-top: $*breathing_room_half;
+    border-top: 1px solid;
+    $optional_entry_border_color
+    border-image: linear-gradient(to right, ${*color_entry_border}00, ${*color_entry_border}ff 30%, ${*color_entry_border}ff 70%, ${*color_entry_border}00) 1; /* Safari needs "transparent color" or it assumes "transparent black" */
+    border-bottom: 0; /* safari */
+}
+
+/* Sometimes there's none tho */
+
+.poster.empty + .entry-content {
+    border-top: 0;
+    padding-top: 0;
+    margin-top: 0;
+}
 
 /* Never blow out layout for wide boyz, and make portrait boyz fit in the window. */
 .entry-content img, .comment-content img {
