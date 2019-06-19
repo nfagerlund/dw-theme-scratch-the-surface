@@ -439,6 +439,19 @@ H1, H2, H3 {
     padding: .25em 0;
 }
 
+h1 {
+    font-size: calc(20.3px + 1.14vw);
+}
+h2 {
+    font-size: calc(17.6px + 0.75vw);
+}
+h3 {
+    font-size: calc(16.4px + 0.23vw);
+}
+h4 {
+    font-size: calc(14.5px + 0.1vw);
+}
+
 img {
     border: none;
 }
