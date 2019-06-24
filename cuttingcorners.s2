@@ -43,6 +43,11 @@ propgroup presentation {
     property use entry_management_links;
     property use comment_management_links;
 
+    property use comment_indent_style;
+    property use comment_indent_limit_mobile;
+    property use comment_indent_limit_desktop;
+    property use comment_indent_depth_caption;
+
     property string rectangle_spacing {des = "Space between major box elements (in rem or px)";}
     property string rectangle_radius {des = "Corner radius for major box elements (in rem or px)";}
     property string breathing_room_full {des = "Space between minor elements (in rem or px)";}
@@ -66,6 +71,7 @@ set breathing_room_full = ".6rem";
 set breathing_room_half = ".3rem";
 set breathing_room_double = "1.2rem";
 
+set comment_indent_style = "responsive";
 
 ##===============================
 ## Colors
@@ -835,12 +841,7 @@ h2#pagetitle {
     $optional_entry_border_color
 }
 
-/*
-  Use lines to show threading, instead of big indents. Requires overriding the
-  computed margin-left on div.dwexpcomment elements from core2's comment
-  printing function, which gets hardcoded as an inline style (hence the
-  !important).
-*/
+/* Use lines to show threading, instead of big indents. */
 .comment-thread {
     border-left: 1px solid;
     $optional_entry_border_color
@@ -852,9 +853,6 @@ h2#pagetitle {
     border-left: none;
     padding-left: 0;
     border-left-width: 0; /* safari. */
-}
-.dwexpcomment {
-    margin-left: 0 !important;
 }
 
     /* Misc alignment fixes and stuff: */
