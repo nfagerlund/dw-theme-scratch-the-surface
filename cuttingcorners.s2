@@ -802,6 +802,7 @@ h2#pagetitle {
     /* no different background props for comments: */
     $entry_background
     overflow-x: auto;
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -822,6 +823,7 @@ h2#pagetitle {
     padding: $*breathing_room_half $*breathing_room_full;
     border-radius: $*rectangle_radius $*rectangle_radius 0 0;
     overflow-x: auto;
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -1010,6 +1012,7 @@ h4.comment-title a {
 
 .entry-content   pre,
 .comment-content pre {
+    word-wrap: normal;
     overflow-wrap: normal;
     white-space: pre;
 }
@@ -1094,6 +1097,7 @@ h4.comment-title a {
 }
 
 .poster-ip {
+    word-wrap: break-word;
     overflow-wrap: break-word;
     font-size: .9em;
 }
@@ -1105,6 +1109,7 @@ h4.comment-title a {
 }
 
 .metadata-item {
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -1306,6 +1311,7 @@ li.page-separator {
     border-bottom-left-radius: $*rectangle_radius;
     border-bottom-right-radius: $*rectangle_radius;
     overflow-x: auto;
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
@@ -1325,6 +1331,7 @@ h2.module-header {
     padding: $*breathing_room_half $*breathing_room_full;
     border-radius: $*rectangle_radius $*rectangle_radius 0 0;
     overflow-x: auto;
+    word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
