@@ -3,7 +3,7 @@ layerinfo "type" = "layout";
 layerinfo "name" = "Cutting Corners";
 layerinfo author_name = "Nick F";
 layerinfo author_email = "nick.fagerlund@gmail.com";
-layerinfo des = "A Tabula-Rasa-alike that uses round-cornered cards for everything and avoids overflowing on mobile at all costs.";
+layerinfo des = "A Tabula-Rasa-alike that uses round-cornered cards for everything, avoids overflowing on mobile at all costs, and uses CSS grid for layout.";
 layerinfo is_public = 1;
 layerinfo source_viewable = 1;
 
@@ -21,7 +21,6 @@ propgroup presentation {
     property use margins_size;
     property use margins_unit;
     property use sidebar_width;
-    property use sidebar_width_doubled;
     property use medium_breakpoint_width;
     property use large_breakpoint_width;
     property use custom_control_strip_colors;
@@ -60,7 +59,6 @@ set layout_type = "two-columns-left";
 set margins_size = "5";
 set margins_unit = "%";
 set sidebar_width = "15em";
-set sidebar_width_doubled = "30em";
 set userpics_position = "left";
 set use_custom_friend_colors = false;
 set custom_foreground_element = "userpic_border";
@@ -501,9 +499,6 @@ ol {
 
 /* #content layout */
 
-
-#content { float: none; }
-
 #canvas {
     margin: 0 8px;
 }
@@ -515,117 +510,70 @@ ol {
     }
 }
 
-#primary > .inner:first-child,
-#secondary > .inner:first-child,
-#tertiary > .inner:first-child {
-    padding: 0;
+#content > .inner {
+    display: grid;
+    grid-gap: $*rectangle_spacing;
+    /* Default single column layout, used for .one-column and small screens: */
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "primary"
+        "secondary"
+        "tertiary";
 }
 
 #primary {
-    width:100%;
-    margin-right:-100%;
-    margin-left: 0;
+    grid-area: primary;
 }
 
-@media $medium_media_query {
-    .two-columns-left #content,
-    .three-columns-sides #content {
-        border-left: $*sidebar_width solid transparent;
-    }
-    .two-columns-right #content,
-    .three-columns-sides #content {
-        border-right: $*sidebar_width solid transparent;
-    }
-    .three-columns-left #content {
-        border-left: $*sidebar_width_doubled solid transparent;
-    }
-    .three-columns-right #content {
-        border-right: $*sidebar_width_doubled solid transparent;
-    }
-    .column-right #content {
-        min-width: $*sidebar_width; /* prevents sidebar overlap of entry, when entry becomes narrower than sidebar */
-    }
-
-    .column-left #primary > .inner:first-child {
-        padding-left: $*rectangle_spacing;
-    }
-
-    .column-right #primary > .inner:first-child {
-        padding-right: $*rectangle_spacing;
-    }
-
-    .three-columns-left #secondary > .inner:first-child,
-    .three-columns-right #secondary > .inner:first-child {
-        padding-right: calc($*rectangle_spacing / 2);
-    }
-
-    .three-columns-left #tertiary > .inner:first-child,
-    .three-columns-right #tertiary > .inner:first-child {
-        padding-left: calc($*rectangle_spacing / 2);
-    }
+#secondary {
+    grid-area: secondary;
 }
 
-/* modules layout */
+#tertiary {
+    grid-area: tertiary;
+}
 
-#primary { float: none; }
-#secondary, #tertiary { width: 100%; }
+/* Split single column layout: */
+.one-column-split #content > .inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "secondary"
+        "primary"
+        "tertiary";
+}
 
+/* All the multi-column layouts: */
 @media $medium_media_query {
-    .multiple-columns #primary {
-        float: left;
+    .two-columns-left #content > .inner {
+        grid-template-columns: $*sidebar_width 1fr;
+        grid-template-areas:
+            "secondary primary"
+            "tertiary tertiary";
     }
 
-    .two-columns-left #secondary,
-    .three-columns-sides #secondary {
-        float: left;
-        width: $*sidebar_width;
-        margin-left: -$*sidebar_width;
-    }
-    .two-columns-right #secondary {
-        float: right;
-        width: $*sidebar_width;
-        margin-right: -$*sidebar_width;
-    }
-    .three-columns-left #secondary {
-        float: left;
-        width: $*sidebar_width;
-        margin-left: -$*sidebar_width_doubled;
-    }
-    .three-columns-right #secondary {
-        float: right;
-        width: $*sidebar_width;
-        margin-right: -$*sidebar_width;
+    .two-columns-right #content > .inner {
+        grid-template-columns: 1fr $*sidebar_width;
+        grid-template-areas:
+            "primary secondary"
+            "tertiary tertiary";
     }
 
-    .two-columns #tertiary {
-        clear: both;
-        width: auto;
+    .three-columns-left #content > .inner {
+        grid-template-columns: $*sidebar_width $*sidebar_width 1fr;
+        grid-template-areas:
+            "secondary tertiary primary";
     }
-    .two-columns-left #tertiary { margin-left: -$*sidebar_width; }
-    .two-columns-right #tertiary { margin-right: -$*sidebar_width; }
-    .two-columns #tertiary .module {
-        float: left;
-        width: $*sidebar_width;
-        margin-left: $*rectangle_spacing;
+
+    .three-columns-right #content > .inner {
+        grid-template-columns: 1fr $*sidebar_width $*sidebar_width;
+        grid-template-areas:
+            "primary secondary tertiary";
     }
-    .two-columns #tertiary .module:first-child {
-        margin-left: 0;
-    }
-    .three-columns-left #tertiary {
-        float: left;
-        width: $*sidebar_width;
-        margin-left: -$*sidebar_width;
-    }
-    .three-columns-right #tertiary {
-        float: right;
-        width: $*sidebar_width;
-        margin-right: -$*sidebar_width_doubled;
-        margin-left: $*sidebar_width; /* so that #tertiary won't overlay #secondary in IE7 */
-    }
-    .three-columns-sides #tertiary {
-        float: right;
-        width: $*sidebar_width;
-        margin-right: -$*sidebar_width;
+
+    .three-columns-sides #content > .inner {
+        grid-template-columns: $*sidebar_width 1fr $*sidebar_width;
+        grid-template-areas:
+            "secondary primary tertiary";
     }
 }
 
@@ -655,15 +603,12 @@ ol {
 
 /*--- Journal Header and Footer ---*/
 
-#content-footer {
-    height: 0;
-    font-size: 0; /*to make IE happy*/
-    clear: both;
+#content-footer, #invisible-separator {
+    display: none; /* These are old hacks in the Rasa markup. */
 }
 
 #header, #footer {
     margin: 0;
-    clear: both;
     padding: $*breathing_room_full;
     text-align: center;
 }
