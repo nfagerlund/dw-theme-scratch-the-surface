@@ -18,13 +18,8 @@ Here's what _is_ different:
     - Independent scrolling overflow for each entry/comment/module's content and header. If someone needs to express themselves with a five-minute keyboard smash or a huge `<table>`, you can get the full-fidelity experience without it trashing the rest of the page.
     - Compact comment threading, indicating thread position with dotted lines instead of huge indents.
     - More squish for collapsed comments in very very deep threads. (Visible comments still have a readable minimum width and can force the page to scroll, but the placeholders don't need all that room.)
-    - Hack: [Quick-reply on entry pages doesn't blow out the page on mobile.](./cuttingcorners.s2#L1321-L1369) 🙌🏼 (Basically makes it work more like the reading page quick-reply.)
-        - (This shouldn't be a style concern, and I'd like to see a fix for it in the site code.)
     - Hack: [Icon browser pop-up isn't completely broken on mobile.](./cuttingcorners.s2#L1370-L1432) 🙌🏼
         - (This shouldn't be a style concern, and I'd like to see a fix for it in the site code.)
-    - Images _always_ stay inside their container width, even on desktop. Want a closer look? Rightclick/tap-hold and "view image."
-    - Images have a reasonable max-height on desktop, so that portrait-orientation images will mostly fit above the fold in most windows. (Not a concern on mobile, since the max-width kicks in so early.)
-    - Metadata lines can break mid-word. (Things like current music, crosspost links, IPv6 address, etc. often have long runs of junk, but are short enough that an emergency linebreak won't hurt readability.)
 
     Basically, my attitude is that it's fine for extreme situations to result in extreme layouts, but the existing styles treat way too many perfectly normal situations as extreme.
 
@@ -32,14 +27,9 @@ Here's what _is_ different:
 
 - Heavily tested on this year's Firefox and mobile Safari (iPhone SE width).
 - Lightly tested on desktop Chrome and Safari.
-- Never tested on IE or Edge. Should be fine?? 🤷🏽‍♀️ Especially since I mostly just inherited the core styles' float layout.
+- Never tested on IE or Edge. Should be fine?? 🤷🏽‍♀️
+- If you're on a browser with no grid support, it should just fall back to single-column.
 - Never tested on Android browsers, but if it works in other recent WebKits/Blinks/Geckos it's probably fine?
-
-Here's the stuff I know about that might theoretically break in browsers that REALLY suck:
-
-- `rem` units (for space between elements) might be wack on IE < 9.
-- `calc()` (only used for three-column modes) might be wack on IE < 9.
-- flexbox layout (used sparingly) might be wack on IE < 11.
 
 ## Stuff
 
