@@ -510,27 +510,24 @@ ol {
     }
 }
 
+/* Assign named grid areas */
+#primary   { grid-area: primary; }
+#secondary { grid-area: secondary; }
+#tertiary  { grid-area: tertiary; }
+
+#primary, #secondary, #tertiary {
+    min-width: 0; /* allow grid to shrink them */
+}
+
+/* Grid setup, with default layout (.one-column, small screens) */
 #content > .inner {
     display: grid;
     grid-gap: $*rectangle_spacing;
-    /* Default single column layout, used for .one-column and small screens: */
     grid-template-columns: 1fr;
     grid-template-areas:
         "primary"
         "secondary"
         "tertiary";
-}
-
-#primary {
-    grid-area: primary;
-}
-
-#secondary {
-    grid-area: secondary;
-}
-
-#tertiary {
-    grid-area: tertiary;
 }
 
 /* Split single column layout: */
